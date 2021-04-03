@@ -14,5 +14,25 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('pagina-inicial');
+    return view('welcome');
+});
+
+Route::get("/pi", function(){
+
+    $integrantes = [
+        "1" => [
+            "nombre" => "Fernando Vargas Álvarez",
+            "matricula" => "A01066270"
+        ],
+        "2" => [
+            "nombre" => "Carlos Ayala Medina",
+            "matricula" => "A01703682"
+        ],
+        "3" => [
+            "nombre" => "Victor Omar Molina",
+            "matricula" => "A01423485"
+        ]
+    ];
+
+    return view("pagina-inicial", ["integrantes" => $integrantes]);
 });
