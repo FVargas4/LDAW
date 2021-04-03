@@ -31,7 +31,10 @@
                   <h5 class="card-title">Fernando Vargas Álvarez</h5>
                   <img src="{{ url('img/integrantes/FerVargas.jpg') }}" alt="profile image" />
                   <p class="card-text">A01066270 </p>
-                  <p class="card-text">Mi experiencia en el desarrollo de aplicaciones web no rebasa los límites impuestos en el bloque pasado; sin embargo, soy una persona a la que le gusta aprender constantemente y por ello me gusta investigar más acerca de muchos temas relacinados. Me considero un desarrollador medio por ser dedicado para encontrar la solución a posibles probemas que nos encontremos. </p>
+                  <p class="card-text">Mi experiencia en el desarrollo de aplicaciones web no rebasa los límites impuestos
+                    en el bloque pasado; sin embargo, soy una persona a la que le gusta aprender constantemente y por ello 
+                    me gusta investigar más acerca de muchos temas relacinados. Me considero un desarrollador medio por ser 
+                    dedicado para encontrar la solución a posibles probemas que nos encontremos. </p>
                 </div>
               </div>
             </div>      
