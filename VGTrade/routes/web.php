@@ -22,15 +22,18 @@ Route::get("/pi", function(){
     $integrantes = [
         "1" => [
             "nombre" => "Fernando Vargas Álvarez",
-            "matricula" => "A01066270"
+            "matricula" => "A01066270",
+            "foto" => "FerVargas"
         ],
         "2" => [
             "nombre" => "Carlos Ayala Medina",
-            "matricula" => "A01703682"
+            "matricula" => "A01703682",
+            "foto" => "CarlosAyala"
         ],
         "3" => [
             "nombre" => "Victor Omar Molina",
-            "matricula" => "A01423485"
+            "matricula" => "A01423485",
+            "foto" => "OmarMolina"
         ]
     ];
 
