@@ -12,7 +12,22 @@
       </head>
       <body class="bg-dark">
         <br>
-        <h1 class="text-center text-light">Integrantes del equipo</h1>
+        <h1 class="text-center text-light">Equipo 5 - LDAW</h1>
+        <h2 class="text-center text-light">Integrantes del equipo</h2>
+        <br>
+        <nav class="navbar navbar-expand-lg navbar-light bg-white">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="{{url('pi')}}">Integrantes del equipo</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarText">
+                    <span class="navbar-text">
+                        
+                    </span>
+                </div>
+            </div>
+        </nav>
         <br>
         <div class="row">
             <div class="col-sm-6">
@@ -21,7 +36,9 @@
                   <h5 class="card-title">Carlos Ayala Medina</h5>
                   <img src="{{ url('img/integrantes/perfildeusuario.jpg') }}" alt="profile image" />
                   <p class="card-text">A01703682</p>
-                  <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam minus sapiente autem veritatis accusantium ab consequuntur error, animi ipsam, cupiditate mollitia cum officiis qui harum asperiores. Impedit beatae vitae amet.</p>
+                  <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam minus sapiente
+                       autem veritatis accusantium ab consequuntur error, animi ipsam, cupiditate mollitia cum officiis 
+                       qui harum asperiores. Impedit beatae vitae amet.</p>
                 </div>
               </div>
             </div>
@@ -47,11 +64,13 @@
                   <h5 class="card-title">Victor Omar Molina</h5>
                   <img src="{{ url('img/integrantes/perfildeusuario.jpg') }}" alt="profile image" />
                   <p class="card-text">A01423485</p>
-                  <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Qui debitis at officia porro molestias. Voluptatibus explicabo laboriosam amet illum, itaque voluptate quo quis quam blanditiis quia consequatur consequuntur, cumque nostrum?</p>
+                  <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Qui debitis at officia 
+                      porro molestias. Voluptatibus explicabo laboriosam amet illum, itaque voluptate quo quis quam 
+                      blanditiis quia consequatur consequuntur, cumque nostrum?</p>
                 </div>
               </div>
             </div>
-          </div>    
+          </div>
         <!-- Option 1: Bootstrap Bundle with Popper -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
       </body>
