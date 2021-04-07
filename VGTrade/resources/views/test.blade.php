@@ -6,7 +6,7 @@
 
 @section('mainContent')
 
-    <section class="grid-3F">
+    <section class="grid-3">
     @foreach($integrantes as $id => $integrantes)
     <x-intCard :nombre="$integrantes['nombre']" :matricula="$integrantes['matricula']" :foto="$integrantes['foto']" :texto="$integrantes['texto']"  />
     @endforeach
