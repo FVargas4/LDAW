@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTitulo extends Migration
+class CreateJuegoFisicosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateTitulo extends Migration
      */
     public function up()
     {
-        Schema::create('titulo', function (Blueprint $table) {
+        Schema::create('juego_fisicos', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
+            $table->string('titulo');
             $table->string('condicion');
             $table->string('consola');
+            $table->timestamps();
         });
     }
 
@@ -28,6 +29,6 @@ class CreateTitulo extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('titulo');
+        Schema::dropIfExists('juego_fisicos');
     }
 }

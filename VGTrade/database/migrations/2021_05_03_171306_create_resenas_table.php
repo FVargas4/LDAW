@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateJuegoFisico extends Migration
+class CreateResenasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateJuegoFisico extends Migration
      */
     public function up()
     {
-        Schema::create('juego_fisico', function (Blueprint $table) {
+        Schema::create('resenas', function (Blueprint $table) {
             $table->id();
-            $table->string('titulo');
-            $table->string('condicion');
-            $table->string('consola');
+            $table->foreignId('id_user');
+            $table->foreignId('id_titulo');
+            $table->integer('calificacion');
+            $table->string('descripcion');
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ class CreateJuegoFisico extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('juego_fisico');
+        Schema::dropIfExists('resenas');
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateResena extends Migration
+class CreateTitulosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class CreateResena extends Migration
      */
     public function up()
     {
-        Schema::create('resena', function (Blueprint $table) {
+        Schema::create('titulos', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_user');
-            $table->foreignId('id_titulo');
-            $table->integer('calificacion');
-            $table->string('descripcion');
-            $table->timestamps();
+            $table->string('nombre');
+            $table->string('condicion');
+            $table->string('consola');
         });
     }
 
@@ -30,6 +28,6 @@ class CreateResena extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('resena');
+        Schema::dropIfExists('titulos');
     }
 }
