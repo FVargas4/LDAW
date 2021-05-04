@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\IntegrantesControllers;
+use App\Http\Controllers\TituloController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +18,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get("/pi", [IntegrantesControllers::class, 'getText']);
+
+Route::get("/home", function(){
+
+    return view("vghome");
+});
+
+Route::get("/test", [TituloController::class, 'index']);

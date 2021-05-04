@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\IntegrantesControllers;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -18,9 +18,3 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get("/pi", [IntegrantesControllers::class, 'getText']);
-
-Route::get("/home", function(){
-
-    return view("vghome");
-});

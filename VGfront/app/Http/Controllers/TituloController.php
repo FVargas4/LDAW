@@ -8,6 +8,8 @@ use App\Models\Titulo;
 class TituloController extends Controller
 {
     public function index(){
-        return Titulo::all();
+        $titulo = Titulo::getTitulo();
+
+        return $titulo;
     }
 }
