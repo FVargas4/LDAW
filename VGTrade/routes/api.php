@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\TituloController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +19,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-//Route::apiResource('/titulos',TituloController::class);
+use App\Http\Controllers\TituloController;
 
-Route::get('/titulo', [TituloController::class, 'index']);
+Route::apiResource('titulo',TituloController::class);
+
+
 

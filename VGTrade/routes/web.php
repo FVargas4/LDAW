@@ -18,3 +18,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+//use App\Http\Controllers\TituloController;
+
+//Route::resource("titulos",TituloController::class);
+
+//use App\Http\Controllers\TituloController;
+
+//Route::get('titulo', [TituloController::class, 'index']);
