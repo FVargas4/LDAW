@@ -15,12 +15,12 @@ use App\Http\Controllers\IntegrantesControllers;
 |
 */
 
-Route::get('/', function () {
+Route::get('/welcome', function () {
     return view('welcome');
 });
 Route::get("/pi", [IntegrantesControllers::class, 'getText']);
 
-Route::get("/home", function(){
+Route::get("/", function(){
 
     return view("vghome");
 });
