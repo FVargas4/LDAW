@@ -17,18 +17,28 @@
         <h1 class="text-center text-light">Equipo 5 - LDAW</h1>
         <h2 class="text-center text-light">@yield('tituloM')</h2>
         <br>
-        <nav class="navbar navbar-expand-lg navbar-light bg-white">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="{{url('home')}}">VGTrade</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarText">
-                    <span class="navbar-text">
-                        Home
-                    </span>
-                </div>
-            </div>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand mx-3" href="{{url('/')}}"> <img src="{{asset('img/prueba/prueba.jpg')}}" class="img-fluid"
+                alt="cuadro responsive" width='70'> </a>
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#collapse_target">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapse_target">
+            <ul class="navbar-nav">
+
+                <li class="nav-item px-2">
+                    <a class="nav-link " href="{{url('/nosotros')}}">Home</a>
+                </li>
+                <li class="nav-item px-2">
+                    <a class="nav-link" href="#">Titulos</a>
+                </li>
+                <li class="nav-item px-2">
+                    <a class="nav-link " href="#">Ofertas</a>
+                </li>
+
+            </ul>
+
+        </div>
         </nav>
         <br>
 

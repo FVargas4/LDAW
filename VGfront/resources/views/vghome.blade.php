@@ -8,10 +8,10 @@
     <h1 class="text-center text-light">Let's trade</h1>
     <img src="img/prueba/prueba.jpg" width="40%" class="center">
     <div class="container">
-        <div class="row">
+        <div class="row p-10 m-10">
             <div class="col-4  p-10 m-10">
                 <div class="card center" style="width: 18rem;">
-                    <img src="..." class="card-img-top" alt="...">
+                    <img src="img/prueba/prueba.jpg" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -27,7 +27,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-8">
+            <div class="col-8 p-10 m-10">
                 <div class="container bg-light text-center p-10 m-10">
                     <h2>Titulo</h2>
                     <div class="row">
