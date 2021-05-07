@@ -27,7 +27,7 @@
             <ul class="navbar-nav">
 
                 <li class="nav-item px-2">
-                    <a class="nav-link " href="{{url('/nosotros')}}">Home</a>
+                    <a class="nav-link " href="{{url('/')}}">Home</a>
                 </li>
                 <li class="nav-item px-2">
                     <a class="nav-link" href="#">Titulos</a>

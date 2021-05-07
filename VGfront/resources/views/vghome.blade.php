@@ -28,9 +28,9 @@
                 </div>
             </div>
             <div class="col-8 p-10 m-10">
-                <div class="container bg-light text-center p-10 m-10">
+                <div class="container bg-light center p-10 m-10">
                     <h2>Titulo</h2>
-                    <div class="row">
+                    <div class="row text-center">
                         <div class="col-3">
                             <img  src="img/prueba/prueba.jpg" class="center" width="10%"> 
                         </div>
