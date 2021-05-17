@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\JuegoFisico;
 use Illuminate\Http\Request;
 
 class JuegoFisicoController extends Controller
@@ -14,7 +13,21 @@ class JuegoFisicoController extends Controller
      */
     public function index()
     {
-        return JuegoFisico::all();
+        $juegoFisico = juegoFisico::getjuegoFisico();
+
+        //dd($juegoFisico);
+
+        return view("juegoFisico", ["juegoFisico" => $juegoFisico]);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
     }
 
     /**
@@ -31,22 +44,33 @@ class JuegoFisicoController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\JuegoFisico  $juegoFisico
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(JuegoFisico $juegoFisico)
+    public function show($id)
     {
-        return $juegoFisico;
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\JuegoFisico  $juegoFisico
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, JuegoFisico $juegoFisico)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -54,10 +78,10 @@ class JuegoFisicoController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\JuegoFisico  $juegoFisico
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(JuegoFisico $juegoFisico)
+    public function destroy($id)
     {
         //
     }
