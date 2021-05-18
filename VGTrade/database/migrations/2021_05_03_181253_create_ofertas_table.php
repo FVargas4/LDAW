@@ -15,8 +15,8 @@ class CreateOfertasTable extends Migration
     {
         Schema::create('ofertas', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_juego_propuesto')->references('id')->on('juego_fisicos');
-            $table->foreignId('id_juego_ofertado')->references('id')->on('juego_fisicos');
+            $table->foreignId('id_juego_propuesto')->references('id')->on('juego_fisicos')->onDelete('cascade');
+            $table->foreignId('id_juego_ofertado')->references('id')->on('juego_fisicos')->onDelete('cascade');
             $table->string('estado');
             $table->timestamps();
         });

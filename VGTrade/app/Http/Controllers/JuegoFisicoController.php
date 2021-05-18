@@ -25,7 +25,12 @@ class JuegoFisicoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $JuegoFisico = JuegoFisico::create([
+            'titulo' => request('titulo'),
+            'condicion' => request('condicion'),
+            'consola' => request('consola'),
+        ]);
+
     }
 
     /**
@@ -46,9 +51,23 @@ class JuegoFisicoController extends Controller
      * @param  \App\Models\JuegoFisico  $juegoFisico
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, JuegoFisico $juegoFisico)
+    public function update(Request $request, $id)
     {
-        //
+        $JuegoFisico = JuegoFisico::find($id);
+        request()->validate([
+            'titulo' => 'required',
+            'condicion' => 'required',
+            'consola' => 'required',
+        ]);
+
+        $success = $JuegoFisico->update([
+            'titulo' => request('titulo'),
+            'condicion' => request('condicion'),
+            'consola' => request('consola'),
+        ]);
+        return [
+            'success' => $success
+        ];
     }
 
     /**
@@ -57,8 +76,15 @@ class JuegoFisicoController extends Controller
      * @param  \App\Models\JuegoFisico  $juegoFisico
      * @return \Illuminate\Http\Response
      */
-    public function destroy(JuegoFisico $juegoFisico)
+    public function destroy($id)
     {
-        //
+        $JuegoFisico = JuegoFisico::find($id);
+
+        $success = $JuegoFisico->delete();
+
+        return [
+            'success' => $success
+        ];
+
     }
 }
