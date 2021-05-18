@@ -23,5 +23,7 @@ use App\Http\Controllers\TituloController;
 
 Route::apiResource('titulo',TituloController::class);
 
+Route::post('/titulo/{id}', ['as' => 'delete', 'uses' => 'App\Http\TituloController@destroy']);
+
 
 

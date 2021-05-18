@@ -5,6 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Titulo;
 use Illuminate\Http\Request;
 
+//prueba
+
+use App\Models\Post;
+
+
 class TituloController extends Controller
 {
     /**
@@ -60,8 +65,21 @@ class TituloController extends Controller
      * @param  \App\Models\Titulo  $titulo
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Titulo $titulo)
+    public function destroy($id)
     {
         //
+        $device = titulo::findOrFail($id);
+
+        $result =$device->delete();
+
+        if($result){
+
+            return ["result" => "record has been delete"];
+
+        }else{
+
+            return["result"=>"delete operation failed"];
+        }
+
     }
 }
