@@ -89,5 +89,16 @@ class TituloController extends Controller
     public function destroy($id)
     {
         //
+
+        $titulo= titulo::getTitulobyid($id);
+
+        //var_dump($titulo);
+        
+        if($titulo != NULL){
+            //return  ["result" => "record has been deleted"];
+
+            return redirect('titulo')->with('eliminate','Oferta borrada con éxito');
+        }
+        
     }
 }

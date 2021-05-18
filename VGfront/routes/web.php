@@ -31,3 +31,5 @@ use App\Http\Controllers\TituloController;
 
 
 Route::resource('titulo', TituloController::class);
+
+Route::delete('/titulo/{id}', 'App\Http\Controllers\TituloController@destroy');
