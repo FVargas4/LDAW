@@ -25,6 +25,7 @@ Route::apiResource('titulo',TituloController::class);
 Route::apiResource('juegofisico',JuegoFisicoController::class);
 
 Route::get('/JuegoFisico', [JuegoFisicoController::class, 'index']);
+Route::get('/JuegoFisico/{juegofisico}', [JuegoFisicoController::class, 'show']);
 Route::post('/JuegoFisico', [JuegoFisicoController::class, 'store']);
 Route::put('/JuegoFisico/{juegofisico}', [JuegoFisicoController::class, 'update']);
 Route::delete('/JuegoFisico/{juegofisico}', [JuegoFisicoController::class, 'destroy']);

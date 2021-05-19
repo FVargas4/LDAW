@@ -39,9 +39,13 @@ class JuegoFisicoController extends Controller
      * @param  \App\Models\JuegoFisico  $juegoFisico
      * @return \Illuminate\Http\Response
      */
-    public function show(JuegoFisico $juegoFisico)
+    public function show($id)
     {
-        return $juegoFisico;
+        $success = $JuegoFisico = JuegoFisico::findOrFail($id);
+        //return [$juegoFisico];
+        return [
+             $success
+        ];
     }
 
     /**

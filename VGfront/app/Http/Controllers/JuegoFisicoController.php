@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Request;
+use App\Models\JuegoFisico;
 
 class JuegoFisicoController extends Controller
 {
@@ -13,11 +15,9 @@ class JuegoFisicoController extends Controller
      */
     public function index()
     {
-        $juegoFisico = juegoFisico::getjuegoFisico();
-
-        //dd($juegoFisico);
-
-        return view("juegoFisico", ["juegoFisico" => $juegoFisico]);
+        $juegoFisico = Http::get(env('API_URL').'JuegoFisico');
+        $array['array'] = $juegoFisico->json();
+        return view("juegofisico.index",$array);
     }
 
     /**
@@ -27,7 +27,7 @@ class JuegoFisicoController extends Controller
      */
     public function create()
     {
-        //
+        return view('juegofisico.create');
     }
 
     /**
@@ -38,7 +38,13 @@ class JuegoFisicoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $JuegoFisico = Http::post(env('API_URL').'JuegoFisico',[
+            'titulo' => request('titulo'),
+            'condicion' => request('condicion'),
+            'consola' => request('consola'),
+        ]);
+
+        return redirect('juegofisico')->with('nuevo','Juego agregado con éxito');
     }
 
     /**
@@ -49,7 +55,9 @@ class JuegoFisicoController extends Controller
      */
     public function show($id)
     {
-        //
+        $juegoFisico = Http::get(env('API_URL').'JuegoFisico/'.$id);
+        $array['array'] = $juegoFisico->json();
+        return view("juegofisico.show",$array);
     }
 
     /**
@@ -60,7 +68,10 @@ class JuegoFisicoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $juegoFisico = Http::get(env('API_URL').'JuegoFisico/'.$id);
+        $array['array'] = $juegoFisico->json();
+        //dd($array);
+        return view('juegofisico.edit',$array);
     }
 
     /**
@@ -72,7 +83,13 @@ class JuegoFisicoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $JuegoFisico = Http::put(env('API_URL').'JuegoFisico/'.$id,[
+            'titulo' => request('titulo'),
+            'condicion' => request('condicion'),
+            'consola' => request('consola'),
+        ]);
+
+        return redirect('juegofisico')->with('nuevo','Juego agregado con éxito');
     }
 
     /**
@@ -83,6 +100,8 @@ class JuegoFisicoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $juegoFisico = Http::delete(env('API_URL').'JuegoFisico/'.$id);
+        return redirect('juegofisico')->with('eliminado','Juego borrado con éxito');
+
     }
 }
