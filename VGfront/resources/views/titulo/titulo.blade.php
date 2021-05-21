@@ -26,7 +26,7 @@
               <h1 class="text-left fs-4">Lista Títulos registrados </h3>
           </div>
           <div class="align-self-center p-2">
-          <a href="{{url('donadores/create')}}"  class="btn btn-success "> <span class="material-icons-outlined">add_circle</span></a>
+          <a href="{{url('titulo/create')}}"  class="btn btn-success "> <span class="material-icons-outlined">add_circle</span></a>
           <br>
           </div>
 
@@ -52,6 +52,10 @@
                         <td>{{ $titu['consola'] }}</td>
                                 
                         <td>
+
+                        <a href="{{url('/titulo/'.$titu['id'].'/edit')}}" class="btn btn-outline-secondary">
+                            Editar
+                        </a>
 
                         <form action="{{ url('/titulo/'.$titu['id']) }}" method="post" >
                             @csrf

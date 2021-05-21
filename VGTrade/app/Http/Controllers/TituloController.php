@@ -32,6 +32,12 @@ class TituloController extends Controller
     public function store(Request $request)
     {
         //
+
+        $titulo = titulo::create([
+            'nombre' => request('nombre'),
+            'condicion' => request('condicion'),
+            'consola' => request('consola'),
+        ]);
     }
 
     /**
@@ -40,11 +46,19 @@ class TituloController extends Controller
      * @param  \App\Models\Titulo  $titulo
      * @return \Illuminate\Http\Response
      */
-    public function show(Titulo $titulo)
+    public function show($id)
     {
         //
 
+        //dd($titulo);
+
+        $titulo=Titulo::findorFail($id);
+        //return [$juegoFisico];
         return $titulo;
+    
+
+
+        //return $titulo;
     }
 
     /**
@@ -54,9 +68,26 @@ class TituloController extends Controller
      * @param  \App\Models\Titulo  $titulo
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Titulo $titulo)
+    public function update(Request $request, $id)
     {
         //
+        
+        $titulo = titulo::find($id);
+        request()->validate([
+            'nombre' => 'required',
+            'condicion' => 'required',
+            'consola' => 'required',
+        ]);
+
+        $success = $titulo->update([
+            'nombre' => request('nombre'),
+            'condicion' => request('condicion'),
+            'consola' => request('consola'),
+        ]);
+        return [
+            'success' => $success
+        ];
+
     }
 
     /**

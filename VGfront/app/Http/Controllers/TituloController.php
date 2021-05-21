@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Models\Titulo;
 
+use Illuminate\Support\Facades\Http;
+
 
 class TituloController extends Controller
 {
@@ -21,7 +23,7 @@ class TituloController extends Controller
 
             //dd($titulo);
     
-            return view("titulo", ["titulo" => $titulo]);
+            return view("titulo.titulo", ["titulo" => $titulo]);
 
     }
 
@@ -33,6 +35,7 @@ class TituloController extends Controller
     public function create()
     {
         //
+        return view('titulo.create');
     }
 
     /**
@@ -44,6 +47,16 @@ class TituloController extends Controller
     public function store(Request $request)
     {
         //
+        $titulo = Http::post(env('API_URL').'titulo',[
+            'nombre' => request('nombre'),
+            'condicion' => request('condicion'),
+            'consola' => request('consola'),
+        ]);
+
+
+        //dd($titulo)
+
+        return redirect('titulo')->with('nuevo','titulo agregado con éxito');
     }
 
     /**
@@ -55,6 +68,12 @@ class TituloController extends Controller
     public function show($id)
     {
         //
+        
+        $titulo = Http::get(env('API_URL').'titulo/'.$id);
+        $array['array'] = $titulo->json();
+        return view("titulo.show",$array);
+        
+        
     }
 
     /**
@@ -65,7 +84,14 @@ class TituloController extends Controller
      */
     public function edit($id)
     {
-        //
+        
+        $titulo['prueba'] = Titulo::findtitulo_id($id);
+
+    
+        //dd($titulo);
+        
+
+        return view('titulo.edit',$titulo);
     }
 
     /**
@@ -78,6 +104,15 @@ class TituloController extends Controller
     public function update(Request $request, $id)
     {
         //
+
+        
+        $titulo = Http::put(env('API_URL').'titulo/'.$id,[
+            'nombre' => request('nombre'),
+            'condicion' => request('condicion'),
+            'consola' => request('consola'),
+        ]);
+
+        return redirect('titulo')->with('nuevo','Titulo agregado con éxito');
     }
 
     /**
@@ -89,7 +124,6 @@ class TituloController extends Controller
     public function destroy($id)
     {
         //
-
         $titulo= titulo::getTitulobyid($id);
 
         //var_dump($titulo);
@@ -97,7 +131,7 @@ class TituloController extends Controller
         if($titulo != NULL){
             //return  ["result" => "record has been deleted"];
 
-            return redirect('titulo')->with('eliminate','Oferta borrada con éxito');
+            return redirect('titulo')->with('eliminate','titulo borrado éxitosamente');
         }
         
     }

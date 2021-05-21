@@ -21,9 +21,18 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 use App\Http\Controllers\TituloController;
 
-Route::apiResource('titulo',TituloController::class);
+
 
 Route::post('/titulo/{id}', ['as' => 'delete', 'uses' => 'App\Http\TituloController@destroy']);
 
+Route::post('/titulo', [TituloController::class, 'store']);
 
+Route::put('/titulo/{id}', [TituloController::class, 'update']);
+
+Route::get('/JuegoFisico/{id}', [TituloController::class, 'show']);
+
+Route::get('/titulo/{id}', [TituloController::class, 'show']);
+
+Route::apiResource('titulo',TituloController::class);
+//Route::put('/titulo/update', ['as' => 'put', 'uses' => 'App\Http\TituloController@update']);
 
