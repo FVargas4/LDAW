@@ -85,13 +85,14 @@ class TituloController extends Controller
     public function edit($id)
     {
         
-        $titulo['prueba'] = Titulo::findtitulo_id($id);
+        $titulo = Titulo::findtitulo_id($id);
 
     
         //dd($titulo);
         
-
-        return view('titulo.edit',$titulo);
+        //arreglo asociativo 
+        
+        return view('titulo.edit',['titu'=>$titulo]);
     }
 
     /**

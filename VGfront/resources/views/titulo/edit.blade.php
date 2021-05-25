@@ -1,15 +1,5 @@
     
     
-    @foreach($prueba as $titu)
-      
-      
-
-            
-            //dd($array);
-           
-       
-
-    @endforeach
 
 <div class="container">
 
