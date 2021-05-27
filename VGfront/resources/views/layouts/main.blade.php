@@ -13,12 +13,12 @@
 
       </head>
       <body class="bg-dark">
-        <br>
-        <h1 class="text-center text-light">Equipo 5 - LDAW</h1>
-        <h2 class="text-center text-light">@yield('tituloM')</h2>
-        <br>
+        <h1 class="text-center px-2">Equipo 5 - LDAW</h1>
+
+        <h2 class="text-center text-light px-2">@yield('tituloM')</h2>
+
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand mx-3" href="{{url('/')}}"> <img src="{{asset('img/prueba/prueba.jpg')}}" class="img-fluid"
+            <a class="navbar-brand mx-3" href="{{url('/')}}"> <img src="{{asset('img/prueba/prueba.jpg')}}" class="img-fluid"
                 alt="cuadro responsive" width='70'> </a>
         <button class="navbar-toggler" data-toggle="collapse" data-target="#collapse_target">
             <span class="navbar-toggler-icon"></span>
@@ -40,9 +40,8 @@
 
         </div>
         </nav>
-        <br>
 
-        <main class="containers-fluid">
+        <main class="container">
             @yield('mainContent')
         </main>
 
@@ -52,5 +51,6 @@
         <!-- Bootstrap -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
         @stack('scripts')
+        </body>
 
 </html>
