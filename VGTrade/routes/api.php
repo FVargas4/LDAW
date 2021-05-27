@@ -2,7 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\JuegoFisicoController;
+use App\Http\Controllers\TituloController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,9 +20,14 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-use App\Http\Controllers\TituloController;
 
 Route::apiResource('titulo',TituloController::class);
+Route::apiResource('juegofisico',JuegoFisicoController::class);
 
+Route::get('/JuegoFisico', [JuegoFisicoController::class, 'index']);
+Route::get('/JuegoFisico/{juegofisico}', [JuegoFisicoController::class, 'show']);
+Route::post('/JuegoFisico', [JuegoFisicoController::class, 'store']);
+Route::put('/JuegoFisico/{juegofisico}', [JuegoFisicoController::class, 'update']);
+Route::delete('/JuegoFisico/{juegofisico}', [JuegoFisicoController::class, 'destroy']);
 
 
