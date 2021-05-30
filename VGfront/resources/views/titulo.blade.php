@@ -1,15 +1,21 @@
+@extends('layouts.main')
 
+@section('pageTitle', "VGTrade")
 
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">nombre</th>
-      <th scope="col">condicion</th>
-      <th scope="col">consola</th>
-    </tr>
-  </thead>
-  <tbody>
+@section('tituloM', "Home Page")
+
+@section('mainContent')
+<div class="container bg-light mt-3">
+  <table class="table text-dark">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">nombre</th>
+        <th scope="col">condicion</th>
+        <th scope="col">consola</th>
+      </tr>
+    </thead>
+    <tbody>
     
        @foreach($titulo as $titu)
             <tr scope="row">
@@ -20,6 +26,8 @@
                 <td>{{ $titu['consola'] }}</td>
                          
                 <td>
-    @endforeach
-  </tbody>
-</table>
+      @endforeach
+    </tbody>
+  </table>
+</div>
+@endsection

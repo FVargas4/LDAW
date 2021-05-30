@@ -30,11 +30,15 @@
                     <a class="nav-link " href="{{url('/')}}">Home</a>
                 </li>
                 <li class="nav-item px-2">
-                    <a class="nav-link" href="#">Titulos</a>
+                    <a class="nav-link" href="{{url('/titulo')}}">Titulos</a>
                 </li>
                 <li class="nav-item px-2">
-                    <a class="nav-link " href="#">Ofertas</a>
+                    <a class="nav-link " href="{{url('/ofertas')}}">Ofertas</a>
                 </li>
+                <li class="nav-item px-2">
+                    <a class="nav-link " href="{{url('/juegofisico')}}">Juegos Fisicos</a>
+                </li>
+                
 
             </ul>
 

@@ -1,6 +1,12 @@
+@extends('layouts.main')
 
+@section('pageTitle', "VGTrade")
 
-<table class="table">
+@section('tituloM', "Home Page")
+
+@section('mainContent')
+<div class="container bg-light mt-3 rounded">
+  <table class="table table-responsive">
     <thead>
       <tr>
         <th scope="col">#</th>
@@ -35,3 +41,5 @@
         @endforeach
     </tbody>
   </table>
+</div>
+@endsection
