@@ -5,6 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Titulo;
 use Illuminate\Http\Request;
 
+//prueba
+
+use App\Models\Post;
+
+
 class TituloController extends Controller
 {
     /**
@@ -15,7 +20,7 @@ class TituloController extends Controller
     public function index()
     {
         //
-        return Titulo::all();
+        return Titulo::getAllTitulos();
     }
 
     /**
@@ -27,6 +32,12 @@ class TituloController extends Controller
     public function store(Request $request)
     {
         //
+
+        $titulo = titulo::create([
+            'nombre' => request('nombre'),
+            'condicion' => request('condicion'),
+            'consola' => request('consola'),
+        ]);
     }
 
     /**
@@ -35,11 +46,19 @@ class TituloController extends Controller
      * @param  \App\Models\Titulo  $titulo
      * @return \Illuminate\Http\Response
      */
-    public function show(Titulo $titulo)
+    public function show($id)
     {
         //
 
+        //dd($titulo);
+
+        $titulo=Titulo::findorFail($id);
+        //return [$juegoFisico];
         return $titulo;
+    
+
+
+        //return $titulo;
     }
 
     /**
@@ -49,9 +68,26 @@ class TituloController extends Controller
      * @param  \App\Models\Titulo  $titulo
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Titulo $titulo)
+    public function update(Request $request, $id)
     {
         //
+        
+        $titulo = titulo::find($id);
+        request()->validate([
+            'nombre' => 'required',
+            'condicion' => 'required',
+            'consola' => 'required',
+        ]);
+
+        $success = $titulo->update([
+            'nombre' => request('nombre'),
+            'condicion' => request('condicion'),
+            'consola' => request('consola'),
+        ]);
+        return [
+            'success' => $success
+        ];
+
     }
 
     /**
@@ -60,8 +96,21 @@ class TituloController extends Controller
      * @param  \App\Models\Titulo  $titulo
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Titulo $titulo)
+    public function destroy($id)
     {
         //
+        $device = titulo::findOrFail($id);
+
+        $result =$device->delete();
+
+        if($result){
+
+            return ["result" => "record has been delete"];
+
+        }else{
+
+            return["result"=>"delete operation failed"];
+        }
+
     }
 }
