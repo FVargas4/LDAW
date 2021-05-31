@@ -20,7 +20,7 @@ class TituloController extends Controller
     public function index()
     {
         //
-        return Titulo::all();
+        return Titulo::getAllTitulos();
     }
 
     /**
