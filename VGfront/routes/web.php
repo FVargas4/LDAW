@@ -36,3 +36,11 @@ Route::resource('titulo', TituloController::class);
 
 Route::resource('usuarios', UsuarioController::class);
 Route::resource('juegofisico',JuegoFisicoController::class);
+
+
+Route::delete('/titulo/{id}', 'App\Http\Controllers\TituloController@destroy');
+
+//Route::post('/titulo/create', 'App\Http\Controllers\TituloController@create');
+
+//Route::post('/titulo/update', 'App\Http\Controllers\TituloController@update');
+
