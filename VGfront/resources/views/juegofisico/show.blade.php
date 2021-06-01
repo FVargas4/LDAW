@@ -1,3 +1,11 @@
+@extends('layouts.main')
+
+@section('pageTitle', "VGTrade")
+
+@section('tituloM', "Home Page")
+
+@section('mainContent')
+<div class="container bg-light mt-3">
 <table class="table table-light">
     <thead class="greennefrobg whitenefro">
       <tr>
@@ -32,3 +40,4 @@
   </table>
 
   <a href="{{ url('juegofisico') }}" class="btn btn-primary"><i class="bi bi-arrow-left"></i> Regresar </a>
+@endsection
