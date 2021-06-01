@@ -7,6 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Titulo extends Model
 {
+
+
+    protected $fillable =[
+
+        'nombre', 'condicion', 'consola'
+    ];
+
+
     public $timestamps = false;
     public $table ="titulos";
     public static function getAllTitulos(){
