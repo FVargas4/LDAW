@@ -29,7 +29,7 @@
             </div>
             <div class="col-8 p-10 m-10">
                 <div class="container bg-light center p-10 m-10">
-                    <h2>Titulo</h2>
+                    <h2 class="text-center">Titulo</h2>
                     <div class="row text-center">
                         <div class="col-3">
                             <img  src="img/prueba/prueba.jpg" class="center" width="10%"> 

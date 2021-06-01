@@ -1,21 +1,21 @@
+
 @extends('layouts.main')
 
-@section('pageTitle', "VGTrade")
+@section('pageTitle', "Equipo 5 - LDAW")
 
-@section('tituloM', "Home Page")
+@section('tituloM', "Integrantes del Equipo")
 
 @section('mainContent')
-<div class="container bg-light mt-3">
-  <table class="table text-dark">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">nombre</th>
-        <th scope="col">condicion</th>
-        <th scope="col">consola</th>
-      </tr>
-    </thead>
-    <tbody>
+<table class="table text-light">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">nombre</th>
+      <th scope="col">condicion</th>
+      <th scope="col">consola</th>
+    </tr>
+  </thead>
+  <tbody>
     
        @foreach($titulo as $titu)
             <tr scope="row">
