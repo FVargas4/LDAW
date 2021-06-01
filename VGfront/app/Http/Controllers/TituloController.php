@@ -19,7 +19,7 @@ class TituloController extends Controller
         //
             $titulo = Titulo::getTitulo();
 
-            //dd($titulo);
+            dd($titulo);
     
             return view("titulo", ["titulo" => $titulo]);
 

@@ -1,6 +1,12 @@
 
+@extends('layouts.main')
 
-<table class="table">
+@section('pageTitle', "Equipo 5 - LDAW")
+
+@section('tituloM', "Integrantes del Equipo")
+
+@section('mainContent')
+<table class="table text-light">
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -23,3 +29,5 @@
     @endforeach
   </tbody>
 </table>
+
+@endsection
