@@ -22,7 +22,7 @@ Route::get('/welcome', function () {
 });
 Route::get("/pi", [IntegrantesControllers::class, 'getText']);
 
-Route::get("/vghome", function(){
+Route::get("/", function(){
 
     return view("vghome");
 });
