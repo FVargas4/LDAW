@@ -20,9 +20,7 @@ class TituloController extends Controller
     {
         //
             $titulo = Titulo::getTitulo();
-
-            //dd($titulo);
-    
+ 
             return view("titulo.titulo", ["titulo" => $titulo]);
 
     }
@@ -56,7 +54,7 @@ class TituloController extends Controller
 
         //dd($titulo)
 
-        return redirect('titulo')->with('nuevo','titulo agregado con éxito');
+        return redirect('titulo')->with('mensaje','titulo agregado con éxito');
     }
 
     /**
@@ -113,7 +111,7 @@ class TituloController extends Controller
             'consola' => request('consola'),
         ]);
 
-        return redirect('titulo')->with('nuevo','Titulo agregado con éxito');
+        return redirect('titulo')->with('mensaje','Titulo agregado con éxito');
     }
 
     /**
@@ -132,7 +130,7 @@ class TituloController extends Controller
         if($titulo != NULL){
             //return  ["result" => "record has been deleted"];
 
-            return redirect('titulo')->with('eliminate','titulo borrado éxitosamente');
+            return redirect('titulo')->with('mensaje','titulo borrado éxitosamente');
         }
         
     }

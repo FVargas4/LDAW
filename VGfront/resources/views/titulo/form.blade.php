@@ -5,22 +5,22 @@
 
     <div class="form-group">
         <div class="mb-3">
-            <label for="nombre">Nombre</label>
-            <input type="text" class="form-control" name="nombre" value="{{ isset($titulo->nombre)?$titulo->nombre:old('nombre') }}" id="nombre">
+            <label for="nombre">Nombre <span aria-hidden="true" class="required text-danger" >*</span></label>
+            <input type="text" placeholder="Halo Reach" class="form-control" name="nombre" value="{{ isset($titulo->nombre)?$titulo->nombre:old('nombre') }}" id="nombre" required>
         </div>
     </div>
 
     <div class="form-group">
         <div class="mb-3">
-            <label for="condicion">Condicion</label>
-            <input type="text" class="form-control" name="condicion" value="{{ isset($titulo->condicion)?$titulo->condicion:old('condicion') }}" id="condicion">
+            <label for="condicion">Condicion<span aria-hidden="true" class="required text-danger" >*</span></label>
+            <input type="text" class="form-control" placeholder="Juego del año" name="condicion" value="{{ isset($titulo->condicion)?$titulo->condicion:old('condicion') }}" id="condicion" required>
         </div>
     </div>
 
     <div class="form-group">
         <div class="mb-3">
-            <label for="consola">Consola</label>
-            <input type="text" class="form-control" name="consola" value="{{ isset($titulo->consola)?$titulo->consola:old('consola') }}" id="consola">
+            <label for="consola">Consola<span aria-hidden="true" class="required text-danger" >*</span></label>
+            <input type="text" class="form-control" placeholder="Xbox" name="consola" value="{{ isset($titulo->consola)?$titulo->consola:old('consola') }}" id="consola" required>
         </div>
     </div>
 
@@ -30,7 +30,7 @@
         </div>
     <div class="mt-3">
         <div class="px-4 text-center">                 
-            <input type="submit" href="{{url('/titulo/')}}" class="btn btn btn-danger w-50 mt-0" value="Regresar">        
+            <input  href="{{url('/titulo')}}" class="btn btn btn-danger w-50 mt-0" value="Regresar">        
         </div>
     </div>
 

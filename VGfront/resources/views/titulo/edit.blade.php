@@ -42,7 +42,7 @@
                 
                 <div class="mt-3">
                     <div class="px-4 text-center">
-                            <input type="submit" href="{{url('/titulo')}}" class="btn btn btn-danger w-50 mt-0" value="Regresar">        
+                            <input href="{{url('/titulo')}}" class="btn btn btn-danger w-50 mt-0" value="Regresar">        
                     </div>
                 </div>
             </div>
