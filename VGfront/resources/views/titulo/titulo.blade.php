@@ -3,7 +3,7 @@
 
 @section('mainContent')
 
-<div class="container">
+<div class="container">@section('mainContent')
     
 </div>
 
@@ -11,66 +11,66 @@
 
 
     <h3 class="text-center mb-3">Títulos </h3>
-    <div class="align-self-center p-2">
-        <a href=""  class="btn btn-success "> <span class="material-icons-outlined">keyboard_backspace</span></a>
-        <br>
+        <div class="align-self-center p-2">
+          <a href="{{url('vghome')}}"  class="btn btn-success "> <span class="material-icons-outlined">keyboard_backspace</span></a>
+          
         </div>
     <div class="table-responsive">
 
-   
-      <br>
-
-    
       <div class="d-flex border-bottom mb-3">
+
           <div class="me-auto p-2">
               <h1 class="text-left fs-4">Lista Títulos registrados </h3>
           </div>
+
           <div class="align-self-center p-2">
-          <a href="{{url('titulo/create')}}"  class="btn btn-success "> <span class="material-icons-outlined">add_circle</span></a>
-          <br>
+              <a href="{{url('titulo/create')}}"  class="btn btn-success "> <span class="material-icons-outlined">add_circle</span></a>
+              
           </div>
 
       </div>
+        
+        <div class="container">
+           <div class="row">
+               @foreach($titulo as $titu)
+               
+                    <div class="card mt-3" style="width: 18rem;">
+                        
+                            <div class="card-body">
+                                                     
+                                    <h5 class="card-title">{{ $titu['nombre'] }}</h5>
+                                    <p class="card-text">  {{$titu['condicion']    }}</p>
+                                    <p class="card-text">  {{$titu['consola'] }}</p>
+                                     
+                            </div>
 
-        <table class="table table-hover">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">nombre</th>
-              <th scope="col">condicion</th>
-              <th scope="col">consola</th>
-            </tr>
-          </thead>
-          <tbody>
-            
-              @foreach($titulo as $titu)
-                    <tr scope="row">
+                      <div class="container text-center"">
+                        <div class="float-sm-right">
+                            <div  class="btn-group" role="group" aria-label="Vertical example">
+                                <a href="{{url('/titulo/'.$titu['id'].'/edit')}}" >
+                                    <button type="button" class="btn btn-success">
+                                        <i class="bi bi-pencil-square"></i>
+                                    </button>  
+                                </a>
+                                <br>
 
-                        <td>{{ $titu['id'] }}</td>
-                        <td>{{ $titu['nombre'] }}</td>
-                        <td>{{ $titu['condicion'] }}</td>
-                        <td>{{ $titu['consola'] }}</td>
-                                
-                        <td>
-
-                        <a href="{{url('/titulo/'.$titu['id'].'/edit')}}" class="btn btn-outline-secondary">
-                            Editar
-                        </a>
-
-                        <form action="{{ url('/titulo/'.$titu['id']) }}" method="post" >
-                            @csrf
-                            {{ method_field('DELETE')}}
-                          <button type="submit" value="delete" class="btn btn-danger" id="btn-submit" onclick="return confirm('¿Estas seguro que quieres borrar?') ;"><i class="bi bi-trash"></i></button>
-                        </form>
+                                <form action="{{ url('/titulo/'.$titu['id']) }}" method="post" >
+                                    @csrf
+                                    {{ method_field('DELETE')}}
+                                  <button type="submit" value="delete" class="btn btn-danger" id="btn-submit" onclick="return confirm('¿Estas seguro que quieres borrar?') ;"><i class="bi bi-trash"></i></button>
+                               </form>
+                             
+                            </div>   
+                        </div>                 
+                      </div>
 
 
-
-
-            @endforeach
-          </tbody>
-        </table>
-
-    </div>
+                     </div>
+                  <br>
+               @endforeach
+           </div>
+        </div>
+   
   </div>
 
 @endsection

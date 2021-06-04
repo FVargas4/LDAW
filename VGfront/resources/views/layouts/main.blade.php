@@ -16,6 +16,8 @@
         {{-- iconos de google --}}
         <link rel="stylesheet" href="{{ asset('css/material-icons.min.css') }}">
 
+        <link rel="sytlesheet" href="{{ asset('css/cards.css')}}">
+
 
 
 
