@@ -57,10 +57,15 @@
                                     <h5 class="card-title">{{ $titu['nombre'] }}</h5>
                                     <p class="card-text">  {{$titu['condicion']    }}</p>
                                     <p class="card-text">  {{$titu['consola'] }}</p>
+                                    <div class="text-center">
+                                      <a type="button" href="{{url('resenas/resenas')}}" class="btn btn-info">
+                                          <i class="bi bi-book"></i>
+                                      </a> 
+                                    </div> 
                                      
                             </div>
 
-                      <div class="container text-center"">
+                      <div class="container text-center">
                         <div class="float-sm-right">
                             <div  class="btn-group" role="group" aria-label="Vertical example">
                                 <a href="{{url('/titulo/'.$titu['id'].'/edit')}}" >
