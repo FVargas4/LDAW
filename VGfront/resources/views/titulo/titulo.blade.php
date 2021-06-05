@@ -28,7 +28,7 @@
 
     <h3 class="text-center mb-3">Títulos </h3>
         <div class="align-self-center p-2">
-          <a href="{{url('vghome')}}"  class="btn btn-success "> <span class="material-icons-outlined">keyboard_backspace</span></a>
+          <a href="{{url('/')}}"  class="btn btn-success "> <span class="material-icons-outlined">keyboard_backspace</span></a>
           
         </div>
     <div class="table-responsive">

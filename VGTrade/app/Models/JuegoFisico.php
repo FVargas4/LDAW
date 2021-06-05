@@ -9,12 +9,17 @@ class JuegoFisico extends Model
 {
     use HasFactory;
     protected $fillable =[
-        'titulo', 'condicion', 'consola'
+        'titulo_id', 'condicion', 'consola','user_id'
     ];
-    // public $timestamps = false;
-    // public $table ="juego_fisicos";
-    // public static function getAlljuegosfisicos(){
-    //     $juegosfisicos = self::all();
-    //     return $juegosfisicos;
-    // }
+    
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function titulo()
+    {
+        return $this->belongsTo(Titulo::class);
+    }
+
 }

@@ -22,4 +22,9 @@ class Titulo extends Model
         return $titulos;
     }
     use HasFactory;
+
+    public function juegofisico()
+    {
+        return $this->hasMany(JuegoFisico::class);
+    }
 }

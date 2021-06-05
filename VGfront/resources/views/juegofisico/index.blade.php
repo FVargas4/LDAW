@@ -1,45 +1,104 @@
 @extends('layouts.main')
+<div class="container">
+  @section('mainContent')    
+</div>
 
-@section('pageTitle', "VGTrade")
+<div class="bg-white container mt-5 bg-white shadow-sm p-3 mb-5 bg-body rounded" id="table-usr">
 
-@section('tituloM', "Home Page")
 
-@section('mainContent')
-<div class="container bg-light mt-3 rounded">
-  <table class="table table-responsive">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">nombre</th>
-        <th scope="col">condicion</th>
-        <th scope="col">consola</th>
-      </tr>
-    </thead>
-    <tbody>
-      
-        @foreach($array as $juegofisico)
-        <tr scope="row">
+      <div>
+        <div class="container" >
+            @if(Session::has('mensaje'))
+            <div class="alert alert-success alert-dismissible" role="alert">
+                        {{ Session::get('mensaje')}}
+                        <button type="button" class="btn Button_alert" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true" class="btn pull-right" >&times;</span>
+                        </button>
+                        </div>
+            </div>
+            @endif
+      </div>
 
-             <td>{{ $juegofisico['id'] }}</td>
-            <td>{{ $juegofisico['titulo'] }}</td>
-            <td>{{ $juegofisico['condicion'] }}</td>
-            <td>{{ $juegofisico['consola'] }}</td>
-             <td>
-              <a href="{{url('/juegofisico/'.$juegofisico['id'])}}" class="btn btn-outline-dark">
-                  Consultar
-              </a>
-              <a href="{{url('/juegofisico/'.$juegofisico['id'].'/edit')}}" class="btn btn-outline-secondary">
-                  Editar
-              </a>
+    <h3 class="text-center mb-3">Mis Juegos</h3>
+        <div class="align-self-center p-2">
+          <a href="{{url('/')}}"  class="btn btn-success "> <span class="material-icons-outlined">keyboard_backspace</span></a>
+          
+        </div>
+    <div class="table-responsive">
+
+      <div class="d-flex border-bottom mb-3">
+
+          <div class="me-auto p-2">
+              <h1 class="text-left fs-4">Lista de Juegos registrados </h3>
+          </div>
+
+          <div class="align-self-center p-2">
+              <a href="{{url('titulo/create')}}"  class="btn btn-success "> <span class="material-icons-outlined">add_circle</span></a>
+              
+          </div>
+
+      </div>
+        
+        <div class="container">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Condición</th>
+                <th scope="col">Consola</th>
+                <th scope="col">Handle</th>
+              </tr>
+            </thead>
+            @foreach ($array as $juego)
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>{{$juego['condicion']}}</td>
+                <td>{{$juego['consola']}}</td>
+                <td>@mdo</td>
+              </tr>
+              @endforeach 
+            </tbody>
+          </table>
+           {{-- <div class="row">
+               @foreach($array as $titu)
                
-              <form action="{{url('/juegofisico/'.$juegofisico['id'])}}" class="d-inline" method="post">
-                  @csrf
-                  {{ @method_field('DELETE') }}
-                  <input type="submit" onclick="return confirm('¿Quieres borrar la jornada?')"  class="btn btn-outline-danger" value="Borrar">
-              </form>
-          </td>
-        @endforeach
-    </tbody>
-  </table>
+                    <div class="card mt-3" style="width: 18rem;">
+                        
+                            <div class="card-body">
+                                                     
+                                    <p class="card-text">  {{$titu['condicion']}}</p>
+                                    <p class="card-text">  {{$titu['consola'] }}</p>
+                                     
+                            </div> --}}
+
+                      {{-- <div class="container text-center"">
+                        <div class="float-sm-right">
+                            <div  class="btn-group" role="group" aria-label="Vertical example">
+                                <a href="{{url('/titulo/'.$titu['id'].'/edit')}}" >
+                                    <button type="button" class="btn btn-success">
+                                        <i class="bi bi-pencil-square"></i>
+                                    </button>  
+                                </a>
+                                <br>
+
+                                <form action="{{ url('/titulo/'.$titu['id']) }}" method="post" >
+                                    @csrf
+                                    {{ method_field('DELETE')}}
+                                  <button type="submit" value="delete" class="btn btn-danger" id="btn-submit" onclick="return confirm('¿Estas seguro que quieres borrar?') ;"><i class="bi bi-trash"></i></button>
+                               </form>
+                             
+                            </div>   
+                        </div>                 
+                      </div> --}}
+
+
+                     {{-- </div>
+                  <br>
+               @endforeach --}}
+           </div>
+        </div>
+   
+  </div>
 </div>
 @endsection

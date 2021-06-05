@@ -15,7 +15,14 @@ class CreateJuegoFisicosTable extends Migration
     {
         Schema::create('juego_fisicos', function (Blueprint $table) {
             $table->id();
-            $table->string('titulo');
+
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign("user_id")->references('id')->on('users')->onDelete('set null');
+
+            $table->unsignedBigInteger('titulo_id')->nullable();
+            $table->foreign("titulo_id")->references('id')->on('titulos')->onDelete('set null');
+
+            // $table->string('titulo');
             $table->string('condicion');
             $table->string('consola');
             $table->timestamps();

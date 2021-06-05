@@ -26,7 +26,7 @@ class JuegoFisicoController extends Controller
     public function store(Request $request)
     {
         $JuegoFisico = JuegoFisico::create([
-            'titulo' => request('titulo'),
+            // 'titulo' => request('titulo'),
             'condicion' => request('condicion'),
             'consola' => request('consola'),
         ]);
