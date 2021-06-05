@@ -34,19 +34,18 @@
         </div>
 
        
-            <div class="mb-3">
+            <div class="">
                 <div class="px-4 text-center">
                    <!-- <button class="btn btn-success" type="submit" class="btn btn-primary w-50 mt-4">Editar</button>-->
                     <input type="submit" class="btn btn-success w-50 mt-0" value="Editar">
                 </div>
                 
-                <div class="mt-3">
-                    <div class="px-4 text-center">
-                            <input href="{{url('/titulo')}}" class="btn btn btn-danger w-50 mt-0" value="Regresar">        
-                    </div>
-                </div>
+                
             </div>
     </form>
-</div>
+
+             <div class="px-4 text-center">           
+                <a href="{{url('/titulo')}}" class="btn bg-danger w-50 mt-4 text-white">Regresar</a>
+             </div>    
 </div>
 @endsection

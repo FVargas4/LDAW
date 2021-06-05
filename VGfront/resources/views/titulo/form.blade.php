@@ -1,7 +1,7 @@
 
 <div class="bg-white container mt-5 bg-white shadow-sm p-3 mb-5 bg-body rounded" id="table-usr">
 
-    <h3 class="text-center mb-3">Títulos </h3>
+    <h3 class="text-center mb-3">Crear Título Nuevo </h3>
 
     <div class="form-group">
         <div class="mb-3">
@@ -24,15 +24,14 @@
         </div>
     </div>
 
-    
          <div class="px-4 text-center">
             <input type="submit"  class="btn btn-success w-50 mt-0" value="Crear Título"> 
         </div>
-    <div class="mt-3">
-        <div class="px-4 text-center">                 
-            <input  href="{{url('/titulo')}}" class="btn btn btn-danger w-50 mt-0" value="Regresar">        
-        </div>
-    </div>
+
+    <div class="px-4 text-center">           
+            <a href="{{url('/titulo')}}" class="btn bg-danger w-50 mt-4 text-white">Regresar</a>
+    </div>  
+    
 
     
 
