@@ -58,7 +58,7 @@
                                     <p class="card-text">  {{$titu['condicion']    }}</p>
                                     <p class="card-text">  {{$titu['consola'] }}</p>
                                     <div class="text-center">
-                                      <a type="button" href="{{url('resenas/resenas')}}" class="btn btn-info">
+                                      <a type="button" href="{{url('resenas')}}" class="btn btn-info">
                                           <i class="bi bi-book"></i>
                                       </a> 
                                     </div> 

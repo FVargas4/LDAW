@@ -35,5 +35,9 @@ Route::delete('/JuegoFisico/{juegofisico}', [JuegoFisicoController::class, 'dest
 Route::apiResource('titulo',TituloController::class);
 
 
+use App\Http\Controllers\ResenasController;
+Route::apiResource('resenas',ResenasController::class);
+
+
 
 
