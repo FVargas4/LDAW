@@ -6,6 +6,9 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Request;
 use App\Models\JuegoFisico;
 
+use App\Models\Titulo;
+
+
 class JuegoFisicoController extends Controller
 {
     /**
@@ -27,7 +30,8 @@ class JuegoFisicoController extends Controller
      */
     public function create()
     {
-        return view('juegofisico.create');
+        $titulo = Titulo::getTitulo();
+        return view('juegofisico.create',["titulo" => $titulo]);
     }
 
     /**
@@ -38,10 +42,16 @@ class JuegoFisicoController extends Controller
      */
     public function store(Request $request)
     {
+        request()->validate([
+            'titulo_id' => 'required',
+            'condicion' => 'required',
+            'consola' => 'required',
+        ]);
         $JuegoFisico = Http::post(env('API_URL').'JuegoFisico',[
-            'titulo' => request('titulo'),
-            'condicion' => request('condicion'),
-            'consola' => request('consola'),
+            'titulo_id' => request('titulo_id'),
+            'user_id' => request('user_id'),
+            'condicion1' => request('condicion'),
+            'consola1' => request('consola'),
         ]);
 
         return redirect('juegofisico')->with('nuevo','Juego agregado con éxito');
@@ -68,10 +78,12 @@ class JuegoFisicoController extends Controller
      */
     public function edit($id)
     {
+        $titulo = Titulo::getTitulo();
+        //return view('juegofisico.create',["titulo" => $titulo]);
         $juegoFisico = Http::get(env('API_URL').'JuegoFisico/'.$id);
         $array['array'] = $juegoFisico->json();
         //dd($array);
-        return view('juegofisico.edit',$array);
+        return view('juegofisico.edit',$array,["titulo" => $titulo]);
     }
 
     /**
@@ -83,10 +95,12 @@ class JuegoFisicoController extends Controller
      */
     public function update(Request $request, $id)
     {
+        
         $JuegoFisico = Http::put(env('API_URL').'JuegoFisico/'.$id,[
-            'titulo' => request('titulo'),
-            'condicion' => request('condicion'),
-            'consola' => request('consola'),
+            'titulo_id' => request('titulo_id'),
+            'user_id' => request('user_id'),
+            'condicion1' => request('condicion'),
+            'consola1' => request('consola'),
         ]);
 
         return redirect('juegofisico')->with('nuevo','Juego agregado con éxito');

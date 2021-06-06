@@ -18,6 +18,8 @@
 
         <link rel="sytlesheet" href="{{ asset('css/cards.css')}}">
 
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.min.css">
+
 
 
 
@@ -40,8 +42,6 @@
 
       </head>
       <body class="bg-dark">
-        <h1 class="text-center px-2">Equipo 5 - LDAW</h1>
-
         <h2 class="text-center text-light px-2">@yield('tituloM')</h2>
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">

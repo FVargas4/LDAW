@@ -22,9 +22,11 @@ class JuegoFisicoFactory extends Factory
     public function definition()
     {
         return [
-            'titulo' => $this->faker->name(),
-            'condicion' => $this->faker->text(),
-            'consola' => $this->faker->name(),
+            'condicion1' => $this->faker->name(),
+            'consola1' => $this->faker->name(),
+            'titulo_id' => \App\Models\Titulo::inRandomOrder()->first()->id,
+            'user_id' => \App\Models\User::inRandomOrder()->first()->id,
+
         ];
     }
 }
