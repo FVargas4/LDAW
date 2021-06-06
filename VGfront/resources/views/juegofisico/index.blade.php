@@ -1,7 +1,8 @@
 @extends('layouts.main')
-<div class="container">
   @section('mainContent')    
 </div>
+
+
 
 <div class="bg-white container mt-5 bg-white shadow-sm p-3 mb-5 bg-body rounded" id="table-usr">
 
@@ -33,7 +34,7 @@
           </div>
 
           <div class="align-self-center p-2">
-              <a href="{{url('titulo/create')}}"  class="btn btn-success "> <span class="material-icons-outlined">add_circle</span></a>
+              <a href="{{url('juegofisico/create')}}"  class="btn btn-success "> <span class="material-icons-outlined">add_circle</span></a>
               
           </div>
 
@@ -43,62 +44,36 @@
           <table class="table">
             <thead>
               <tr>
-                <th scope="col">#</th>
-                <th scope="col">Condición</th>
+                <th scope="col">Titulo</th>
                 <th scope="col">Consola</th>
-                <th scope="col">Handle</th>
+                <th scope="col">Condición</th>
+                <th scope="col"></th>
               </tr>
             </thead>
             @foreach ($array as $juego)
             <tbody>
               <tr>
-                <th scope="row">1</th>
-                <td>{{$juego['condicion']}}</td>
-                <td>{{$juego['consola']}}</td>
-                <td>@mdo</td>
+                <td>{{$juego['nombre']}}</td>
+                <td>{{$juego['consola1']}}</td>
+                <td>{{$juego['condicion1']}}</td>
+                <td>
+                  <a href="{{url('/juegofisico/'.$juego['id'].'/edit')}}" >
+                    <button type="button" class="btn btn-success">
+                        <i class="bi bi-pencil-square"></i>
+                    </button>  
+                </a>
+                  <form action="{{ url('/juegofisico/'.$juego['id'])}}" method="post" >
+                    @csrf
+                    {{ method_field('DELETE')}}
+                  <button type="submit" value="delete" class="btn btn-danger" id="btn-submit" onclick="return confirm('¿Estas seguro que quieres borrar?') ;"><i class="bi bi-trash"></i></button>
+               </form>
+                </td>
               </tr>
               @endforeach 
             </tbody>
           </table>
-           {{-- <div class="row">
-               @foreach($array as $titu)
-               
-                    <div class="card mt-3" style="width: 18rem;">
-                        
-                            <div class="card-body">
-                                                     
-                                    <p class="card-text">  {{$titu['condicion']}}</p>
-                                    <p class="card-text">  {{$titu['consola'] }}</p>
-                                     
-                            </div> --}}
-
-                      {{-- <div class="container text-center"">
-                        <div class="float-sm-right">
-                            <div  class="btn-group" role="group" aria-label="Vertical example">
-                                <a href="{{url('/titulo/'.$titu['id'].'/edit')}}" >
-                                    <button type="button" class="btn btn-success">
-                                        <i class="bi bi-pencil-square"></i>
-                                    </button>  
-                                </a>
-                                <br>
-
-                                <form action="{{ url('/titulo/'.$titu['id']) }}" method="post" >
-                                    @csrf
-                                    {{ method_field('DELETE')}}
-                                  <button type="submit" value="delete" class="btn btn-danger" id="btn-submit" onclick="return confirm('¿Estas seguro que quieres borrar?') ;"><i class="bi bi-trash"></i></button>
-                               </form>
-                             
-                            </div>   
-                        </div>                 
-                      </div> --}}
-
-
-                     {{-- </div>
-                  <br>
-               @endforeach --}}
            </div>
         </div>
    
   </div>
-</div>
 @endsection

@@ -5,7 +5,6 @@
 
 
 
-<div class="container">
   @section('mainContent')
     
 </div>
@@ -88,5 +87,4 @@
         </div>
    
   </div>
-</div>
 @endsection

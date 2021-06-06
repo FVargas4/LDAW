@@ -23,8 +23,8 @@ class CreateJuegoFisicosTable extends Migration
             $table->foreign("titulo_id")->references('id')->on('titulos')->onDelete('set null');
 
             // $table->string('titulo');
-            $table->string('condicion');
-            $table->string('consola');
+            $table->string('condicion1');
+            $table->string('consola1');
             $table->timestamps();
         });
     }

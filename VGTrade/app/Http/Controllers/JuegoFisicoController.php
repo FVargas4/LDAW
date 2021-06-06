@@ -14,7 +14,8 @@ class JuegoFisicoController extends Controller
      */
     public function index()
     {
-        return JuegoFisico::all();
+        $array = JuegoFisico::join('titulos', 'titulo_id', '=', 'titulos.id')->select('juego_fisicos.*','nombre')->orderBy('id', 'desc')->get();
+        return response()->json($array);
     }
 
     /**
@@ -27,8 +28,10 @@ class JuegoFisicoController extends Controller
     {
         $JuegoFisico = JuegoFisico::create([
             // 'titulo' => request('titulo'),
-            'condicion' => request('condicion'),
-            'consola' => request('consola'),
+            'titulo_id' => request('titulo_id'),
+            'user_id' => request('user_id'),
+            'condicion1' => request('condicion1'),
+            'consola1' => request('consola1'),
         ]);
 
     }
@@ -41,10 +44,11 @@ class JuegoFisicoController extends Controller
      */
     public function show($id)
     {
-        $success = $JuegoFisico = JuegoFisico::findOrFail($id);
+        $success = $JuegoFisico = JuegoFisico::join('titulos', 'titulo_id', '=', 'titulos.id')->select('juego_fisicos.*','nombre')->where('juego_fisicos.id',$id)->orderBy('id', 'desc')->get();
+        //$success = $JuegoFisico = JuegoFisico::findOrFail($id);
         //return [$juegoFisico];
         return [
-             $success
+             $success[0]
         ];
     }
 
@@ -58,16 +62,13 @@ class JuegoFisicoController extends Controller
     public function update(Request $request, $id)
     {
         $JuegoFisico = JuegoFisico::find($id);
-        request()->validate([
-            'titulo' => 'required',
-            'condicion' => 'required',
-            'consola' => 'required',
-        ]);
+
 
         $success = $JuegoFisico->update([
-            'titulo' => request('titulo'),
-            'condicion' => request('condicion'),
-            'consola' => request('consola'),
+            'titulo_id' => request('titulo_id'),
+            'user_id' => request('user_id'),
+            'condicion1' => request('condicion1'),
+            'consola1' => request('consola1'),
         ]);
         return [
             'success' => $success
