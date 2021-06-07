@@ -27,11 +27,13 @@ class ApiUserProvider implements UserProvider
 
     public function validateCredentials(Authenticatable $user, array $credentials){
         $response = HTTP::timeout(env("API_TIMEOUT"))
-                        ->post(api_route("login"), [
+                        ->post(env("API_URL") ."login", [
                             "email" => $credentials["email"],
                             "password" => $credentials["password"],
                             "device_name" => "frontend"
                         ]);
+
+        dd($response->body());
 
         if($response->successful()){
 

@@ -5,8 +5,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\JuegoFisicoController;
 use App\Http\Controllers\TituloController;
 use App\Http\Controllers\OfertaController;
-
+use App\Http\Controllers\UserAuthController;
 use App\Http\Controllers\usersController;
+
+use App\Models\users;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,24 +48,6 @@ Route::apiResource('resenas',ResenasController::class);
 
 
 //Login de Sanctum
-Route::post('/login', function(Request $request){
-    $request->validate([
-        'email' => 'required|email',
-        'password' => 'required',
-        'device_name' => 'required',
-    ]);
-
-    $user = users::where('email', $request->email)->first();
-
-    if (! $user || ! Hash::check($request->password, $user->password)) {
-        throw ValidationException::withMessages([
-            'email' => ['The provided credentials are incorrect.'],
-        ]);
-    }
-
-    return [
-        'token' => $user->createToken($request->device_name)->plainTextToken
-    ];
-});
+Route::post('/login', [UserAuthController::class, 'login']);
 
 

@@ -43,6 +43,7 @@ Route::resource('resenas', ReseñasController::class);
 Route::resource('usuario', usersController::class);
 Route::resource('juegofisico',JuegoFisicoController::class);
 Route::resource('ofertas',OfertaController::class);
+Route::get("/calendario", function(){return view('calendario');});
 
 
 Route::delete('/titulo/{id}', 'App\Http\Controllers\TituloController@destroy');

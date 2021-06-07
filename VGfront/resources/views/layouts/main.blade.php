@@ -65,6 +65,9 @@
                 <li class="nav-item px-2">
                     <a class="nav-link " href="{{url('/usuario')}}">Usuarios</a>
                 </li>
+                <li class='nav-item px-2'>
+                    <a class='nav-link' href="{{url('/calendario')}}">Calendario</a>
+                </li>
                 <li class="nav-item px-2 d-flex">
                     @if (session()->has('sesionUsuario'))
                     <a class="nav-link text-secondary" href="{{url('logout')}}" role="button">
