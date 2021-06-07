@@ -110,6 +110,7 @@ class TituloController extends Controller
             'consola' => request('consola'),
         ]);
 
+        //dd($titulo);
         return redirect('titulo')->with('mensaje','Titulo agregado con éxito');
     }
 

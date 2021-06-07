@@ -20,7 +20,7 @@ class users{
         //dd($response);
         return $response -> json();
     }
-    public static function findusers_id($id){
+    public static function findUsers_id($id){
 
         $response = Http::get(env('API_URL').'users/'.$id);
 

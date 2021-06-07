@@ -57,18 +57,12 @@ class usersController extends Controller
      * @param  \App\Models\users  $users
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, users $users)
+    public function update(Request $request, $id)
     {
         //
         $usuario = users::find($id);
-        request()->validate([
-            'name' => 'required',
-            'telefono' => 'required',
-            'email' => 'required',
-            'password' => 'required',
-            'contrasenia_confirmation' => 'required',
-        ]);
-        $usuario = $usuario->update([
+
+        $success = $usuario->update([
             'name' => request('name'),
             'telefono' => request('telefono'),
             'email' => request('email'),

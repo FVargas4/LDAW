@@ -84,7 +84,7 @@ class usersController extends Controller
     public function edit($id)
     {
         //
-        $usuario = users::findusers_id($id);
+        $usuario = users::findUsers_id($id);
         
         //dd($usuario);
         return view('usuario.edit', compact('usuario'));
