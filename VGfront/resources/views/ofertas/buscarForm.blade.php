@@ -1,33 +1,22 @@
-
-
-
-
 <div class="bg-white container mt-5 bg-white shadow-sm p-3 mb-5 bg-body rounded" id="table-usr">
-
-    
-    @if ($modo == "Crear")
-        <h3 class="text-center mb-3">Crear Oferta</h3>
-    @else
-        <h3 class="text-center mb-3">Ofertar</h3>
-    @endif
+ 
+        <h3 class="text-center mb-3">Buscar Oferta</h3>
+   
 
     <div class="align-self-center p-2">
-        <a href="{{url('/juegofisico')}}"  class="btn btn-success "> <span class="material-icons-outlined">keyboard_backspace</span></a>
+        <a href="{{url('/ofertas')}}"  class="btn btn-success "> <span class="material-icons-outlined">keyboard_backspace</span></a>
         
       </div>
 
 
     <div class="form-group m-3">
-        @if ($modo == "Crear")
-            <label for="id_juego_propuesto"><strong>Escoge uno de tus juegos registrados para crear la oferta</strong></label>
-        @else
-            <label for="id_juego_ofertado"><strong>Escoge uno de tus juegos registrados para ofertar</strong></label>
-        @endif
+            <label for="id_juego_propuesto"><strong>Busca un juego de tu interés para hacerle una oferta</strong></label>
+       
        
         <br><br>
             @if(empty($array))
                 <select id="disabledSelect" class="custom-select">
-                <option selected>No tienes juegos registrados</option>
+                <option selected>No hay juegos registrados para intercambiar</option>
             @else
                 @if ($modo == "Crear")
                     <select class="form-control selectpicker" name="id_juego_propuesto" id="id_juego_propuesto" data-live-search="true">
@@ -54,20 +43,9 @@
           </fieldset>
         @endif
 
-        <div class="form-group m-3">
-            @if ($modo == "Crear")
-                <input type="hidden" class="form-control" value="Abierta" name="estado"  id="estado">
-            @else
-            @foreach($oferta as $oferta)
-                <input type="hidden" class="form-control" value="Pendiente" name="estado"  id="estado">
-                <input type="hidden" class="form-control" value={{$oferta['id_juego_propuesto']}} name="id_juego_propuesto"  id="id_juego_propuesto">
-                {{-- <input type="hidden" class="form-control" value=2 name="id_juego_ofertado"  id="id_juego_ofertado"> --}}
-                @endforeach
-            @endif
-        </div>
 
 <div class="col text-center m-3">
-    <button class="btn btn-success" type="submit"><i class="bi bi-pencil-square"></i> Ofertar</button>
+    <button class="btn btn-success" type="submit"><i class="bi bi-pencil-square"></i> Seleccionar</button>
 </div>
 
 </div>

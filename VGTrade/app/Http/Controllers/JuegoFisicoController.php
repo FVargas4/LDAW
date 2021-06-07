@@ -44,11 +44,17 @@ class JuegoFisicoController extends Controller
      */
     public function show($id)
     {
-        $success = $JuegoFisico = JuegoFisico::join('titulos', 'titulo_id', '=', 'titulos.id')->select('juego_fisicos.*','nombre')->where('juego_fisicos.id',$id)->orderBy('id', 'desc')->get();
+        $success = $JuegoFisico = JuegoFisico::join('titulos', 'titulo_id', '=', 'titulos.id')
+            ->select('juego_fisicos.*','nombre')
+            ->where('juego_fisicos.id',$id)
+            ->orderBy('id', 'desc')
+            ->where('enOferta',0)
+            ->get();
 
-        return [
-             $success[0]
-        ];
+        return response()->json($success);
+        // return [
+        //      $success[0]
+        // ];
     }
 
     /**
@@ -62,12 +68,34 @@ class JuegoFisicoController extends Controller
     {
         $JuegoFisico = JuegoFisico::find($id);
 
+        if(request('titulo_id') == null){
+            $titulo_id = $JuegoFisico->titulo_id;
+        }
+
+        if(request('user_id') == null){
+            $user_id = $JuegoFisico->user_id;
+        }
+
+        if(request('condicion1') == null){
+            $condicion1 = $JuegoFisico->condicion1;
+        }
+
+        if(request('consola1') == null){
+            $consola1 = $JuegoFisico->consola1;
+        }
 
         $success = $JuegoFisico->update([
-            'titulo_id' => request('titulo_id'),
-            'user_id' => request('user_id'),
-            'condicion1' => request('condicion1'),
-            'consola1' => request('consola1'),
+            // 'titulo_id' => request('titulo_id'),
+            // 'user_id' => request('user_id'),
+            // 'condicion1' => request('condicion1'),
+            // 'consola1' => request('consola1'),
+
+            'titulo_id' => $titulo_id,
+            'user_id' => $user_id,
+            'condicion1' => $condicion1,
+            'consola1' => $consola1,
+
+            'enOferta' => request('enOferta'),
         ]);
         return [
             'success' => $success

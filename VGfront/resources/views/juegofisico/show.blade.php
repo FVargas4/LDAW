@@ -19,12 +19,37 @@
             </div>
             @endif
       </div>
+      
+      @if ($array == null)
+      <div class="d-inline">
+        <a href="{{url('/juegofisico')}}"  class="btn btn-success "> <span class="material-icons-outlined">keyboard_backspace</span></a>  
+      
+      <h3 id="center">Este juego no esta disponible para intercambios</h3>
+      </div>
+            <form action="{{ url('/juegofisico/'.$id)}}" class="d-inline" method="post" >
+              @csrf
+              {{ method_field('PATCH')}}
+              <input type="hidden" class="form-control" value=0 name="enOferta"  id="enOferta">
+            <button type="submit" value="delete" class="btn btn-primary" id="btn-submit" onclick="return confirm('¿Deseas ofertar este juego?') ;">Ofertar</button>
+            </form>
+      @endif
+      
+      
       @foreach ($array as $juego)
     <h3 class="text-center mb-3">{{$juego['nombre']}}</h3>
-        <div class="align-self-center p-2">
-          <a href="{{url('/')}}"  class="btn btn-success "> <span class="material-icons-outlined">keyboard_backspace</span></a>
-          
+        <div class="d-inline">
+          <a href="{{url('/juegofisico')}}"  class="btn btn-success "> <span class="material-icons-outlined">keyboard_backspace</span></a>  
         </div>
+            
+       
+              <form action="{{ url('/juegofisico/'.$juego['id'])}}" class="d-inline" method="post" >
+                @csrf
+                {{ method_field('PATCH')}}
+                <input type="hidden" class="form-control" value=1 name="enOferta"  id="enOferta">
+              <button type="submit" value="delete" class="btn btn-danger" id="btn-submit" onclick="return confirm('¿Estas seguro que quieres dejar de ofertar este juego?') ;">Dejar de ofertar</button>
+              </form>
+
+
     <div class="table-responsive">
       <div class="container">
         <table class="table table-sm">
@@ -37,6 +62,7 @@
             </tr>
           </tbody>
         </table>
+        
       <div class="d-flex border-bottom mb-3">
 
           <div class="me-auto p-2">
@@ -48,6 +74,7 @@
               
           </div>
 
+         
       </div>  
 
       @if ($oferta == null)
@@ -118,6 +145,7 @@
                                   @csrf
                                   {{ method_field('PATCH')}}
                                   <input type="hidden" class="form-control" value="Completada" name="estado"  id="estado">
+                                  <input type="hidden" class="form-control" value=1 name="enOferta"  id="enOferta">
                                   <input type="hidden" class="form-control" value={{$juego['id_juego_propuesto']}} name="id_juego_propuesto"  id="id_juego_propuesto">
                                   <input type="hidden" class="form-control" value={{$juego['id_juego_ofertado']}} name="id_juego_ofertado"  id="id_juego_ofertado">
                                 <button type="submit" class="btn btn-success" id="btn-submit" onclick="return confirm('¿Estas seguro que quieres aceptar la oferta?') ;"><i class="bi bi-check-square"></i></button>

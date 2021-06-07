@@ -4,7 +4,7 @@
 
 <div class="container">
 
-    <form action="{{url('/ofertas/'.$id)}}" method="post">
+    <form action="{{url('/ofertaJuego/'.$id)}}" method="post">
         @method('PATCH')   
         @csrf
         @include('ofertas.form',['modo'=>'Editar'])

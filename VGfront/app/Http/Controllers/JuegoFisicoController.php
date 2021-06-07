@@ -70,7 +70,8 @@ class JuegoFisicoController extends Controller
         $ofertaA = Http::get(env('API_URL').'OfertaJuego/'.$id);
         $oferta['oferta'] = $ofertaA->json();
         $array['array'] = $juegoFisico->json();
-        return view("juegofisico.show",$array,$oferta,["titulo" => $titulo]);
+        //dd($array)
+        return view("juegofisico.show",$array,$oferta,["titulo" => $titulo])->with('id', $id);
     }
 
     /**
@@ -104,9 +105,10 @@ class JuegoFisicoController extends Controller
             'user_id' => request('user_id'),
             'condicion1' => request('condicion'),
             'consola1' => request('consola'),
+            'enOferta' => request('enOferta')
         ]);
 
-        return redirect('juegofisico')->with('nuevo','Juego agregado con éxito');
+        return redirect('juegofisico')->with('nuevo','Cambios realizados con éxito');
     }
 
     /**

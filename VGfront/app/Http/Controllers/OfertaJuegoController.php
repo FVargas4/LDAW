@@ -48,12 +48,13 @@ class OfertaJuegoController extends Controller
             'id_juego_propuesto' => 'required',
             'estado' => 'required',
         ]);
-        $id= request('id_juego_propuesto');
+       
         $Oferta = Http::post(env('API_URL').'Oferta',[
             'id_juego_propuesto' => request('id_juego_propuesto'),
             'estado' => request('estado'),
         ]);
 
+        $id= request('id_juego_propuesto');
         return redirect('juegofisico/'.$id)->with('nuevo','Oferta creada con éxito');
     }
 
@@ -97,14 +98,14 @@ class OfertaJuegoController extends Controller
             'id_juego_propuesto' => 'required',
             'estado' => 'required',
         ]);
-     
         $Oferta = Http::put(env('API_URL').'Oferta/'.$id,[
-            'id_juego_propuesto' => request('id_juego_propuesto'),
+            'id_juego_propuesto' => request('id_juego_propuesto'),          
             'id_juego_ofertado' => request('id_juego_ofertado'),
             'estado' => request('estado'),
         ]);
 
-        return redirect('juegofisico')->with('nuevo','Juego agregado con éxito');
+        $id1= request('id_juego_propuesto');
+        return redirect('juegofisico/'.$id1)->with('nuevo','Juego agregado con éxito');
     }
 
     /**

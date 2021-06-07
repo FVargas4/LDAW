@@ -18,9 +18,11 @@ class OfertaController extends Controller
      */
     public function index()
     {
-        $oferta = Http::get(env('API_URL').'Oferta');
-        $array['array'] = $oferta->json();
-        return view("ofertas.index",$array);
+         //$oferta = Http::get(env('API_URL').'Oferta');
+         $juego = Http::get(env('API_URL').'JuegoFisico');
+         $array['array'] = $juego->json();
+        // return view("ofertas.index",$array);
+        return view("ofertas.buscar",$array);
     }
 
     /**
