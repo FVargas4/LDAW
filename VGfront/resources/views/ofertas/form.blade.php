@@ -60,7 +60,7 @@
             @else
             @foreach($oferta as $oferta)
                 <input type="hidden" class="form-control" value="Pendiente" name="estado"  id="estado">
-                <input type="hidden" class="form-control" value=2 name="id_juego_propuesto"  id="id_juego_propuesto">
+                <input type="hidden" class="form-control" value={{$oferta['id_juego_propuesto']}} name="id_juego_propuesto"  id="id_juego_propuesto">
                 {{-- <input type="hidden" class="form-control" value=2 name="id_juego_ofertado"  id="id_juego_ofertado"> --}}
                 @endforeach
             @endif
