@@ -3,7 +3,9 @@
 @section('mainContent')
 
 <div class="container">
+  @foreach($array as $array)
 
+  @endforeach
 
   <div class="container"><form action="{{url('/juegofisico/'.$array['id'])}}" method="post">
     @method('PATCH')   

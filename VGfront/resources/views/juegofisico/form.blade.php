@@ -50,7 +50,13 @@
 <div class="form-group m-3">
 
     <label for="condicion">Condición</label>
-    <input type="text" class="form-control" name="condicion" value="{{ isset($array['condicion1'])?$array['condicion1']:old('condicion1') }}" id="condicion">
+    <select class="form-select" name="condicion" aria-label="Default select example">
+        <option value="{{ isset($array['condicion1'])?$array['condicion1']:old('condicion1') }}" selected>{{ isset($array['condicion1'])?$array['condicion1']:old('condicion1') }}</option>
+        <option value="Nuevo">Nuevo</option>
+        <option value="Seminuevo">Seminuevo</option>
+        <option value="Usado">Usado</option>
+      </select>
+    {{-- <input type="text" class="form-control" name="condicion" value="{{ isset($array['condicion1'])?$array['condicion1']:old('condicion1') }}" id="condicion"> --}}
     
 </div>
 
