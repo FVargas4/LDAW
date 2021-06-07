@@ -12,7 +12,7 @@
 
     <div class="form-group">
         <div class="mb-3">
-            <label for="condicion">Condicion<span aria-hidden="true" class="required text-danger" >*</span></label>
+            <label for="condicion">Edicion<span aria-hidden="true" class="required text-danger" >*</span></label>
             <input type="text" class="form-control" placeholder="Juego del año" name="condicion" value="{{ isset($titulo->condicion)?$titulo->condicion:old('condicion') }}" id="condicion" required>
         </div>
     </div>

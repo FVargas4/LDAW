@@ -5,7 +5,7 @@
 @section('mainContent')
 
 @if(Session::has('mensaje'))
-<div class="container" style=" min-height: 500px;">
+<div class="container" style=" height: 80px;">
     
     <!--<div class="alert alert-success alert-dismissible" role="alert">-->
     <div class="alert alert-success alert-dismissible" role="alert">
@@ -26,7 +26,7 @@
 
     <h3 class="text-center mb-3">Usuarios </h3>
     <div class="align-self-center p-2">
-        <a href="{{url('/panel')}}"  class="btn btn-success "> <span class="material-icons-outlined">keyboard_backspace</span></a>
+        <a href="{{url('/')}}"  class="btn btn-success "> <span class="material-icons-outlined">keyboard_backspace</span></a>
         <br>
         </div>
     <div class="table-responsive">
@@ -37,52 +37,45 @@
   
      <div class="d-flex border-bottom mb-3">
         <div class="me-auto p-2">
-            <h1 class="text-left fs-4">Lista de reportes creados</h3>
+            <h1 class="text-left fs-4">Lista de Usuarios</h3>
         </div>
         <div class="align-self-center p-2">
-        <a href="{{url('reporte/create')}}"  class="btn btn-success "> <span class="material-icons-outlined">add_circle</span></a>
+        <a href="{{url('usuario/create')}}"  class="btn btn-success "> <span class="material-icons-outlined">add_circle</span></a>
         <br>
         </div>
        
     </div>
 
 
-    <table class="table table-hover px-3 " >
+    <table class="table table-hover m-2 p-3" >
         
-        <h3 class="pt-3"><strong>Reportes</strong></h3>
+        <h3 class="pt-3"><strong>Usuarios</strong></h3>
         <br>
         <thead >
             <tr>
-                <th scope="col">Nombre del niño</th>
-                <th scope="col">Quien reporta</th>
-                <th scope="col">Area</th>
-                <th scope="col">Calificacion</th>
-                <th scope="col">Documento de drive</th>
+                <th scope="col">Nombre del Usuario</th>
+                <th scope="col">Telefono</th>
+                <th scope="col">Email</th>
+                <th scope="col">Contraseña</th>
                 
                 
             </tr>
         </thead>
         <tbody>
-            
+            @foreach($usuario as $item)
             <tr scope="row">
                
-                <td class="text-center"></td>
-                <td class="text-center"></td>
-                <td class="text-center"></td>
-                <td class="text-center"></td>
+                <td class="text-center">{{$item['name']}}</td>
+                <td class="text-center">{{$item['telefono']}}</td>
+                <td class="text-center">{{$item['email']}}</td>
+                <td class="text-center">{{$item['password']}}</td>
                 <td class="text-center"></td>
 
                 
               
                 
                 <td>
-                <a href="">
-                
-                            <button type="button" class="btn btn-primary my-1 d-flex justify-content-center align-items-center">
-                                <i class="far fa-eye"></i>
-                            </button>      
-                </a>
-                <a href="">
+                <a href="{{url('usuario/'.$item['id'].'/edit')}}">
                 
                               <button type="button" class="btn btn-success my-1 d-flex justify-content-center align-items-center">
                                 <i class="bi bi-pencil-square"></i>
@@ -91,48 +84,15 @@
 
                 
 
-                <form action="" method="post">
-                /*@csrf
-                {{ method_field('DELETE')}}*/
-
-                
-
-                <!--<button type="submit" class="btn btn-danger" onclick="return confirm('¿Quieres borrar?')" value="Borrar">Borrar</button>-->
-
-
-                <button type="button" data-toggle="modal" data-target="#exampleModal" class="btn btn-danger my-1 d-flex justify-content-center align-items-center" 
-
-                    value="Borrar"><i class="bi bi-trash"></i>
-                                
-                    </button>
-
-                   <!-- Modal eliminar-->
-                   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">¿Estás seguro de eliminar?</h5>
-                            <button type="button" class="btn" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                       
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                            <button type="submit" class="btn button-donar">Eliminar</button>
-
-
-                             
-                        </div>
-                        </div>
-                    </div>
-                    </div>
-                
+                <form action="{{ url('/usuario/'.$item['id']) }}" method="post" >
+                    @csrf
+                    {{ method_field('DELETE')}}
+                    <button type="submit" value="delete" class="btn btn-danger my-1 d-flex justify-content-center align-items-center" id="btn-submit" onclick="return confirm('¿Estas seguro que quieres borrar?') ;"><i class="bi bi-trash"></i></button>
                 </form>
 
                 </td>
             </tr>
-          
+            @endforeach
         
         </tbody>
     </table>

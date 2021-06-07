@@ -2,8 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IntegrantesControllers;
-use App\Http\Controllers\UsuarioController;
-use App\Http\Controllers\TituloController;
+use App\Http\Controllers\usersController;
+//use App\Http\Controllers\auth\UserAuthController;
 use App\Http\Controllers\JuegoFisicoController;
 use App\Http\Controllers\OfertaController;
 
@@ -40,12 +40,16 @@ use App\Http\Controllers\ReseñasController;
 
 Route::resource('resenas', ReseñasController::class);
 
-Route::resource('usuarios', UsuarioController::class);
+Route::resource('usuarios', usersController::class);
 Route::resource('juegofisico',JuegoFisicoController::class);
 Route::resource('ofertas',OfertaController::class);
 
 
 Route::delete('/titulo/{id}', 'App\Http\Controllers\TituloController@destroy');
+Route::delete('/usuario/{id}', 'App\Http\Controllers\usersController@destroy');
+
+//Route::get('/login', [usersController::class, 'login']);
+//Route::get('/check', [usersController::class, 'check']);
 
 //Route::post('/titulo/create', 'App\Http\Controllers\TituloController@create');
 

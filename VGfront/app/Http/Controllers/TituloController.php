@@ -104,13 +104,13 @@ class TituloController extends Controller
     {
         //
 
-        
         $titulo = Http::put(env('API_URL').'titulo/'.$id,[
             'nombre' => request('nombre'),
             'condicion' => request('condicion'),
             'consola' => request('consola'),
         ]);
 
+        //dd($titulo);
         return redirect('titulo')->with('mensaje','Titulo agregado con éxito');
     }
 

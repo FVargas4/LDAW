@@ -62,7 +62,19 @@
                 <li class="nav-item px-2">
                     <a class="nav-link " href="{{url('/juegofisico')}}">Mis Juegos</a>
                 </li>
-                
+                <li class="nav-item px-2">
+                    <a class="nav-link " href="{{url('/usuario')}}">Usuarios</a>
+                </li>
+                <li class="nav-item px-2 d-flex">
+                    @if (session()->has('sesionUsuario'))
+                    <a class="nav-link text-secondary" href="{{url('logout')}}" role="button">
+                    Cerrar Sesion
+                    @else
+                    <a class="nav-link text-secondary" href="{{url('login')}}" role="button">
+                    Iniciar Sesion
+                    @endif
+                    </a>
+                </li>
 
             </ul>
 
