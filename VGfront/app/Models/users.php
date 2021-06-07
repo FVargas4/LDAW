@@ -42,6 +42,10 @@ class users{
 
     }
 
+    // public static function checkEmail($mail){
+    //     $response = Http::get
+    // }
+
 
     public static function createUser(){
 

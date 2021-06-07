@@ -17,10 +17,16 @@ class users extends Model
 
     public $timestamps = false;
     public $table ="users";
+
     public static function getAllUsuarios(){
         $usuarios = self::all();
         return $usuarios;
     }
+
+    // public static function getAllUsuarios($mail){
+    //     $usuarios = self::select('*')->where('email', '=', $mail)->first();
+    //     return $usuarios;
+    // }
 
     use HasFactory;
 }

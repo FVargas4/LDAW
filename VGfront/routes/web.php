@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IntegrantesControllers;
 use App\Http\Controllers\usersController;
-//use App\Http\Controllers\TituloController;
+//use App\Http\Controllers\auth\UserAuthController;
 use App\Http\Controllers\JuegoFisicoController;
 
 /*
@@ -41,7 +41,8 @@ Route::resource('juegofisico',JuegoFisicoController::class);
 Route::delete('/titulo/{id}', 'App\Http\Controllers\TituloController@destroy');
 Route::delete('/usuario/{id}', 'App\Http\Controllers\usersController@destroy');
 
-//Route::get('/login', )
+//Route::get('/login', [usersController::class, 'login']);
+//Route::get('/check', [usersController::class, 'check']);
 
 //Route::post('/titulo/create', 'App\Http\Controllers\TituloController@create');
 

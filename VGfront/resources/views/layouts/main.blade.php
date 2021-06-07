@@ -68,16 +68,15 @@
                 <li class="nav-item px-2">
                     <a class="nav-link " href="{{url('/usuario')}}">Usuarios</a>
                 </li>
-                <li class="nav-item dropdown d-flex">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <li class="nav-item px-2 d-flex">
+                    @if (session()->has('sesionUsuario'))
+                    <a class="nav-link text-secondary" href="{{url('logout')}}" role="button">
+                    Cerrar Sesion
+                    @else
+                    <a class="nav-link text-secondary" href="{{url('login')}}" role="button">
                     Iniciar Sesion
+                    @endif
                     </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    </ul>
                 </li>
 
             </ul>

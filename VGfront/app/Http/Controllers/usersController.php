@@ -127,4 +127,10 @@ class usersController extends Controller
         return redirect('usuario')->with('mensaje','Usuario borrado con éxito');
 
     }
+
+    function login(){
+        return view("auth.login");
+    }
+
+    
 }
