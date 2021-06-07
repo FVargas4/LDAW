@@ -56,17 +56,18 @@
                 <td>{{$juego['nombre']}}</td>
                 <td>{{$juego['consola1']}}</td>
                 <td>{{$juego['condicion1']}}</td>
-                <td>
-                  <a href="{{url('/juegofisico/'.$juego['id'].'/edit')}}"class="btn btn-success">
-                    {{-- <button type="button" class="btn btn-success"> --}}
-                        <i class="bi bi-pencil-square"></i>
-                    {{-- </button>   --}}
-                </a>
-                  <form action="{{ url('/juegofisico/'.$juego['id'])}}" method="post" >
-                    @csrf
-                    {{ method_field('DELETE')}}
-                  <button type="submit" value="delete" class="btn btn-danger" id="btn-submit" onclick="return confirm('¿Estas seguro que quieres borrar?') ;"><i class="bi bi-trash"></i></button>
-                  </form>
+                <td>  
+                  <a href="{{url('/juegofisico/'.$juego['id'])}}" class="btn btn-primary">
+                    <i class="bi bi-eye"></i>
+                  </a>                              
+                    <a href="{{url('/juegofisico/'.$juego['id'].'/edit')}}" class="btn btn-success">
+                      <i class="bi bi-pencil-square"></i>
+                    </a>
+                    <form action="{{ url('/juegofisico/'.$juego['id'])}}" class="d-inline" method="post" >
+                      @csrf
+                      {{ method_field('DELETE')}}
+                    <button type="submit" value="delete" class="btn btn-danger" id="btn-submit" onclick="return confirm('¿Estas seguro que quieres borrar?') ;"><i class="bi bi-trash"></i></button>
+                    </form>
                 </td>
               </tr>
               @endforeach 

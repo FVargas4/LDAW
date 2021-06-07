@@ -45,8 +45,7 @@ class JuegoFisicoController extends Controller
     public function show($id)
     {
         $success = $JuegoFisico = JuegoFisico::join('titulos', 'titulo_id', '=', 'titulos.id')->select('juego_fisicos.*','nombre')->where('juego_fisicos.id',$id)->orderBy('id', 'desc')->get();
-        //$success = $JuegoFisico = JuegoFisico::findOrFail($id);
-        //return [$juegoFisico];
+
         return [
              $success[0]
         ];

@@ -99,7 +99,7 @@
                     @else
                         
                    
-                    <form action="{{ url('/ofertas/'.$juego['id'])}}" method="post" >
+                    <form action="{{ url('/ofertas/'.$juego['id'])}}" class="d-inline" method="post" >
                         @csrf
                         {{ method_field('PATCH')}}
                         <input type="hidden" class="form-control" value="Completada" name="estado"  id="estado">
@@ -108,7 +108,7 @@
                       <button type="submit" class="btn btn-success" id="btn-submit" onclick="return confirm('¿Estas seguro que quieres aceptar la oferta?') ;"><i class="bi bi-check-square"></i></button>
                       </form>
                    
-                      <form action="{{ url('/ofertas/'.$juego['id'])}}" method="post" >
+                      <form action="{{ url('/ofertas/'.$juego['id'])}}" class="d-inline" method="post" >
                         @csrf
                         {{ method_field('PATCH')}}
                         <input type="hidden" class="form-control" value="Abierta" name="estado"  id="estado">
@@ -117,7 +117,7 @@
                       </form>
 
                     <br><br>
-                    <form action="{{ url('/ofertas/'.$juego['id'])}}" method="post" >
+                    <form action="{{ url('/ofertas/'.$juego['id'])}}" class="d-inline" method="post" >
                         @csrf
                         {{ method_field('DELETE')}}
                       <button type="submit" value="delete" class="btn btn-danger" id="btn-submit" onclick="return confirm('¿Estas seguro que quieres borrar la oferta?') ;"><i class="bi bi-trash"></i></button>
