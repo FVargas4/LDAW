@@ -67,8 +67,10 @@ class JuegoFisicoController extends Controller
     {
         $titulo = Titulo::getTitulo();
         $juegoFisico = Http::get(env('API_URL').'JuegoFisico/'.$id);
+        $ofertaA = Http::get(env('API_URL').'OfertaJuego/'.$id);
+        $oferta['oferta'] = $ofertaA->json();
         $array['array'] = $juegoFisico->json();
-        return view("juegofisico.show",$array,["titulo" => $titulo]);
+        return view("juegofisico.show",$array,$oferta,["titulo" => $titulo]);
     }
 
     /**

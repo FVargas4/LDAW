@@ -6,6 +6,7 @@ use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\TituloController;
 use App\Http\Controllers\JuegoFisicoController;
 use App\Http\Controllers\OfertaController;
+use App\Http\Controllers\OfertaJuegoController;
 
 
 /*
@@ -39,6 +40,8 @@ Route::resource('titulo', TituloController::class);
 Route::resource('usuarios', UsuarioController::class);
 Route::resource('juegofisico',JuegoFisicoController::class);
 Route::resource('ofertas',OfertaController::class);
+Route::resource('ofertaJuego',OfertaJuegoController::class);
+
 
 
 Route::delete('/titulo/{id}', 'App\Http\Controllers\TituloController@destroy');

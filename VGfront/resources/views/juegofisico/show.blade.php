@@ -44,49 +44,111 @@
           </div>
 
           <div class="align-self-center p-2">
-              <a href="{{url('juegofisico/create')}}"  class="btn btn-success "> <span class="material-icons-outlined">add_circle</span></a>
+              <a href="{{url('ofertas/create')}}"  class="btn btn-success "> <span class="material-icons-outlined">add_circle</span></a>
               
           </div>
 
       </div>  
 
-       
+      @if ($oferta == null)
+      <div class="me-auto p-2">
+        <h5>No hay ofertas registradas </h5>
+    </div>
+      @else
+               
+                    <table class="table table-sm">
+                      @foreach ($oferta as $juego)
+                      <thead id="center">
+                        <tr>
+                          @if($juego['estado'] == 'Completada')
+                          <th style="text-align:right;"><div style="position:relative;left:60px;">Info de contacto</div></th>
+                          <th ></th>
+                          @else
+                          <th scope="col">Juego</th>
+                          <th scope="col">Oferta</th>
+                          @endif
+                          <th scope="col">Estado</th>
+                        </tr>
+                      </thead>
+                    
+                      <tbody id="ofertaIndex">
+                        <tr>
+                          <td id="center">
+                              @if($juego['estado'] == 'Completada')
+                                  <p>{{$juego['NombreUsuarioProp']}}</p>
+                                  <p>{{$juego['telefonoPro']}}</p>
+                                  <p>{{$juego['emailPro']}}</p>
+                              @else
+                                  <p>{{$juego['TituloJuegoPropuesto']}}</p>
+                                  <p>{{$juego['ConsolaJuegoPropuesto']}}</p>
+                                  <p>{{$juego['CondicionJuegoPropuesto']}}</p>
+                              @endif
+                          </td>
+                          <td id="center">
+                              @if( $juego['id_juego_ofertado'] == NULL )
+                              <br><br>
+                                  <a href="{{url('/ofertas/'.$juego['id'].'/edit')}}"class="btn btn-success">
+                                      Ofertar
+                                  </a>
+                              @else
+                                  @if($juego['estado'] == 'Completada')
+                                      <p>{{$juego['NombreUsuarioOfer']}}</p>
+                                      <p>{{$juego['telefonoOf']}}</p>
+                                      <p>{{$juego['emailOf']}}</p>
+                                  @else
+                                      <p>{{$juego['TituloJuegoOfertado']}}</p>
+                                      <p>{{$juego['ConsolaJuegoOfertado']}}</p>
+                                      <p>{{$juego['CondicionJuegoOfertado']}}</p>
+                                  @endif
+                              @endif
+                          </td>
+                          <td id="center">
+                              {{$juego['estado']}}
+                              <br><br>
+                              @if($juego['estado'] == 'Completada')
+                                  <form action="{{ url('/ofertaJuego/'.$juego['id'])}}" method="post" >
+                                      @csrf
+                                      {{ method_field('DELETE')}}
+                                  <button type="submit" value="delete" class="btn btn-danger" id="btn-submit" onclick="return confirm('¿Estas seguro que quieres borrar la oferta?') ;"><i class="bi bi-trash"></i></button>
+                                  </form>
+                              @else
+                                  
+                            
+                              <form action="{{ url('/ofertaJuego/'.$juego['id'])}}" class="d-inline" method="post" >
+                                  @csrf
+                                  {{ method_field('PATCH')}}
+                                  <input type="hidden" class="form-control" value="Completada" name="estado"  id="estado">
+                                  <input type="hidden" class="form-control" value={{$juego['id_juego_propuesto']}} name="id_juego_propuesto"  id="id_juego_propuesto">
+                                  <input type="hidden" class="form-control" value={{$juego['id_juego_ofertado']}} name="id_juego_ofertado"  id="id_juego_ofertado">
+                                <button type="submit" class="btn btn-success" id="btn-submit" onclick="return confirm('¿Estas seguro que quieres aceptar la oferta?') ;"><i class="bi bi-check-square"></i></button>
+                                </form>
+                            
+                                <form action="{{ url('/ofertaJuego/'.$juego['id'])}}" class="d-inline" method="post" >
+                                  @csrf
+                                  {{ method_field('PATCH')}}
+                                  <input type="hidden" class="form-control" value="Abierta" name="estado"  id="estado">
+                                  <input type="hidden" class="form-control" value={{$juego['id_juego_propuesto']}} name="id_juego_propuesto"  id="id_juego_propuesto">
+                                <button type="submit" class="btn btn-warning" id="btn-submit" onclick="return confirm('¿Estas seguro que quieres rechazar la oferta?') ;"><i class="bi bi-x-square"></i></button>
+                                </form>
+
+                              <br><br>
+                              <form action="{{ url('/ofertaJuego/'.$juego['id'])}}" class="d-inline" method="post" >
+                                  @csrf
+                                  {{ method_field('DELETE')}}
+                                <button type="submit" value="delete" class="btn btn-danger" id="btn-submit" onclick="return confirm('¿Estas seguro que quieres borrar la oferta?') ;"><i class="bi bi-trash"></i></button>
+                                </form>
+
+                                @endif
+                                <br>
+                          </td>
+                        </tr>
+                        @endforeach 
+                      </tbody>
+                    </table>
 
 
-          <table class="table table-sm">
-            <thead>
-              <tr>
-                <th scope="col">Titulo</th>
-                <th scope="col">Consola</th>
-                <th scope="col">Condición</th>
-                <th scope="col"></th>
-              </tr>
-            </thead>
-           
-            <tbody>
-              <tr>
-                <td>{{$juego['nombre']}}</td>
-                <td>{{$juego['consola1']}}</td>
-                <td>{{$juego['condicion1']}}</td>
-                <td>  
-                  <a href="{{url('/juegofisico/'.$juego['id'])}}" class="btn btn-primary">
-                    <i class="bi bi-eye"></i>
-                  </a>                              
-                    <a href="{{url('/juegofisico/'.$juego['id'].'/edit')}}" class="btn btn-success">
-                      <i class="bi bi-pencil-square"></i>
-                    </a>
-                    <form action="{{ url('/juegofisico/'.$juego['id'])}}" class="d-inline" method="post" >
-                      @csrf
-                      {{ method_field('DELETE')}}
-                    <button type="submit" value="delete" class="btn btn-danger" id="btn-submit" onclick="return confirm('¿Estas seguro que quieres borrar?') ;"><i class="bi bi-trash"></i></button>
-                    </form>
-                </td>
-              </tr>
-              @endforeach 
-            </tbody>
-          </table>
-           </div>
-        </div>
-   
+
+        @endif
+        @endforeach 
   </div>
 @endsection

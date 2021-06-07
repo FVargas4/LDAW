@@ -9,7 +9,7 @@ use App\Models\Titulo;
 use App\Models\JuegoFisico;
 
 
-class OfertaController extends Controller
+class OfertaJuegoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -48,12 +48,13 @@ class OfertaController extends Controller
             'id_juego_propuesto' => 'required',
             'estado' => 'required',
         ]);
+        $id= request('id_juego_propuesto');
         $Oferta = Http::post(env('API_URL').'Oferta',[
             'id_juego_propuesto' => request('id_juego_propuesto'),
             'estado' => request('estado'),
         ]);
 
-        return redirect('ofertas')->with('nuevo','Oferta creada con éxito');
+        return redirect('juegofisico/'.$id)->with('nuevo','Oferta creada con éxito');
     }
 
     /**
@@ -103,7 +104,7 @@ class OfertaController extends Controller
             'estado' => request('estado'),
         ]);
 
-        return redirect('ofertas')->with('nuevo','Juego agregado con éxito');
+        return redirect('juegofisico')->with('nuevo','Juego agregado con éxito');
     }
 
     /**
@@ -114,7 +115,10 @@ class OfertaController extends Controller
      */
     public function destroy($id)
     {
+        $oferta = Http::get(env('API_URL').'Oferta/'.$id);
+        $array1['oferta'] = $oferta->json();
+        //dd($array1[]);
         $juegoFisico = Http::delete(env('API_URL').'Oferta/'.$id);
-        return redirect('ofertas')->with('eliminado','Oferta borrada con éxito');
+        return redirect('juegofisico')->with('eliminado','Oferta borrada con éxito');
     }
 }
