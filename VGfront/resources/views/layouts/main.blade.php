@@ -53,9 +53,9 @@
         <div class="collapse navbar-collapse" id="collapse_target">
             <ul class="navbar-nav">
 
-                <li class="nav-item px-2">
+                {{-- <li class="nav-item px-2">
                     <a class="nav-link " href="{{url('/')}}">Home</a>
-                </li>
+                </li> --}}
                 <li class="nav-item px-2">
                     <a class="nav-link" href="{{url('/titulo')}}">Titulos</a>
                 </li>
@@ -63,7 +63,7 @@
                     <a class="nav-link " href="{{url('/ofertas')}}">Ofertas</a>
                 </li>
                 <li class="nav-item px-2">
-                    <a class="nav-link " href="{{url('/juegofisico')}}">Juegos Fisicos</a>
+                    <a class="nav-link " href="{{url('/juegofisico')}}">Mis Juegos</a>
                 </li>
                 
 

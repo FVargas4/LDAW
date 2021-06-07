@@ -78,11 +78,16 @@ class JuegoFisicoController extends Controller
      */
     public function edit($id)
     {
+        // $titulo = Titulo::getTitulo();
+        // $juegoFisico = Http::get(env('API_URL').'JuegoFisico/'.$id);
+        // $array['array'] = $juegoFisico->json();
+        // return view('juegofisico.edit',$array,["titulo" => $titulo])->with('id', $id);
+
         $titulo = Titulo::getTitulo();
-        //return view('juegofisico.create',["titulo" => $titulo]);
         $juegoFisico = Http::get(env('API_URL').'JuegoFisico/'.$id);
         $array['array'] = $juegoFisico->json();
         //dd($array);
+        //return view('juegofisico.edit',$array);
         return view('juegofisico.edit',$array,["titulo" => $titulo]);
     }
 

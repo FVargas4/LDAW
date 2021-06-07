@@ -22,4 +22,9 @@ class JuegoFisico extends Model
         return $this->belongsTo(Titulo::class);
     }
 
+    public function oferta()
+    {
+        return $this->belongsTo(Oferta::class);
+    }
+
 }
