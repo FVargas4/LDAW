@@ -87,7 +87,7 @@
                 <form action="{{ url('/usuario/'.$item['id']) }}" method="post" >
                     @csrf
                     {{ method_field('DELETE')}}
-                    <button type="submit" value="delete" class="btn btn-danger m-1 d-flex justify-content-center align-items-center" id="btn-submit" onclick="return confirm('¿Estas seguro que quieres borrar?') ;"><i class="bi bi-trash"></i></button>
+                    <button type="submit" value="delete" class="btn btn-danger my-1 d-flex justify-content-center align-items-center" id="btn-submit" onclick="return confirm('¿Estas seguro que quieres borrar?') ;"><i class="bi bi-trash"></i></button>
                 </form>
 
                 </td>
