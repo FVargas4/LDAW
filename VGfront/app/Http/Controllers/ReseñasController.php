@@ -16,7 +16,13 @@ class ReseñasController extends Controller
     public function index()
     {
         //
-        return view("resenas.resenas");
+        
+
+
+
+        $resenas= reseñas::getResenas();
+ 
+            return view("resenas.resenas", ["resenas" => $resenas]);
     }
 
     /**

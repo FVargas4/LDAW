@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Resenas;
+use App\Models\Resena;
 use Illuminate\Http\Request;
 
 class ResenasController extends Controller
@@ -16,7 +16,7 @@ class ResenasController extends Controller
     {
         //
         
-        return Resenas::getAllResenas();
+        return Resena::getName();
     }
 
     /**
@@ -28,6 +28,17 @@ class ResenasController extends Controller
     public function store(Request $request)
     {
         //
+           
+        $resena = Resena::create([
+            'id_user' => request('id_user'),
+            'id_titulo' => request('id_titulo'),
+            'calificacion' => request('calificacion'),
+            'descripcion' => request('descripcion'),
+        ]);
+
+         //return Resenas::create($request->all());
+
+
     }
 
     /**
@@ -36,9 +47,13 @@ class ResenasController extends Controller
      * @param  \App\Models\Resenas  $resenas
      * @return \Illuminate\Http\Response
      */
-    public function show(Resenas $resenas)
+    public function show(Resena $id)
     {
         //
+
+        $resena=Resena::findorFail($id);
+        //return [$juegoFisico];
+        return $resena;
     }
 
     /**
@@ -48,9 +63,34 @@ class ResenasController extends Controller
      * @param  \App\Models\Resenas  $resenas
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Resenas $resenas)
+    public function update(Request $request, $id)
     {
-        //
+        
+        $resenas = Resena::find($id);
+        request()->validate([
+            'id_user' => request('id_user'),
+            'id_titulo' => request('id_titulo'),
+            'calificacion' => request('calificacion'),
+            'descripcion' => request('descripcion'),
+           
+        ]);
+          
+        
+
+        $success = $resenas->update([
+            'id_user' => request('id_user'),
+            'id_titulo' => request('id_titulo'),
+            'calificacion' => request('calificacion'),
+            'descripcion' => request('descripcion'),
+            
+        ]);
+        return [
+            'success' => $success
+        ];
+        
+
+
+
     }
 
     /**
@@ -59,8 +99,21 @@ class ResenasController extends Controller
      * @param  \App\Models\Resenas  $resenas
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Resenas $resenas)
+    public function destroy($id)
     {
         //
+
+        $device = Resena::findOrFail($id);
+
+        $result =$device->delete();
+
+        if($result){
+
+            return ["result" => "record has been delete"];
+
+        }else{
+
+            return["result"=>"delete operation failed"];
+        }
     }
 }

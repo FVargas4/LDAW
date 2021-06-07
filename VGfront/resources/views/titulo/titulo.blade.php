@@ -33,16 +33,24 @@
         </div>
     <div class="table-responsive">
 
+    
+
       <div class="d-flex border-bottom mb-3">
 
           <div class="me-auto p-2">
               <h1 class="text-left fs-4">Lista Títulos registrados </h3>
           </div>
 
+         
+
           <div class="align-self-center p-2">
               <a href="{{url('titulo/create')}}"  class="btn btn-success "> <span class="material-icons-outlined">add_circle</span></a>
               
           </div>
+
+          <div class="align-self-center p-4">
+                 <a type="button" href="{{url('resenas')}}" class="btn btn-info"><span class="bi bi-book"></span></a>
+            </div> 
 
       </div>
         
@@ -53,15 +61,11 @@
                     <div class="card mt-3" style="width: 18rem;">
                         
                             <div class="card-body">
-                                                     
-                                    <h5 class="card-title">{{ $titu['nombre'] }}</h5>
-                                    <p class="card-text">  {{$titu['condicion']    }}</p>
+                                     
+                                    <p>Titulo:<h5 class="card-title">{{ $titu['nombre'] }}</h5></p>
+                                    <p>Descripcion:<p class="card-text">  {{$titu['condicion'] }}</p></p>
                                     <p class="card-text">  {{$titu['consola'] }}</p>
-                                    <div class="text-center">
-                                      <a type="button" href="{{url('resenas')}}" class="btn btn-info">
-                                          <i class="bi bi-book"></i>
-                                      </a> 
-                                    </div> 
+                                    
                                      
                             </div>
 
