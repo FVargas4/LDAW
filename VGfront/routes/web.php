@@ -24,7 +24,7 @@ Route::get('/welcome', function () {
 });
 Route::get("/pi", [IntegrantesControllers::class, 'getText']);
 
-Route::get("/", function(){
+Route::get("/vghome", function(){
 
     return view("vghome");
 });
@@ -35,6 +35,10 @@ Route::get("/", function(){
 
 
 Route::resource('titulo', TituloController::class);
+
+use App\Http\Controllers\ReseñasController;
+
+Route::resource('resenas', ReseñasController::class);
 
 Route::resource('usuarios', UsuarioController::class);
 Route::resource('juegofisico',JuegoFisicoController::class);

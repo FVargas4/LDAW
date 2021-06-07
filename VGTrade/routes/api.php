@@ -39,5 +39,9 @@ Route::apiResource('Oferta',OfertaController::class);
 Route::apiResource('titulo',TituloController::class);
 
 
+use App\Http\Controllers\ResenasController;
+Route::apiResource('resenas',ResenasController::class);
+
+
 
 

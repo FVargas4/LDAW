@@ -15,8 +15,8 @@ class CreateResenasTable extends Migration
     {
         Schema::create('resenas', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_user');
-            $table->foreignId('id_titulo');
+            $table->foreignId('id_user')->unsigned()->nullable();
+            $table->foreignId('id_titulo')->unsigned()->nullable();
             $table->integer('calificacion');
             $table->string('descripcion');
             $table->timestamps();
