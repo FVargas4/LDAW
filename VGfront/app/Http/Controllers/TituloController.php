@@ -104,7 +104,6 @@ class TituloController extends Controller
     {
         //
 
-        
         $titulo = Http::put(env('API_URL').'titulo/'.$id,[
             'nombre' => request('nombre'),
             'condicion' => request('condicion'),

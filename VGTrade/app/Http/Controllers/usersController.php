@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\users;
 use Illuminate\Http\Request;
 
+use App\Models\Post;
+
 class usersController extends Controller
 {
     /**
@@ -26,7 +28,12 @@ class usersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $usuario = users::create([
+            'name' => request('name'),
+            'email' => request('email'),
+            'telefono' => request('telefono'),
+            'password' => request('password'),
+        ]);
     }
 
     /**
@@ -35,9 +42,12 @@ class usersController extends Controller
      * @param  \App\Models\users  $users
      * @return \Illuminate\Http\Response
      */
-    public function show(users $users)
+    public function show($id)
     {
         //
+        $usuario = users::findorFail($id);
+        //return [$juegoFisico];
+        return $usuario;
     }
 
     /**
@@ -50,6 +60,23 @@ class usersController extends Controller
     public function update(Request $request, users $users)
     {
         //
+        $usuario = users::find($id);
+        request()->validate([
+            'name' => 'required',
+            'telefono' => 'required',
+            'email' => 'required',
+            'password' => 'required',
+            'contrasenia_confirmation' => 'required',
+        ]);
+        $usuario = $usuario->update([
+            'name' => request('name'),
+            'telefono' => request('telefono'),
+            'email' => request('email'),
+            'password' => request('password'),
+        ]);
+        return [
+            'success' => $success
+        ];
     }
 
     /**
@@ -58,8 +85,20 @@ class usersController extends Controller
      * @param  \App\Models\users  $users
      * @return \Illuminate\Http\Response
      */
-    public function destroy(users $users)
+    public function destroy($id)
     {
         //
+        $device = users::findOrFail($id);
+
+        $result =$device->delete();
+
+        if($result){
+
+            return ["result" => "record has been delete"];
+
+        }else{
+
+            return["result"=>"delete operation failed"];
+        }
     }
 }

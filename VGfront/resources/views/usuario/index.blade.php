@@ -5,7 +5,7 @@
 @section('mainContent')
 
 @if(Session::has('mensaje'))
-<div class="container" style=" min-height: 500px;">
+<div class="container" style=" height: 80px;">
     
     <!--<div class="alert alert-success alert-dismissible" role="alert">-->
     <div class="alert alert-success alert-dismissible" role="alert">
@@ -40,7 +40,7 @@
             <h1 class="text-left fs-4">Lista de Usuarios</h3>
         </div>
         <div class="align-self-center p-2">
-        <a href="{{url('usuarios/create')}}"  class="btn btn-success "> <span class="material-icons-outlined">add_circle</span></a>
+        <a href="{{url('usuario/create')}}"  class="btn btn-success "> <span class="material-icons-outlined">add_circle</span></a>
         <br>
         </div>
        
@@ -55,33 +55,27 @@
             <tr>
                 <th scope="col">Nombre del Usuario</th>
                 <th scope="col">Telefono</th>
-                <th scope="col">Rol</th>
-                <th scope="col">Area</th>
+                <th scope="col">Email</th>
+                <th scope="col">Contraseña</th>
                 
                 
             </tr>
         </thead>
         <tbody>
-            
+            @foreach($usuario as $item)
             <tr scope="row">
                
-                <td class="text-center"></td>
-                <td class="text-center"></td>
-                <td class="text-center"></td>
-                <td class="text-center"></td>
+                <td class="text-center">{{$item['name']}}</td>
+                <td class="text-center">{{$item['telefono']}}</td>
+                <td class="text-center">{{$item['email']}}</td>
+                <td class="text-center">{{$item['password']}}</td>
                 <td class="text-center"></td>
 
                 
               
                 
                 <td>
-                <a href="">
-                
-                            <button type="button" class="btn btn-primary my-1 d-flex justify-content-center align-items-center">
-                                <i class="far fa-eye"></i>
-                            </button>      
-                </a>
-                <a href="">
+                <a href="{{url('usuario/'.$item['id'].'/edit')}}">
                 
                               <button type="button" class="btn btn-success my-1 d-flex justify-content-center align-items-center">
                                 <i class="bi bi-pencil-square"></i>
@@ -131,7 +125,7 @@
 
                 </td>
             </tr>
-          
+            @endforeach
         
         </tbody>
     </table>

@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IntegrantesControllers;
-use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\usersController;
 //use App\Http\Controllers\TituloController;
 use App\Http\Controllers\JuegoFisicoController;
 
@@ -34,7 +34,7 @@ use App\Http\Controllers\TituloController;
 
 Route::resource('titulo', TituloController::class);
 
-Route::resource('usuarios', UsuarioController::class);
+Route::resource('usuario', usersController::class);
 Route::resource('juegofisico',JuegoFisicoController::class);
 
 

@@ -17,6 +17,7 @@ class users{
 
         $response = Http::get(env('API_URL').'users');
 
+        //dd($response);
         return $response -> json();
     }
     public static function findusers_id($id){

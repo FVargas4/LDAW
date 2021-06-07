@@ -1,6 +1,6 @@
-@extends('layouts.main-landing')
+@extends('layouts.main')
 
-@section('header')
+@section('mainContent')
 
 
 <form action="{{ url('/usuario/')}}" method="post">
