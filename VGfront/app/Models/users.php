@@ -28,7 +28,7 @@ class users{
     }
 
 
-    public static function getUserbyid($id){
+    public static function getUserbyId($id){
 
         $response = Http::delete(env('API_URL').'users/'.$id);
 

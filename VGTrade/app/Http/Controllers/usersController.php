@@ -82,17 +82,12 @@ class usersController extends Controller
     public function destroy($id)
     {
         //
-        $device = users::findOrFail($id);
+        $usuario = users::findOrFail($id);
 
-        $result =$device->delete();
+        $result =$usuario->delete();
 
-        if($result){
-
-            return ["result" => "record has been delete"];
-
-        }else{
-
-            return["result"=>"delete operation failed"];
-        }
+        return [
+            'success' => $result
+        ];
     }
 }

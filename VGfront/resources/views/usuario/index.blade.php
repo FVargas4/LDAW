@@ -84,43 +84,10 @@
 
                 
 
-                <form action="" method="post">
-                @csrf
-                {{ method_field('DELETE')}}
-
-                
-
-                <!--<button type="submit" class="btn btn-danger" onclick="return confirm('¿Quieres borrar?')" value="Borrar">Borrar</button>-->
-
-
-                <button type="button" data-toggle="modal" data-target="#exampleModal" class="btn btn-danger my-1 d-flex justify-content-center align-items-center" 
-
-                    value="Borrar"><i class="bi bi-trash"></i>
-                                
-                    </button>
-
-                   <!-- Modal eliminar-->
-                   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">¿Estás seguro de eliminar?</h5>
-                            <button type="button" class="btn" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                       
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                            <button type="submit" class="btn button-donar">Eliminar</button>
-
-
-                             
-                        </div>
-                        </div>
-                    </div>
-                    </div>
-                
+                <form action="{{ url('/usuario/'.$item['id']) }}" method="post" >
+                    @csrf
+                    {{ method_field('DELETE')}}
+                    <button type="submit" value="delete" class="btn btn-danger m-1 d-flex justify-content-center align-items-center" id="btn-submit" onclick="return confirm('¿Estas seguro que quieres borrar?') ;"><i class="bi bi-trash"></i></button>
                 </form>
 
                 </td>
