@@ -14,16 +14,17 @@ class OfertaController extends Controller
      */
     public function index()
     {
-        $array = Oferta::join('juego_fisicos as jf1', 'id_juego_propuesto', '=', 'jf1.id')
-            ->join('juego_fisicos as jf2', 'id_juego_ofertado', '=', 'jf2.id')
+        $array = Oferta::leftjoin('juego_fisicos as jf1', 'id_juego_propuesto', '=', 'jf1.id')
+            ->leftjoin('juego_fisicos as jf2', 'id_juego_ofertado', '=', 'jf2.id')
 
-            ->join('titulos as t1', 't1.id', '=', 'jf1.titulo_id')
-            ->join('users as u1', 'u1.id', '=', 'jf1.user_id')
+            ->leftjoin('titulos as t1', 't1.id', '=', 'jf1.titulo_id')
+            ->leftjoin('users as u1', 'u1.id', '=', 'jf1.user_id')
 
-            ->join('titulos as t2', 't2.id', '=', 'jf2.titulo_id')
-            ->join('users as u2', 'u2.id', '=', 'jf2.user_id')
+            ->leftjoin('titulos as t2', 't2.id', '=', 'jf2.titulo_id')
+            ->leftjoin('users as u2', 'u2.id', '=', 'jf2.user_id')
 
-            ->select('ofertas.*', 't1.nombre as Titulo_de_JuegoPropuesto','u1.name as Nombre_de_UsuarioProp', 't2.nombre as Titulo_de_JuegoOfertado','u2.name as Nombre_de_UsuarioOfer')
+            ->select('ofertas.*', 't1.nombre as TituloJuegoPropuesto','u1.name as NombreUsuarioProp','u1.telefono as telefonoPro','u1.email as emailPro','jf1.consola1 as ConsolaJuegoPropuesto','jf1.condicion1 as CondicionJuegoPropuesto',
+            't2.nombre as TituloJuegoOfertado','u2.name as NombreUsuarioOfer','u2.telefono as telefonoOf','u2.email as emailOf','jf2.consola1 as ConsolaJuegoOfertado','jf2.condicion1 as CondicionJuegoOfertado',)
             ->orderBy('id', 'desc')
             ->get();
         return response()->json($array);
@@ -52,16 +53,17 @@ class OfertaController extends Controller
      */
     public function show($id)
     {
-        $success = Oferta::join('juego_fisicos as jf1', 'id_juego_propuesto', '=', 'jf1.id')
-            ->join('juego_fisicos as jf2', 'id_juego_ofertado', '=', 'jf2.id')
+        $success = Oferta::leftjoin('juego_fisicos as jf1', 'id_juego_propuesto', '=', 'jf1.id')
+            ->leftjoin('juego_fisicos as jf2', 'id_juego_ofertado', '=', 'jf2.id')
 
-            ->join('titulos as t1', 't1.id', '=', 'jf1.titulo_id')
-            ->join('users as u1', 'u1.id', '=', 'jf1.user_id')
+            ->leftjoin('titulos as t1', 't1.id', '=', 'jf1.titulo_id')
+            ->leftjoin('users as u1', 'u1.id', '=', 'jf1.user_id')
 
-            ->join('titulos as t2', 't2.id', '=', 'jf2.titulo_id')
-            ->join('users as u2', 'u2.id', '=', 'jf2.user_id')
+            ->leftjoin('titulos as t2', 't2.id', '=', 'jf2.titulo_id')
+            ->leftjoin('users as u2', 'u2.id', '=', 'jf2.user_id')
 
-            ->select('ofertas.*', 't1.nombre as Titulo_de_JuegoPropuesto','u1.name as Nombre_de_UsuarioProp', 't2.nombre as Titulo_de_JuegoOfertado','u2.name as Nombre_de_UsuarioOfer')
+            ->select('ofertas.*', 't1.nombre as TituloJuegoPropuesto','u1.name as NombreUsuarioProp','jf1.consola1 as ConsolaJuegoPropuesto','jf1.condicion1 as CondicionJuegoPropuesto',
+            't2.nombre as TituloJuegoOfertado','u2.name as NombreUsuarioOfer','jf2.consola1 as ConsolaJuegoOfertado','jf2.condicion1 as CondicionJuegoOfertado',)
             ->where('ofertas.id',$id)
             ->orderBy('id', 'desc')
             ->get();
