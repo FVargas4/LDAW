@@ -26,7 +26,7 @@
 
     <h3 class="text-center mb-3">Usuarios </h3>
     <div class="align-self-center p-2">
-        <a href="{{url('/panel')}}"  class="btn btn-success "> <span class="material-icons-outlined">keyboard_backspace</span></a>
+        <a href="{{url('/')}}"  class="btn btn-success "> <span class="material-icons-outlined">keyboard_backspace</span></a>
         <br>
         </div>
     <div class="table-responsive">
@@ -37,27 +37,26 @@
   
      <div class="d-flex border-bottom mb-3">
         <div class="me-auto p-2">
-            <h1 class="text-left fs-4">Lista de reportes creados</h3>
+            <h1 class="text-left fs-4">Lista de Usuarios</h3>
         </div>
         <div class="align-self-center p-2">
-        <a href="{{url('reporte/create')}}"  class="btn btn-success "> <span class="material-icons-outlined">add_circle</span></a>
+        <a href="{{url('usuarios/create')}}"  class="btn btn-success "> <span class="material-icons-outlined">add_circle</span></a>
         <br>
         </div>
        
     </div>
 
 
-    <table class="table table-hover px-3 " >
+    <table class="table table-hover m-2 p-3" >
         
-        <h3 class="pt-3"><strong>Reportes</strong></h3>
+        <h3 class="pt-3"><strong>Usuarios</strong></h3>
         <br>
         <thead >
             <tr>
-                <th scope="col">Nombre del niño</th>
-                <th scope="col">Quien reporta</th>
+                <th scope="col">Nombre del Usuario</th>
+                <th scope="col">Telefono</th>
+                <th scope="col">Rol</th>
                 <th scope="col">Area</th>
-                <th scope="col">Calificacion</th>
-                <th scope="col">Documento de drive</th>
                 
                 
             </tr>
@@ -92,8 +91,8 @@
                 
 
                 <form action="" method="post">
-                /*@csrf
-                {{ method_field('DELETE')}}*/
+                @csrf
+                {{ method_field('DELETE')}}
 
                 
 

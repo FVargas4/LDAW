@@ -65,6 +65,9 @@
                 <li class="nav-item px-2">
                     <a class="nav-link " href="{{url('/juegofisico')}}">Juegos Fisicos</a>
                 </li>
+                <li class="nav-item px-2">
+                    <a class="nav-link " href="{{url('/usuarios')}}">Usuarios</a>
+                </li>
                 
 
             </ul>

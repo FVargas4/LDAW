@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\JuegoFisicoController;
 use App\Http\Controllers\TituloController;
+use App\Http\Controllers\usersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +35,7 @@ Route::delete('/JuegoFisico/{juegofisico}', [JuegoFisicoController::class, 'dest
 
 Route::apiResource('titulo',TituloController::class);
 
+Route::apiResource('users',usersController::class);
 
 
 

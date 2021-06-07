@@ -49,7 +49,7 @@
            <div class="row">
                @foreach($titulo as $titu)
                
-                    <div class="card mt-3" style="width: 18rem;">
+                    <div class="card  m-2" style="width: 18rem;">
                         
                             <div class="card-body">
                                                      
@@ -63,7 +63,7 @@
                         <div class="float-sm-right">
                             <div  class="btn-group" role="group" aria-label="Vertical example">
                                 <a href="{{url('/titulo/'.$titu['id'].'/edit')}}" >
-                                    <button type="button" class="btn btn-success">
+                                    <button type="button" class="btn btn-success m-1">
                                         <i class="bi bi-pencil-square"></i>
                                     </button>  
                                 </a>
@@ -72,7 +72,7 @@
                                 <form action="{{ url('/titulo/'.$titu['id']) }}" method="post" >
                                     @csrf
                                     {{ method_field('DELETE')}}
-                                  <button type="submit" value="delete" class="btn btn-danger" id="btn-submit" onclick="return confirm('¿Estas seguro que quieres borrar?') ;"><i class="bi bi-trash"></i></button>
+                                  <button type="submit" value="delete" class="btn btn-danger m-1" id="btn-submit" onclick="return confirm('¿Estas seguro que quieres borrar?') ;"><i class="bi bi-trash"></i></button>
                                </form>
                              
                             </div>   
