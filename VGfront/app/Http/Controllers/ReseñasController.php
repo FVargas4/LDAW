@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Models\reseñas;
 
+use App\Models\Titulo;
+
 class ReseñasController extends Controller
 {
     /**
@@ -33,6 +35,10 @@ class ReseñasController extends Controller
     public function create()
     {
         //
+
+
+        $titulo = Titulo::getTitulo();
+        return view('resenas.create',["titulo" => $titulo]);
     }
 
     /**
