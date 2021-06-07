@@ -6,7 +6,7 @@ use App\Http\Controllers\usersController;
 //use App\Http\Controllers\auth\UserAuthController;
 use App\Http\Controllers\JuegoFisicoController;
 use App\Http\Controllers\OfertaController;
-
+use App\Http\Controllers\TituloController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,7 +40,7 @@ use App\Http\Controllers\ReseñasController;
 
 Route::resource('resenas', ReseñasController::class);
 
-Route::resource('usuarios', usersController::class);
+Route::resource('usuario', usersController::class);
 Route::resource('juegofisico',JuegoFisicoController::class);
 Route::resource('ofertas',OfertaController::class);
 
