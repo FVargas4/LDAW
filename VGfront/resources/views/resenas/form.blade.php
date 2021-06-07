@@ -9,27 +9,27 @@
         <div class="mb-3">
             
 
-        <div class="form-group m-3">
+                    <div class="form-group m-3">
 
-                    <label for="titulo_id">Titulo</label>
-                    <br>
-                        @if(empty($titulo))
-                            <select id="disabledSelect" class="custom-select">
-                            <option selected>No existen titulos</option>
-                        @else
-                                <select class="form-control selectpicker" name="titulo_id" id="titulo_id" data-live-search="true">
+                        <label for="titulo_id">Titulo</label>
+                        <br>
+                            @if(empty($titulo))
+                                <select id="disabledSelect" class="custom-select">
+                                <option selected>No existen titulos</option>
+                            @else
+                                    <select class="form-control selectpicker" name="titulo_id" id="titulo_id" data-live-search="true">
 
-                            @if ($modo == "Editar")
-                            
-                                <option value="{{ isset($array['titulo_id'])?$array['titulo_id']:old('titulo_id') }}" selected>{{ isset($array['nombre'])?$array['nombre']:old('nombre') }}</option>
-                            @elseif ($modo == "Crear")
-                                <option selected>Selecciona un titulo</option>
+                                @if ($modo == "Editar")
+                                
+                                    <option value="{{ isset($array['titulo_id'])?$array['titulo_id']:old('titulo_id') }}" selected>{{ isset($array['nombre'])?$array['nombre']:old('nombre') }}</option>
+                                @elseif ($modo == "Crear")
+                                    <option selected>Selecciona un titulo</option>
+                                @endif
                             @endif
-                        @endif
-                        @foreach($titulo as $titulo)
-                            <option id="titulo_id" name="titulo_id" data-tokens={{$titulo['nombre']}} value={{$titulo['id']}}>{{$titulo['nombre']}}</option>
-                        @endforeach
-                    </select>
+                            @foreach($titulo as $titulo)
+                                <option id="titulo_id" name="titulo_id" data-tokens={{$titulo['nombre']}} value={{$titulo['id']}}>{{$titulo['nombre']}}</option>
+                            @endforeach
+                        </select>
 
                     </div>
                     @if(empty($titulos))
@@ -37,8 +37,13 @@
                     @endif
 
 
+
+                    
+
+
         </div>
     </div>
+
 
     
 
