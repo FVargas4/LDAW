@@ -4,9 +4,9 @@
 
 <div class="container">
 
-    <form action="{{url('/ofertaJuego')}}" method="post">
+    <form action="{{url('/ofertas')}}" method="post">
         @csrf
-        @include('ofertas.form',['modo'=>'Crear'])
+        @include('ofertas.form2',['modo'=>'Crear2'])
     </form>
 </div>
 

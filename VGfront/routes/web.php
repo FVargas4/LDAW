@@ -7,6 +7,8 @@ use App\Http\Controllers\usersController;
 use App\Http\Controllers\JuegoFisicoController;
 use App\Http\Controllers\OfertaController;
 use App\Http\Controllers\TituloController;
+use App\Http\Controllers\OfertaJuegoController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -44,6 +46,8 @@ Route::resource('usuario', usersController::class);
 Route::resource('juegofisico',JuegoFisicoController::class);
 Route::resource('ofertas',OfertaController::class);
 Route::get("/calendario", function(){return view('calendario');});
+Route::resource('ofertaJuego',OfertaJuegoController::class);
+
 
 
 Route::delete('/titulo/{id}', 'App\Http\Controllers\TituloController@destroy');

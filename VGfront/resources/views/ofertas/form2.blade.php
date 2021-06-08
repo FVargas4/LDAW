@@ -6,7 +6,9 @@
 
     
     @if ($modo == "Crear")
-        <h3 class="text-center mb-3">Crear Oferta</h3>    
+        <h3 class="text-center mb-3">Crear Oferta</h3>
+    @elseif ($modo == "Crear2")
+        <h3 class="text-center mb-3">Oferta</h3>
     @else
         <h3 class="text-center mb-3">Ofertar</h3>
     @endif
@@ -20,6 +22,8 @@
     <div class="form-group m-3">
         @if ($modo == "Crear")
             <label for="id_juego_propuesto"><strong>Escoge uno de tus juegos registrados para crear la oferta</strong></label>
+        @elseif ($modo == "Crear2")
+            <label for="id_juego_propuesto"><strong>¿Seguro que quieres hacer una oferta a este juego?</strong></label>
         @else
             <label for="id_juego_ofertado"><strong>Escoge uno de tus juegos registrados para ofertar</strong></label>
         @endif
@@ -42,11 +46,13 @@
             @if ($modo == "Editar")
                 <option id="id_juego_ofertado" name="id_juego_ofertado" data-tokens={{$juegofisico['nombre']}} value={{$juegofisico['id']}}>{{$juegofisico['nombre']}}</option>
 
+            @elseif ($modo == "Crear2")
+                <option selected id="id_juego_propuesto" name="id_juego_propuesto" data-tokens={{$juegofisico['nombre']}} value={{$juegofisico['id']}}>{{$juegofisico['nombre']}}</option>
             @else
                 <option id="id_juego_propuesto" name="id_juego_propuesto" data-tokens={{$juegofisico['nombre']}} value={{$juegofisico['id']}}>{{$juegofisico['nombre']}}</option>
 
             @endif
-            @endforeach
+           
         </select>
         
         </div>
@@ -58,16 +64,23 @@
             @if ($modo == "Crear")
                 <input type="hidden" class="form-control" value="Abierta" name="estado"  id="estado">
             @else
-            @foreach($oferta as $oferta)
+            @if ($modo == "Crear2")
+            <input type="hidden" class="form-control" value="Pendiente" name="estado"  id="estado">
+            <input type="hidden" class="form-control" value={{$juegofisico['id']}} name="id_juego_propuesto"  id="id_juego_propuesto">
+            @else
+                @foreach($oferta as $oferta)
                 <input type="hidden" class="form-control" value="Pendiente" name="estado"  id="estado">
                 <input type="hidden" class="form-control" value={{$oferta['id_juego_propuesto']}} name="id_juego_propuesto"  id="id_juego_propuesto">
                 {{-- <input type="hidden" class="form-control" value=2 name="id_juego_ofertado"  id="id_juego_ofertado"> --}}
                 @endforeach
             @endif
+            
+            @endif
+            @endforeach
         </div>
 
 <div class="col text-center m-3">
-    <button class="btn btn-success" type="submit"><i class="bi bi-pencil-square"></i> Ofertar</button>
+    <button class="btn btn-success" type="submit">Siguiente</button>
 </div>
 
 </div>

@@ -9,6 +9,10 @@ use App\Http\Controllers\UserAuthController;
 use App\Http\Controllers\usersController;
 use Illuminate\Support\Facades\Hash;
 use App\Models\users;
+use App\Http\Controllers\OfertaJuegoController;
+use App\Http\Controllers\OfertaUsuarioController;
+use App\Http\Controllers\JuegoFisicoTituloController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +34,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::apiResource('JuegoFisico',JuegoFisicoController::class);
 Route::apiResource('Oferta',OfertaController::class);
+Route::apiResource('OfertaJuego',OfertaJuegoController::class);
+Route::apiResource('OfertaUsuario',OfertaUsuarioController::class);
+Route::apiResource('Juegos',JuegoFisicoTituloController::class);
 
 
 // Route::get('/JuegoFisico', [JuegoFisicoController::class, 'index']);
