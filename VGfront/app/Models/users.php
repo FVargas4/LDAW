@@ -7,14 +7,19 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Http;
-
+use Illuminate\Support\Facades\Auth;
 
 // class User extends Authenticatable
 // {
 class users extends Authenticatable{
+
+    public $token = null;
+    public $email = null;
+    public $name = null;
     
     public static function getUsuario(){
 
+        //dd(Auth::user());
         $response = Http::get(env('API_URL').'users');
 
         //dd($response);
@@ -62,5 +67,71 @@ class users extends Authenticatable{
         }
         return "adsdf";
 
+    }
+
+    public function revokeToken(){
+
+        //obtener los datos del usuario desde la API
+        $response = HTTP::withToken($this->token)
+                        ->timeout(env("API_TIMEOUT"))
+                        ->get(env("API_URL") ."logout");
+
+        //dd($response->body());
+
+        return $response->successful();
+
+    }
+
+    public static function requestUser($token){
+
+        //obtener los datos del usuario desde la API
+        $response = HTTP::withToken($token)
+                        ->timeout(env("API_TIMEOUT"))
+                        ->get(env("API_URL") ."user");
+
+        //dd($response->body());
+
+        if($response->successful()){
+            //Crear la instancia del usuario y devolverla
+            $userData = $response->json();
+
+            $user = new users;
+
+            $user->email = $userData["email"];
+            $user->name = $userData["name"];
+            //$user->role = $userData["role"];
+            //$user->privileges = $userData["privileges"];
+            $user->token = $token;
+
+            return $user;
+
+        }
+
+        return null;
+
+    }
+
+    public function getAuthIdentifierName(){
+        return "token";
+    }
+
+    public function getAuthIdentifier(){
+        return $this->token;
+    }
+
+    public function getAuthPassword(){
+        return $this->token;
+    }
+
+    public function getRememberToken(){
+        return null;
+    }
+
+    public function setRememberToken($value){
+
+    }
+
+    public function getRememberTokenName(){
+        return null;
     }
 }
