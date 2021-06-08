@@ -15,8 +15,8 @@ class CreateUsuarioRol extends Migration
     {
         Schema::create('usuario_rol', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_usuario');
-            $table->foreignId('id_rol');
+            $table->foreignId("usuario_id");
+            $table->foreignId("rol_id");
         });
     }
 

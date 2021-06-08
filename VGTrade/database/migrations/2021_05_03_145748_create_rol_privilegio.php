@@ -14,15 +14,20 @@ class CreateRolPrivilegio extends Migration
     public function up()
     {
         Schema::create('rol_privilegio', function (Blueprint $table) {
+            
             $table->id();
-            $table->foreignId('id_rol')
+            
+            $table->foreignId("rol_id")
+                ->contrained()
                 ->onDelete("cascade")
                 ->onUpdate("cascade");
-            $table->foreignId('id_privilegio')
+            
+                $table->foreignId("privilegio_id")
+                ->contrained()
                 ->onDelete("cascade")
                 ->onUpdate("cascade");
 
-            $table->unique(['id_rol', 'id_privilegio']);
+            $table->unique(['rol_id', 'privilegio_id']);
         });
     }
 
