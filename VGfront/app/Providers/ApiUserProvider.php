@@ -26,6 +26,7 @@ class ApiUserProvider implements UserProvider
     }
 
     public function validateCredentials(Authenticatable $user, array $credentials){
+        //dd($credentials);
         $response = HTTP::timeout(env("API_TIMEOUT"))
                         ->post(env("API_URL") ."login", [
                             "email" => $credentials["email"],
@@ -33,13 +34,13 @@ class ApiUserProvider implements UserProvider
                             "device_name" => "frontend"
                         ]);
 
-        dd($response->body());
+        //dd($response->body());
 
         if($response->successful()){
 
             $data = $response->json();
 
-            dd($data);
+            //dd($data);
             if(isset($data["token"])){
 
                 $user->token = $data["token"];

@@ -20,13 +20,14 @@ class UserAuthController extends Controller{
             'password' => 'required',
             'device_name' => 'required',
         ]);
-
+        
         $user = users::where('email', $request->email)->first();
-
+        // var_dump($user);
+        // die;
         if (! $user || !Hash::check($request->password, $user->password)){
-            throw ValidationException::withMessages([
-                'email' => ['The provided credentials are incorrect.'],
-            ]);
+           return response([
+                'mensaje' => 'Correo electronico o contrasena incorrecta',
+           ], 403);
         }
 
         return [
@@ -42,8 +43,8 @@ class UserAuthController extends Controller{
         return [
             "email" => $user->email,
             "name" => $user->name,
-            "role" => $user->role->name,
-            "privileges" => $user->getPrivilegesList()
+            //"role" => $user->role->name,
+            //"privileges" => $user->getPrivilegesList()
         ];
 
     }

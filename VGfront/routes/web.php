@@ -49,6 +49,19 @@ Route::get("/calendario", function(){return view('calendario');});
 Route::delete('/titulo/{id}', 'App\Http\Controllers\TituloController@destroy');
 Route::delete('/usuario/{id}', 'App\Http\Controllers\usersController@destroy');
 
+use App\Models\users;
+use Illuminate\Support\Facades\Auth;
+
+Route::get("/logout", function(Request $request){
+    if(auth()->user()->revokeToken()){
+        Auth::logout();
+        session()->invalidate();
+        session()->regenerateToken();
+
+        return redirect('/login');
+    }
+})->name("logout");
+
 //Route::get('/login', [usersController::class, 'login']);
 //Route::get('/check', [usersController::class, 'check']);
 

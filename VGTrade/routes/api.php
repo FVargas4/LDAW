@@ -7,7 +7,7 @@ use App\Http\Controllers\TituloController;
 use App\Http\Controllers\OfertaController;
 use App\Http\Controllers\UserAuthController;
 use App\Http\Controllers\usersController;
-
+use Illuminate\Support\Facades\Hash;
 use App\Models\users;
 
 /*
@@ -50,4 +50,23 @@ Route::apiResource('resenas',ResenasController::class);
 //Login de Sanctum
 Route::post('/login', [UserAuthController::class, 'login']);
 
+Route::middleware('auth:sanctum')->get('/user', function(Request $request){
 
+    $user = $request->user();
+
+    return [
+        "email" => $user->email,
+        "name" => $user->name
+        //"role" => $user->role->name,
+       // "privileges" => $user->getPrivilegesList()
+    ];
+
+});
+
+Route::middleware('auth:sanctum')->get('/logout', function(Request $request){
+    $request->user()->tokens()->delete();
+});
+
+Route::get('/hash/{contrasena}', function($contra){
+    return Hash::make($contra);
+});

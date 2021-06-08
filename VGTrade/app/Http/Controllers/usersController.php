@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\users;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Hash;
 use App\Models\Post;
 
 class usersController extends Controller
@@ -32,7 +33,7 @@ class usersController extends Controller
             'name' => request('name'),
             'email' => request('email'),
             'telefono' => request('telefono'),
-            'password' => request('password'),
+            'password' => Hash::make(request('password')),
         ]);
     }
 

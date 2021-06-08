@@ -56,6 +56,7 @@
                 <li class="nav-item px-2">
                     <a class="nav-link" href="{{url('/titulo')}}">Titulos</a>
                 </li>
+                @auth
                 <li class="nav-item px-2">
                     <a class="nav-link " href="{{url('/ofertas')}}">Ofertas</a>
                 </li>
@@ -65,17 +66,19 @@
                 <li class="nav-item px-2">
                     <a class="nav-link " href="{{url('/usuario')}}">Usuarios</a>
                 </li>
+                @endauth
                 <li class='nav-item px-2'>
                     <a class='nav-link' href="{{url('/calendario')}}">Calendario</a>
                 </li>
                 <li class="nav-item px-2 d-flex">
-                    @if (session()->has('sesionUsuario'))
+                    @auth
                     <a class="nav-link text-secondary" href="{{url('logout')}}" role="button">
                     Cerrar Sesion
-                    @else
+                    @endauth
+                    @guest
                     <a class="nav-link text-secondary" href="{{url('login')}}" role="button">
                     Iniciar Sesion
-                    @endif
+                    @endguest
                     </a>
                 </li>
 
