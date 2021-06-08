@@ -1,6 +1,18 @@
 <div class="bg-white container mt-5 bg-white shadow-sm p-3 mb-5 bg-body rounded" id="table-usr">
  
-        <h3 class="text-center mb-3">Buscar Oferta</h3>
+  <div class="container" >
+    @if(Session::has('mensaje'))
+    <div class="alert alert-success alert-dismissible" role="alert">
+                {{ Session::get('mensaje')}}
+                <button type="button" class="btn Button_alert" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true" class="btn pull-right" >&times;</span>
+                </button>
+                </div>
+    </div>
+    @endif
+</div>     
+  
+  <h3 class="text-center mb-3">Buscar Oferta</h3>
    
 
     <div class="align-self-center p-2">

@@ -54,7 +54,7 @@ class JuegoFisicoController extends Controller
             'consola1' => request('consola'),
         ]);
 
-        return redirect('juegofisico')->with('nuevo','Juego agregado con éxito');
+        return redirect('juegofisico')->with('mensaje','Juego agregado con éxito');
     }
 
     /**
@@ -108,7 +108,7 @@ class JuegoFisicoController extends Controller
             'enOferta' => request('enOferta')
         ]);
 
-        return redirect('juegofisico')->with('nuevo','Cambios realizados con éxito');
+        return redirect('juegofisico')->with('mensaje','Cambios realizados con éxito');
     }
 
     /**
@@ -120,7 +120,7 @@ class JuegoFisicoController extends Controller
     public function destroy($id)
     {
         $juegoFisico = Http::delete(env('API_URL').'JuegoFisico/'.$id);
-        return redirect('juegofisico')->with('eliminado','Juego borrado con éxito');
+        return redirect('juegofisico')->with('mensaje','Juego borrado con éxito');
 
     }
 }

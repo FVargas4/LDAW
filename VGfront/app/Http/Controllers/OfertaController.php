@@ -58,7 +58,8 @@ class OfertaController extends Controller
         //return redirect('ofertas')->with('nuevo','Oferta creada con éxito');
 
         $id= request('id_juego_propuesto');
-        return redirect('ofertaJuego/'.$id)->with('nuevo','Oferta creada con éxito');
+        //return redirect('ofertaJuego/'.$id)->with('mensaje','Oferta creada con éxito');
+        return redirect('ofertaJuego/'.$id);
     }
 
     /**
@@ -112,7 +113,7 @@ class OfertaController extends Controller
 
         $id1= request('id_juego_propuesto');
         //return redirect('ofertas')->with('nuevo','Oferta agregada con éxito');
-        return redirect('ofertaJuego/'.$id1)->with('nuevo','Juego agregado con éxito');
+        return redirect('ofertaJuego/'.$id1)->with('mensaje','Juego agregado con éxito');
 
     }
 
@@ -125,6 +126,6 @@ class OfertaController extends Controller
     public function destroy($id)
     {
         $juegoFisico = Http::delete(env('API_URL').'Oferta/'.$id);
-        return redirect('ofertas')->with('eliminado','Oferta borrada con éxito');
+        return redirect('ofertas')->with('mensaje','Oferta borrada con éxito');
     }
 }

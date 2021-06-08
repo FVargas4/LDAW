@@ -55,7 +55,9 @@ class OfertaJuegoController extends Controller
         ]);
 
         $id= request('id_juego_propuesto');
-        return redirect('juegofisico/'.$id)->with('nuevo','Oferta creada con éxito');
+        // return redirect('juegofisico/'.$id)->with('mensaje','Oferta creada con éxito');
+        return redirect('juegofisico/'.$id);
+
     }
 
     /**
@@ -74,7 +76,7 @@ class OfertaJuegoController extends Controller
         $oferta['oferta'] = $ofertaA->json();
         $array['array'] = $juegoFisico->json();
         //dd($oferta);
-        return view("ofertas.oferta",$array,$oferta,["titulo" => $titulo])->with('id', $id);
+        return view("ofertas.oferta",$array,$oferta,["titulo" => $titulo])->with('id', $id)->with('mensaje','Juego agregado con éxito');
     }
 
     /**
@@ -113,7 +115,7 @@ class OfertaJuegoController extends Controller
         ]);
 
         $id1= request('id_juego_propuesto');
-        return redirect('juegofisico/'.$id1)->with('nuevo','Juego agregado con éxito');
+        return redirect('juegofisico/'.$id1)->with('mensaje','Operación éxitosa');
         
     }
 
@@ -129,6 +131,6 @@ class OfertaJuegoController extends Controller
         $array1['oferta'] = $oferta->json();
         //dd($array1[]);
         $juegoFisico = Http::delete(env('API_URL').'Oferta/'.$id);
-        return redirect('juegofisico')->with('eliminado','Oferta borrada con éxito');
+        return redirect('juegofisico')->with('mensaje','Oferta borrada con éxito');
     }
 }

@@ -1,6 +1,7 @@
 @extends('layouts.main')
 
 @section('mainContent')
+<div>
 
 <div class="container">
 
