@@ -134,4 +134,12 @@ class users extends Authenticatable{
     public function getRememberTokenName(){
         return null;
     }
+
+    public function isAdmin(){
+        return $this->rol === 'admin';
+    }
+
+    public function hasPrivilege($privilege){
+        return in_array($privilege, $this->privileges);
+    }
 }

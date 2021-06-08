@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\users;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Gate;
 
 class usersController extends Controller
 {
@@ -17,6 +18,7 @@ class usersController extends Controller
     {
         //
         //dd(auth()->user());
+        Gate::authorize("viewAny", users::class);
         $usuario = users::getUsuario();
         return view("usuario.index", compact('usuario'));
     }
@@ -29,6 +31,7 @@ class usersController extends Controller
     public function create()
     {
         //
+        Gate::authorize("create", users::class);
         return view('usuario.create');
     }
 
@@ -41,6 +44,7 @@ class usersController extends Controller
     public function store(Request $request)
     {
         //
+        Gate::authorize("store", users::class);
         request()->validate([
             'name' => 'required',
             'telefono' => 'required',
@@ -71,6 +75,7 @@ class usersController extends Controller
     public function show($id)
     {
         //
+        Gate::authorize("show", users::class);
         $usuario = Http::get(env('API_URL').'users/'.$id);
         $array['array'] = $usuario->json();
         return view("usuario.show",$array);
@@ -85,6 +90,7 @@ class usersController extends Controller
     public function edit($id)
     {
         //
+        Gate::authorize("update", users::class);
         $usuario = users::findUsers_id($id);
         
         //dd($usuario);
@@ -101,7 +107,7 @@ class usersController extends Controller
     public function update(Request $request, $id)
     {
         //
-        
+        Gate::authorize("update", users::class);
         $usuario = Http::put(env('API_URL').'users/'.$id,[
             'name' => request('name'),
             'telefono' => request('telefono'),
@@ -124,6 +130,7 @@ class usersController extends Controller
     public function destroy($id)
     {
         //
+        Gate::authorize("delete", users::class);
         $usuario = Http::delete(env('API_URL').'users/'.$id);
         return redirect('usuario')->with('mensaje','Usuario borrado con éxito');
 

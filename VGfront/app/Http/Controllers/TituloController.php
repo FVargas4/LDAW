@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Titulo;
+use Illuminate\Support\Facades\Gate;
 
 use Illuminate\Support\Facades\Http;
 
@@ -16,9 +17,13 @@ class TituloController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
+
     public function index()
     {
         //
+            Gate::authorize("viewAny", Titulo::class);
             $titulo = Titulo::getTitulo();
  
             return view("titulo.titulo", ["titulo" => $titulo]);
@@ -33,6 +38,7 @@ class TituloController extends Controller
     public function create()
     {
         //
+        Gate::authorize("create", Titulo::class);
         return view('titulo.create');
     }
 
@@ -45,6 +51,7 @@ class TituloController extends Controller
     public function store(Request $request)
     {
         //
+        Gate::authorize("create", Titulo::class);
         $titulo = Http::post(env('API_URL').'titulo',[
             'nombre' => request('nombre'),
             'condicion' => request('condicion'),
@@ -66,7 +73,7 @@ class TituloController extends Controller
     public function show($id)
     {
         //
-        
+        Gate::authorize("view", Titulo::class);
         $titulo = Http::get(env('API_URL').'titulo/'.$id);
         $array['array'] = $titulo->json();
         return view("titulo.show",$array);
@@ -82,7 +89,7 @@ class TituloController extends Controller
      */
     public function edit($id)
     {
-        
+        Gate::authorize("update", Titulo::class);
         $titulo = Titulo::findtitulo_id($id);
 
     
@@ -103,7 +110,7 @@ class TituloController extends Controller
     public function update(Request $request, $id)
     {
         //
-
+        Gate::authorize("update", Titulo::class);
         $titulo = Http::put(env('API_URL').'titulo/'.$id,[
             'nombre' => request('nombre'),
             'condicion' => request('condicion'),
@@ -123,6 +130,7 @@ class TituloController extends Controller
     public function destroy($id)
     {
         //
+        Gate::authorize("delete", Titulo::class);
         $titulo= titulo::getTitulobyid($id);
 
         //var_dump($titulo);

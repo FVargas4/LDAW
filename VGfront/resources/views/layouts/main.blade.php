@@ -53,9 +53,11 @@
                 {{-- <li class="nav-item px-2">
                     <a class="nav-link " href="{{url('/')}}">Home</a>
                 </li> --}}
+                @can('viewAny', App\Models\Titulo::class)
                 <li class="nav-item px-2">
                     <a class="nav-link" href="{{url('/titulo')}}">Titulos</a>
                 </li>
+                @endcan
                 @auth
                 <li class="nav-item px-2">
                     <a class="nav-link " href="{{url('/ofertas')}}">Ofertas</a>
@@ -63,9 +65,11 @@
                 <li class="nav-item px-2">
                     <a class="nav-link " href="{{url('/juegofisico')}}">Mis Juegos</a>
                 </li>
+                @can('viewAny', App\Models\users::class)
                 <li class="nav-item px-2">
                     <a class="nav-link " href="{{url('/usuario')}}">Usuarios</a>
                 </li>
+                @endcan
                 @endauth
                 <li class='nav-item px-2'>
                     <a class='nav-link' href="{{url('/calendario')}}">Calendario</a>

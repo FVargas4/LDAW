@@ -41,11 +41,12 @@
           </div>
 
          
-
+          @can('create', App\Models\Titulo::class)
           <div class="align-self-center p-2">
               <a href="{{url('titulo/create')}}"  class="btn btn-success "> <span class="material-icons-outlined">add_circle</span></a>
               
           </div>
+          @endcan
 
           <div class="align-self-center p-4">
                  <a type="button" href="{{url('resenas')}}" class="btn btn-info"><span class="bi bi-book"></span></a>
@@ -70,6 +71,7 @@
 
                       <div class="container text-center">
                         <div class="float-sm-right">
+                        @can('update', App\Models\Titulo::class)
                             <div  class="btn-group" role="group" aria-label="Vertical example">
                                 <a href="{{url('/titulo/'.$titu['id'].'/edit')}}" >
                                     <button type="button" class="btn btn-success m-1">
@@ -77,13 +79,14 @@
                                     </button>  
                                 </a>
                                 <br>
-
+                        @endcan
+                        @can('delete', App\Models\Titulo::class)
                                 <form action="{{ url('/titulo/'.$titu['id']) }}" method="post" >
                                     @csrf
                                     {{ method_field('DELETE')}}
                                   <button type="submit" value="delete" class="btn btn-danger m-1" id="btn-submit" onclick="return confirm('¿Estas seguro que quieres borrar?') ;"><i class="bi bi-trash"></i></button>
                                </form>
-                             
+                        @endcan  
                             </div>   
                         </div>                 
                       </div>
