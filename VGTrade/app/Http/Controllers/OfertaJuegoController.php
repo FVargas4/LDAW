@@ -66,6 +66,7 @@ class OfertaJuegoController extends Controller
             't2.nombre as TituloJuegoOfertado','u2.name as NombreUsuarioOfer','u2.telefono as telefonoOf','u2.email as emailOf','jf2.consola1 as ConsolaJuegoOfertado','jf2.condicion1 as CondicionJuegoOfertado',)
             // ->where('ofertas.id',$id)
             ->where('ofertas.id_juego_propuesto',$id)
+            ->where('ofertas.id_juego_ofertado', '!=' , 1)
             ->orderBy('id', 'desc')
             ->get();
           

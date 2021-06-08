@@ -69,10 +69,12 @@ class OfertaJuegoController extends Controller
         $titulo = Titulo::getTitulo();
         $juegoFisico = Http::get(env('API_URL').'JuegoFisico/'.$id);
         $ofertaA = Http::get(env('API_URL').'OfertaUsuario/'.$id);
+        //$ofertaA = Http::get(env('API_URL').'OfertaJuego/'.$id);
+
         $oferta['oferta'] = $ofertaA->json();
         $array['array'] = $juegoFisico->json();
-        dd($oferta);
-        //return view("ofertas.oferta",$array,$oferta,["titulo" => $titulo])->with('id', $id);
+        //dd($oferta);
+        return view("ofertas.oferta",$array,$oferta,["titulo" => $titulo])->with('id', $id);
     }
 
     /**
@@ -112,6 +114,7 @@ class OfertaJuegoController extends Controller
 
         $id1= request('id_juego_propuesto');
         return redirect('juegofisico/'.$id1)->with('nuevo','Juego agregado con éxito');
+        
     }
 
     /**

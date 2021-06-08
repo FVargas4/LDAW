@@ -69,10 +69,10 @@
               <h5>Lista de Ofertas registradas </h5>
           </div>
 
-          <div class="align-self-center p-2">
+          {{-- <div class="align-self-center p-2">
               <a href="{{url('ofertas/create')}}"  class="btn btn-success "> <span class="material-icons-outlined">add_circle</span></a>
               
-          </div>
+          </div> --}}
 
          
       </div>  
@@ -114,9 +114,10 @@
                           <td id="center">
                               @if( $juego['id_juego_ofertado'] == NULL )
                               <br><br>
-                                  <a href="{{url('/ofertas/'.$juego['id'].'/edit')}}"class="btn btn-success">
+                                <p>No hay ofertas</p>
+                                  {{-- <a href="{{url('/ofertas/'.$juego['id'].'/edit')}}"class="btn btn-success">
                                       Ofertar
-                                  </a>
+                                  </a> --}}
                               @else
                                   @if($juego['estado'] == 'Completada')
                                       <p>{{$juego['NombreUsuarioOfer']}}</p>
@@ -151,13 +152,13 @@
                                 <button type="submit" class="btn btn-success" id="btn-submit" onclick="return confirm('¿Estas seguro que quieres aceptar la oferta?') ;"><i class="bi bi-check-square"></i></button>
                                 </form>
                             
-                                <form action="{{ url('/ofertaJuego/'.$juego['id'])}}" class="d-inline" method="post" >
+                                {{-- <form action="{{ url('/ofertaJuego/'.$juego['id'])}}" class="d-inline" method="post" >
                                   @csrf
                                   {{ method_field('PATCH')}}
                                   <input type="hidden" class="form-control" value="Abierta" name="estado"  id="estado">
                                   <input type="hidden" class="form-control" value={{$juego['id_juego_propuesto']}} name="id_juego_propuesto"  id="id_juego_propuesto">
                                 <button type="submit" class="btn btn-warning" id="btn-submit" onclick="return confirm('¿Estas seguro que quieres rechazar la oferta?') ;"><i class="bi bi-x-square"></i></button>
-                                </form>
+                                </form> --}}
 
                               <br><br>
                               <form action="{{ url('/ofertaJuego/'.$juego['id'])}}" class="d-inline" method="post" >

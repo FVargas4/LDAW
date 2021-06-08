@@ -7,6 +7,7 @@ use App\Http\Controllers\TituloController;
 use App\Http\Controllers\OfertaController;
 use App\Http\Controllers\OfertaJuegoController;
 use App\Http\Controllers\OfertaUsuarioController;
+use App\Http\Controllers\JuegoFisicoTituloController;
 
 
 /*
@@ -31,6 +32,7 @@ Route::apiResource('JuegoFisico',JuegoFisicoController::class);
 Route::apiResource('Oferta',OfertaController::class);
 Route::apiResource('OfertaJuego',OfertaJuegoController::class);
 Route::apiResource('OfertaUsuario',OfertaUsuarioController::class);
+Route::apiResource('Juegos',JuegoFisicoTituloController::class);
 
 
 // Route::get('/JuegoFisico', [JuegoFisicoController::class, 'index']);

@@ -80,7 +80,7 @@
         </div>
 
 <div class="col text-center m-3">
-    <button class="btn btn-success" type="submit"><i class="bi bi-pencil-square"></i> Ofertar</button>
+    <button class="btn btn-success" type="submit">Siguiente</button>
 </div>
 
 </div>

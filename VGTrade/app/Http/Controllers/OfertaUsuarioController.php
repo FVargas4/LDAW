@@ -65,15 +65,17 @@ class OfertaUsuarioController extends Controller
             ->select('ofertas.*', 't1.nombre as TituloJuegoPropuesto','u1.name as NombreUsuarioProp','u1.telefono as telefonoPro','u1.email as emailPro','jf1.consola1 as ConsolaJuegoPropuesto','jf1.condicion1 as CondicionJuegoPropuesto',
             't2.nombre as TituloJuegoOfertado','u2.name as NombreUsuarioOfer','u2.telefono as telefonoOf','u2.email as emailOf','jf2.consola1 as ConsolaJuegoOfertado','jf2.condicion1 as CondicionJuegoOfertado',)
             // ->where('ofertas.id',$id)
-            ->where('ofertas.id',$id)
+            ->where('ofertas.id_juego_propuesto',$id)
             ->orderBy('id', 'desc')
+            ->latest()
+            ->take(1)
             ->get();
           
-           // return response()->json($success);
+            return response()->json($success);
 
-        return [
-             $success[0]
-        ];
+        // return [
+        //      $success[0]
+        // ];
     }
 
     /**
