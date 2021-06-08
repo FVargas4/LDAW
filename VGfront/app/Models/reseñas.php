@@ -20,6 +20,21 @@ class reseñas extends Model
     }
 
 
+    public static function getResenasid($id){
+
+        $response = Http::delete(env('API_URL').'resenas/'.$id);
+
+
+        //el 200 es un codigo de respuesta satisfactorio de http
+        if($response->status()==200){
+
+            return(true);
+        }
+        return "adsdf";
+
+    }
+
+
 
 
     use HasFactory;

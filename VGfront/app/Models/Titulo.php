@@ -17,6 +17,7 @@ class Titulo{
         return $response -> json();
     }
 
+
     public static function findtitulo_id($id){
 
         $response = Http::get(env('API_URL').'titulo/'.$id);

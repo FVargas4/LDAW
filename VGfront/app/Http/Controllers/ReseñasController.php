@@ -8,6 +8,10 @@ use App\Models\reseñas;
 
 use App\Models\Titulo;
 
+use App\Models\users;
+
+use Illuminate\Support\Facades\Http;
+
 class ReseñasController extends Controller
 {
     /**
@@ -18,9 +22,6 @@ class ReseñasController extends Controller
     public function index()
     {
         //
-        
-
-
 
         $resenas= reseñas::getResenas();
  
@@ -38,7 +39,10 @@ class ReseñasController extends Controller
 
 
         $titulo = Titulo::getTitulo();
-        return view('resenas.create',["titulo" => $titulo]);
+         $usuario = users::getUsuario();
+
+        //return view('resenas.create',["titulo" => $titulo]);
+       return view('resenas.create',["usuario" => $usuario, "titulo" => $titulo ]);
     }
 
     /**
@@ -50,6 +54,24 @@ class ReseñasController extends Controller
     public function store(Request $request)
     {
         //
+
+
+        request()->validate([
+            'id_user' => 'required',
+            'id_titulo' => 'required',
+            'calificacion' => 'required',
+            'descripcion' => 'required',
+        ]);
+
+        $resenas = Http::post(env('API_URL').'resenas',[
+
+            'id_user' => request('id_user'),
+            'id_titulo' => request('id_titulo'),
+            'calificacion' => request('calificacion'),
+            'descripcion' => request('descripcion'),
+        ]);
+
+        return redirect('resenas')->with('mensaje','Reseña agregada con éxito');
     }
 
     /**
@@ -95,5 +117,10 @@ class ReseñasController extends Controller
     public function destroy($id)
     {
         //
+
+        $response = reseñas::getResenasid($id);
+
+        return redirect('resenas')->with('mensaje','Reseña borrada con éxito');
     }
+
 }
