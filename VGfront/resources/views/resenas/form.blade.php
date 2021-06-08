@@ -37,20 +37,25 @@
         </div>
 
 
+
         <div class="mb-3">
                     <div class="form-group m-3">
 
                         <label for="id_titulo">Titulo</label>
+
+
                         <br>
                             @if(empty($titulo))
                                 <select id="disabledSelect" class="custom-select">
                                 <option selected>No existen titulos</option>
                             @else
+
                                     <select class="form-control selectpicker" name="id_titulo" id="id_titulo" data-live-search="true">
 
                                 @if ($modo == "Editar")
                                 
                                     <option value="{{ isset($array['id_titulo'])?$array['titulo_id']:old('id_titulo') }}" selected>{{ isset($array['nombre'])?$array['nombre']:old('nombre') }}</option>
+                                 
                                 @elseif ($modo == "Crear")
                                     <option selected>Selecciona un titulo</option>
                                 @endif
@@ -81,6 +86,7 @@
         </div>
 
     </div>
+
 
     
          <div class="px-4 text-center">
