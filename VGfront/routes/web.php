@@ -48,6 +48,8 @@ Route::resource('ofertas',OfertaController::class);
 Route::delete('/titulo/{id}', 'App\Http\Controllers\TituloController@destroy');
 Route::delete('/usuario/{id}', 'App\Http\Controllers\usersController@destroy');
 
+
+
 //Route::get('/login', [usersController::class, 'login']);
 //Route::get('/check', [usersController::class, 'check']);
 

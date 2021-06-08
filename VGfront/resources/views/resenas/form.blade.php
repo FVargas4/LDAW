@@ -3,45 +3,86 @@
 
 <div class="bg-white container mt-5 bg-white shadow-sm p-3 mb-5 bg-body rounded" id="table-usr">
 
-    <h3 class="text-center mb-3">Crear Título Nuevo </h3>
+    <h3 class="text-center mb-3">Crear Reseña Nueva </h3>
 
     <div class="form-group">
         <div class="mb-3">
             
+                    <div class="form-group m-3">
 
-        <div class="form-group m-3">
+                        <label for="id_user">Usuario</label>
+                        <br>
+                            @if(empty($usuario))
+                                <select id="disabledSelect" class="custom-select">
+                                <option selected>No existen usuarios</option>
+                            @else
+                                    <select class="form-control selectpicker" name="id_user" id="id_user" data-live-search="true">
 
-                    <label for="titulo_id">Titulo</label>
-                    <br>
-                        @if(empty($titulo))
-                            <select id="disabledSelect" class="custom-select">
-                            <option selected>No existen titulos</option>
-                        @else
-                                <select class="form-control selectpicker" name="titulo_id" id="titulo_id" data-live-search="true">
-
-                            @if ($modo == "Editar")
-                            
-                                <option value="{{ isset($array['titulo_id'])?$array['titulo_id']:old('titulo_id') }}" selected>{{ isset($array['nombre'])?$array['nombre']:old('nombre') }}</option>
-                            @elseif ($modo == "Crear")
-                                <option selected>Selecciona un titulo</option>
+                                @if ($modo == "Editar")
+                                
+                                    <option value="{{ isset($array['id_user'])?$array['id_user']:old('id_user') }}" selected>{{ isset($array['name'])?$array['name']:old('name') }}</option>
+                                @elseif ($modo == "Crear")
+                                    <option selected>Selecciona el usuario</option>
+                                @endif
                             @endif
-                        @endif
-                        @foreach($titulo as $titulo)
-                            <option id="titulo_id" name="titulo_id" data-tokens={{$titulo['nombre']}} value={{$titulo['id']}}>{{$titulo['nombre']}}</option>
-                        @endforeach
-                    </select>
+                            @foreach($usuario as $usuario)
+                                <option id="id_user" name="id_user" data-tokens={{$usuario['name']}} value={{$usuario['id']}}>{{$usuario['name']}}</option>
+                            @endforeach
+                        </select>
+
+                    </div>
+                    @if(empty($usuario))
+                    </fieldset>
+                    @endif
+        </div>
+
+
+        <div class="mb-3">
+                    <div class="form-group m-3">
+
+                        <label for="id_titulo">Titulo</label>
+                        <br>
+                            @if(empty($titulo))
+                                <select id="disabledSelect" class="custom-select">
+                                <option selected>No existen titulos</option>
+                            @else
+                                    <select class="form-control selectpicker" name="id_titulo" id="id_titulo" data-live-search="true">
+
+                                @if ($modo == "Editar")
+                                
+                                    <option value="{{ isset($array['id_titulo'])?$array['titulo_id']:old('id_titulo') }}" selected>{{ isset($array['nombre'])?$array['nombre']:old('nombre') }}</option>
+                                @elseif ($modo == "Crear")
+                                    <option selected>Selecciona un titulo</option>
+                                @endif
+                            @endif
+                            @foreach($titulo as $titulo)
+                                <option id="id_titulo" name="id_titulo" data-tokens={{$titulo['nombre']}} value={{$titulo['id']}}>{{$titulo['nombre']}}</option>
+                            @endforeach
+                        </select>
 
                     </div>
                     @if(empty($titulos))
                     </fieldset>
                     @endif
-
-
         </div>
+
+        <div class="form-group">
+            <div class="mb-3">
+                <label for="calificacion">Calificacion<span aria-hidden="true" class="required text-danger" >*</span></label>
+                <input type="number" class="form-control" placeholder="8" name="calificacion" value="{{ isset($resenas->calificacion)?$resenas->calificacion:old('calificacion') }}" id="calificacion" required>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="mb-3">
+                <label for="descripcion">Descripcion<span aria-hidden="true" class="required text-danger" >*</span></label>
+                <input type="text" class="form-control" placeholder="Juego del año" name="descripcion" value="{{ isset($resenas->descripcion)?$resenas->descripcion:old('descripcion') }}" id="descripcion" required>
+            </div>
+        </div>
+
     </div>
 
     
-
          <div class="px-4 text-center">
             <input type="submit"  class="btn btn-success w-50 mt-0" value="Crear Título"> 
         </div>
