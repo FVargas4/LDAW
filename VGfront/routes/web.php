@@ -26,6 +26,7 @@ Route::get("/pi", [IntegrantesControllers::class, 'getText']);
 
 Route::get("/", function(){
 
+    //dd(auth()->user());
     return view("vghome");
 });
 

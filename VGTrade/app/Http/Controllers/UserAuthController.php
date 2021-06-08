@@ -39,13 +39,16 @@ class UserAuthController extends Controller{
     public function getUser(Request $request){
 
         $user = $request->user();
+        
 
-        return [
+        $data = [
             "email" => $user->email,
             "name" => $user->name,
-            //"rol" => $user->rol->name,
-            //"privilegios" => $user->getPrivilegesList()
-        ];
+            "rol" => $user->rol->nombre,
+            "privilegios" => $user->getPrivilegesList()];
+        
+       
+        return $data;
 
     }
 

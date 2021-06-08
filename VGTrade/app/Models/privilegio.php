@@ -14,6 +14,7 @@ class privilegio extends Model
 
     //Desactivar los timestamps
     public $timestamps = false;
+    protected $table = "privilegio";
 
     /******************
         ASOCIACIONES

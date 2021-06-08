@@ -36,9 +36,16 @@ class users extends Authenticatable
 
     public function getPrivilegesList(){
 
-        $privileges = $this->rol->privilegio->pluck("nombre");
+         //var_dump($this->rol->privilegios);
+         //die;
+        
+        $privileges = $this->rol->privilegios;
 
-        return $privileges;
+        if($privileges){
+            return $privileges->pluck("nombre");
+        }
+
+        return [];
 
     }
 }

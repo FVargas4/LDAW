@@ -2,8 +2,6 @@
 
 @section('pageTitle', "VGTrade")
 
-@section('tituloM', "Home Page")
-
 @section('mainContent')
     <h1 class="text-center text-light">Let's trade</h1>
     <img src="img/prueba/prueba.jpg" width="40%" class="center">

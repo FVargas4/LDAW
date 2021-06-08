@@ -16,6 +16,8 @@ class rol extends Model
     //Desactivar los timestamps
     public $timestamps = false;
 
+    protected $table = 'rol';
+
     /******************
         ASOCIACIONES
     *******************/
@@ -26,8 +28,8 @@ class rol extends Model
     }
 
     //Un rol puede tener muchos privilegios N a N
-    public function privileges(){
-        return $this->belongsToMany(privilegio::class,"rol_privilegio");
+    public function privilegios(){
+        return $this->belongsToMany(privilegio::class,"rol_privilegio", 'rol_id', 'privilegio_id');
     }
 }
 
