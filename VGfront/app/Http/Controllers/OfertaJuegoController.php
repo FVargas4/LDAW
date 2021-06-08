@@ -66,7 +66,13 @@ class OfertaJuegoController extends Controller
      */
     public function show($id)
     {
-        //
+        $titulo = Titulo::getTitulo();
+        $juegoFisico = Http::get(env('API_URL').'JuegoFisico/'.$id);
+        $ofertaA = Http::get(env('API_URL').'OfertaUsuario/'.$id);
+        $oferta['oferta'] = $ofertaA->json();
+        $array['array'] = $juegoFisico->json();
+        dd($oferta);
+        //return view("ofertas.oferta",$array,$oferta,["titulo" => $titulo])->with('id', $id);
     }
 
     /**

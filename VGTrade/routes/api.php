@@ -6,6 +6,7 @@ use App\Http\Controllers\JuegoFisicoController;
 use App\Http\Controllers\TituloController;
 use App\Http\Controllers\OfertaController;
 use App\Http\Controllers\OfertaJuegoController;
+use App\Http\Controllers\OfertaUsuarioController;
 
 
 /*
@@ -29,7 +30,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::apiResource('JuegoFisico',JuegoFisicoController::class);
 Route::apiResource('Oferta',OfertaController::class);
 Route::apiResource('OfertaJuego',OfertaJuegoController::class);
-
+Route::apiResource('OfertaUsuario',OfertaUsuarioController::class);
 
 
 // Route::get('/JuegoFisico', [JuegoFisicoController::class, 'index']);

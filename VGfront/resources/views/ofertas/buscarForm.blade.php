@@ -10,55 +10,58 @@
 
 
     <div class="form-group m-3">
-            <label for="id_juego_propuesto"><strong>Busca un juego de tu interés para hacerle una oferta</strong></label>
+            <h6><strong>Busca un juego de tu interés para hacerle una oferta</strong></h6>
        
-       
-        <br><br>
-            @if(empty($array))
-                <select id="disabledSelect" class="custom-select">
-                <option selected>No hay juegos registrados para intercambiar</option>
-            @else
-                @if ($modo == "Crear")
-                    <select class="form-control selectpicker" name="id_juego_propuesto" id="id_juego_propuesto" data-live-search="true">
-                    <option selected>Selecciona uno</option>
-                @else
-                    <select class="form-control selectpicker" name="id_juego_ofertado" id="id_juego_ofertado" data-live-search="true">
-                        <option selected>Selecciona uno</option>
-                @endif
-                        
-            @endif
-            @foreach($array as $juegofisico)
-            @if ($modo == "Editar")
-                <option id="id_juego_ofertado" name="id_juego_ofertado" data-tokens={{$juegofisico['nombre']}} value={{$juegofisico['id']}}>{{$juegofisico['nombre']}}</option>
+            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Buscar">
+  <br><br>
+            <table id="myTable" class="table table-sm">
+                <thead>
+                  <tr>
+                    <th scope="col">Titulo</th>
+                    <th scope="col">Consola</th>
+                    <th scope="col">Condición</th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                @foreach ($array as $juego)
+                <tbody>
+                  <tr>
+                    <td>{{$juego['nombre']}}</td>
+                    <td>{{$juego['consola1']}}</td>
+                    <td>{{$juego['condicion1']}}</td>
+                    <td>  
+                        <a href="{{url('ofertas/'.$juego['id'])}}"  class="btn btn-success ">
 
-            @else
-                <option id="id_juego_propuesto" name="id_juego_propuesto" data-tokens={{$juegofisico['nombre']}} value={{$juegofisico['id']}}>{{$juegofisico['nombre']}}</option>
-
-            @endif
-            @endforeach
-        </select>
-        
-        </div>
-        @if(empty($juegofisico))
-          </fieldset>
-        @endif
-
-
-<div class="col text-center m-3">
-    <button class="btn btn-success" type="submit"><i class="bi bi-pencil-square"></i> Seleccionar</button>
-</div>
-
+                            <i class="bi bi-clipboard"></i>
+                        </a>
+                    </td>
+                  </tr>
+                  @endforeach 
+                </tbody>
+              </table>
 </div>
 
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script>
+    function myFunction() {
+      // Declare variables
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("myInput");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("myTable");
+      tr = table.getElementsByTagName("tr");
     
-    <!-- Latest compiled and minified JavaScript -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js" integrity=""></script>
-
-        <!-- (Optional) Latest compiled and minified JavaScript translation files -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/i18n/defaults-*.min.js" integrity=""></script>
+      // Loop through all table rows, and hide those who don't match the search query
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[0];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    }
+    </script>

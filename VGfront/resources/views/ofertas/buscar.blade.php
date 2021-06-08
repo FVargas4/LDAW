@@ -4,10 +4,10 @@
 
 <div class="container">
 
-    <form action="{{url('/ofertaJuego')}}" method="post">
-        @csrf
+    {{-- <form action="{{url('/ofertaJuego')}}" method="post"> --}}
+        {{-- @csrf --}}
         @include('ofertas.buscarForm',['modo'=>'Crear'])
-    </form>
+    {{-- </form> --}}
 </div>
 
 @endsection

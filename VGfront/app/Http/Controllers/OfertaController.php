@@ -55,7 +55,10 @@ class OfertaController extends Controller
             'estado' => request('estado'),
         ]);
 
-        return redirect('ofertas')->with('nuevo','Oferta creada con éxito');
+        //return redirect('ofertas')->with('nuevo','Oferta creada con éxito');
+
+        $id= request('id_juego_propuesto');
+        return redirect('ofertaJuego/'.$id)->with('nuevo','Oferta creada con éxito');
     }
 
     /**
@@ -66,7 +69,9 @@ class OfertaController extends Controller
      */
     public function show($id)
     {
-        //
+        $juegofisico = Http::get(env('API_URL').'JuegoFisico/'.$id);
+        $array['array'] = $juegofisico->json();
+        return view('ofertas.create2',$array);
     }
 
     /**
