@@ -99,7 +99,7 @@ class users extends Authenticatable{
 
             $user->email = $userData["email"];
             $user->name = $userData["name"];
-            //$user->role = $userData["role"];
+            //$user->rol = $userData["rol"];
             //$user->privileges = $userData["privileges"];
             $user->token = $token;
 

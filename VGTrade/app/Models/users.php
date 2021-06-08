@@ -30,6 +30,15 @@ class users extends Authenticatable
     //     $usuarios = self::select('*')->where('email', '=', $mail)->first();
     //     return $usuarios;
     // }
+    public function rol(){
+        return $this->belongsTo(rol::class);
+    }
 
-    use HasFactory;
+    public function getPrivilegesList(){
+
+        $privileges = $this->rol->privilegio->pluck("nombre");
+
+        return $privileges;
+
+    }
 }

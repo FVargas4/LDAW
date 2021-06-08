@@ -23,6 +23,15 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
+
+        Schema::table('users', function (Blueprint $table) {
+
+            $table->foreignId('rol_id')
+                ->nullable()//Debido a que ya existen usuarios en la BD
+                ->onUpdate("cascade")
+                ->onDelete("cascade");
+
+        });
     }
 
     /**

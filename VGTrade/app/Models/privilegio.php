@@ -5,10 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class rol extends Model
+class privilegio extends Model
 {
     use HasFactory;
-
     /*******************
         CONFIGURACIÓN
     ********************/
@@ -20,16 +19,11 @@ class rol extends Model
         ASOCIACIONES
     *******************/
 
-    //Un rol puede tener muchos usuarios
-    public function users(){
-        return $this->hasMany(users::class);
+    //Un privilegio puede estar asociado a muchos roles N a N
+    public function roles(){
+        return $this->belongsToMany(rol::class,"rol_privilegio");
     }
 
-    //Un rol puede tener muchos privilegios N a N
-    public function privileges(){
-        return $this->belongsToMany(privilegio::class,"rol_privilegio");
-    }
+    
+
 }
-
-
-

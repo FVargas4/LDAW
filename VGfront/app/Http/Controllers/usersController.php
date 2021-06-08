@@ -16,6 +16,7 @@ class usersController extends Controller
     public function index()
     {
         //
+        //dd(auth()->user());
         $usuario = users::getUsuario();
         return view("usuario.index", compact('usuario'));
     }
