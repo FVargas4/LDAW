@@ -30,6 +30,9 @@ class users extends Authenticatable
     //     $usuarios = self::select('*')->where('email', '=', $mail)->first();
     //     return $usuarios;
     // }
+    public function roles(){
+        return $this->belongsTo(rol::class);
+    }
 
     use HasFactory;
 }

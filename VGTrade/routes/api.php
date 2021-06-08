@@ -50,22 +50,9 @@ Route::apiResource('resenas',ResenasController::class);
 //Login de Sanctum
 Route::post('/login', [UserAuthController::class, 'login']);
 
-Route::middleware('auth:sanctum')->get('/user', function(Request $request){
+Route::middleware('auth:sanctum')->get('/user', [UserAuthController::class, 'getUser'] );
 
-    $user = $request->user();
-
-    return [
-        "email" => $user->email,
-        "name" => $user->name
-        //"role" => $user->role->name,
-       // "privileges" => $user->getPrivilegesList()
-    ];
-
-});
-
-Route::middleware('auth:sanctum')->get('/logout', function(Request $request){
-    $request->user()->tokens()->delete();
-});
+Route::middleware('auth:sanctum')->get('/logout', [UserAuthController::class, 'logout']);
 
 Route::get('/hash/{contrasena}', function($contra){
     return Hash::make($contra);
