@@ -54,7 +54,7 @@ class JuegoFisicoController extends Controller
             'consola1' => request('consola'),
         ]);
 
-        return redirect('juegofisico')->with('nuevo','Juego agregado con éxito');
+        return redirect('juegofisico')->with('mensaje','Juego agregado con éxito');
     }
 
     /**
@@ -65,9 +65,13 @@ class JuegoFisicoController extends Controller
      */
     public function show($id)
     {
+        $titulo = Titulo::getTitulo();
         $juegoFisico = Http::get(env('API_URL').'JuegoFisico/'.$id);
+        $ofertaA = Http::get(env('API_URL').'OfertaJuego/'.$id);
+        $oferta['oferta'] = $ofertaA->json();
         $array['array'] = $juegoFisico->json();
-        return view("juegofisico.show",$array);
+        //dd($array)
+        return view("juegofisico.show",$array,$oferta,["titulo" => $titulo])->with('id', $id);
     }
 
     /**
@@ -78,11 +82,6 @@ class JuegoFisicoController extends Controller
      */
     public function edit($id)
     {
-        // $titulo = Titulo::getTitulo();
-        // $juegoFisico = Http::get(env('API_URL').'JuegoFisico/'.$id);
-        // $array['array'] = $juegoFisico->json();
-        // return view('juegofisico.edit',$array,["titulo" => $titulo])->with('id', $id);
-
         $titulo = Titulo::getTitulo();
         $juegoFisico = Http::get(env('API_URL').'JuegoFisico/'.$id);
         $array['array'] = $juegoFisico->json();
@@ -106,9 +105,10 @@ class JuegoFisicoController extends Controller
             'user_id' => request('user_id'),
             'condicion1' => request('condicion'),
             'consola1' => request('consola'),
+            'enOferta' => request('enOferta')
         ]);
 
-        return redirect('juegofisico')->with('nuevo','Juego agregado con éxito');
+        return redirect('juegofisico')->with('mensaje','Cambios realizados con éxito');
     }
 
     /**
@@ -120,7 +120,7 @@ class JuegoFisicoController extends Controller
     public function destroy($id)
     {
         $juegoFisico = Http::delete(env('API_URL').'JuegoFisico/'.$id);
-        return redirect('juegofisico')->with('eliminado','Juego borrado con éxito');
+        return redirect('juegofisico')->with('mensaje','Juego borrado con éxito');
 
     }
 }

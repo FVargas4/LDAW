@@ -70,6 +70,13 @@
                 <li class='nav-item px-2'>
                     <a class='nav-link' href="{{url('/calendario')}}">Calendario</a>
                 </li>
+
+
+                <li class="nav-item px-2">
+                    <a class="nav-link " href="{{url('/resenas')}}">Reseñas</a>
+                </li>
+
+
                 <li class="nav-item px-2 d-flex">
                     @auth
                     <a class="nav-link text-secondary" href="{{url('logout')}}" role="button">

@@ -3,6 +3,7 @@
 </div>
 
 
+
 <div class="bg-white container mt-5 bg-white shadow-sm p-3 mb-5 bg-body rounded" id="table-usr">
 
 
@@ -18,18 +19,28 @@
             </div>
             @endif
       </div>
-
-    <h3 class="text-center mb-3">Mis Juegos</h3>
+      @foreach ($array as $juego)
+    <h3 class="text-center mb-3">{{$juego['nombre']}}</h3>
         <div class="align-self-center p-2">
           <a href="{{url('/')}}"  class="btn btn-success "> <span class="material-icons-outlined">keyboard_backspace</span></a>
           
         </div>
     <div class="table-responsive">
-
+      <div class="container">
+        <table class="table table-sm">
+          <tbody>
+            <tr>
+              <td scope="col">Titulo: {{$juego['nombre']}}</td>
+              <td scope="col">Consola: {{$juego['consola1']}}</td>
+              <td scope="col">Condición: {{$juego['condicion1']}}</td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
       <div class="d-flex border-bottom mb-3">
 
           <div class="me-auto p-2">
-              <h1 class="text-left fs-4">Lista de Juegos registrados </h3>
+              <h5>Lista de Ofertas registradas </h5>
           </div>
 
           <div class="align-self-center p-2">
@@ -37,9 +48,11 @@
               
           </div>
 
-      </div>
-        
-        <div class="container">
+      </div>  
+
+       
+
+
           <table class="table table-sm">
             <thead>
               <tr>
@@ -49,7 +62,7 @@
                 <th scope="col"></th>
               </tr>
             </thead>
-            @foreach ($array as $juego)
+           
             <tbody>
               <tr>
                 <td>{{$juego['nombre']}}</td>

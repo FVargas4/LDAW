@@ -107,13 +107,8 @@ class ResenasController extends Controller
 
         $result =$device->delete();
 
-        if($result){
+       
+        return ["success" => $result];
 
-            return ["result" => "record has been delete"];
-
-        }else{
-
-            return["result"=>"delete operation failed"];
-        }
     }
 }

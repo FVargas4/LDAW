@@ -52,18 +52,18 @@
             </div> 
 
       </div>
-        
+      <div class="table-responsive">
         <div class="container">
            <div class="row">
                @foreach($titulo as $titu)
                
-                    <div class="card  m-2" style="width: 18rem;">
+                    <div class="card m-3" style="width: 18rem;">
                         
                             <div class="card-body">
                                      
-                                    <p>Titulo:<h5 class="card-title">{{ $titu['nombre'] }}</h5></p>
+                                    <p class="card-title">Titulo: {{ $titu['nombre'] }}</p>
                                     <p>Descripcion:<p class="card-text">  {{$titu['condicion'] }}</p></p>
-                                    <p class="card-text">  {{$titu['consola'] }}</p>
+                                    <p class="card-text">Consola:  {{$titu['consola'] }}</p>
                                     
                                      
                             </div>
@@ -94,6 +94,7 @@
                @endforeach
            </div>
         </div>
+      </div>
    
   </div>
 @endsection
