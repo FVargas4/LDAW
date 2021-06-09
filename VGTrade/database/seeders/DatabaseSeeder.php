@@ -18,5 +18,11 @@ class DatabaseSeeder extends Seeder
          \App\Models\JuegoFisico::factory(10)->create();
          \App\Models\Oferta::factory(10)->create();
          \App\Models\Resena::factory(10)->create();
+         
+         $this->call([
+            PrivilegioSeeder::class,
+            RolSeeder::class,
+            usersSeeder::class,
+            ]);
     }
 }

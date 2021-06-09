@@ -13,10 +13,10 @@ class CreatePriviegio extends Migration
      */
     public function up()
     {
-        Schema::create('priviegio', function (Blueprint $table) {
+        Schema::create('privilegio', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->string('descripcion');
+            $table->string('descripcion')->nullable();
         });
     }
 
@@ -27,6 +27,6 @@ class CreatePriviegio extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('priviegio');
+        Schema::dropIfExists('privilegio');
     }
 }
