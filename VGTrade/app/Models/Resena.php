@@ -32,7 +32,14 @@ class Resena extends Model
         return $resenas;
     }
 
-
+    public static function getName_3(){
+        $resenas = DB::table('resenas')->take(3)
+                        ->select('resenas.id','users.name as autor','titulos.nombre as titulo','resenas.calificacion','resenas.descripcion', 'resenas.created_at')
+                        ->leftJoin('titulos','titulos.id',"=",'resenas.id_titulo')
+                        ->leftJoin('users','users.id',"=",'resenas.id_user')
+                        ->get();
+        return $resenas;
+    }
 
 
 

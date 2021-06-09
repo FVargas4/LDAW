@@ -88,3 +88,37 @@
     border: 1px solid #ddd; /* Add a grey border */
     margin-bottom: 12px; /* Add some space below the input */
   }
+
+  .center1 {
+    margin: auto;
+    width: 50%;
+    border: 3px solid green;
+    padding: 10px;
+  }
+
+  .delimitador{
+
+    width:560px;
+    margin:auto;
+
+}
+/* El contenedor con el padding-top crea el tamaño del vídeo */
+.contenedor{
+
+    height:0px;
+    width:100%;
+    max-width:560px; /* Así establecemos el ancho máximo (si lo queremos) */
+    padding-top:56.25%; /* Relación: 16/9 = 56.25% */
+    position:relative;
+
+}
+/* El iframe se adapta al tamaño del contenedor */
+iframe{
+
+    position:absolute;
+    height:100%;
+    width:100%;
+    top:0px;
+    left:0px;
+
+}

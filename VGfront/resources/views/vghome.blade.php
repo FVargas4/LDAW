@@ -4,43 +4,74 @@
 
 @section('mainContent')
     <h1 class="text-center text-light">Let's trade</h1>
-    <img src="img/prueba/prueba.jpg" width="40%" class="center">
-    <div class="container">
-        <div class="row p-10 m-10">
-            <div class="col-4  p-10 m-10">
-                <div class="card center" style="width: 18rem;">
-                    <img src="img/prueba/prueba.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  
+        
+    <div class="mt-3 container">
+
+         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                    <img src="img/prueba/prueba.jpg" width="10%" class="center">
                     </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">An item</li>
-                        <li class="list-group-item">A second item</li>
-                        <li class="list-group-item">A third item</li>
-                    </ul>
-                    <div class="card-body">
-                        <a href="#" class="card-link">Card link</a>
-                        <a href="#" class="card-link">Another link</a>
+                    <div class="carousel-item">
+                    <img src="img/prueba/haloreach.jpg" width="10%" class="center">
+                    </div>
+                    <div class="carousel-item">
+                    <img src="img/prueba/maxresdefault.jpg" width="10%" class="center">
                     </div>
                 </div>
+                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+        </div>
+
+        <div class="mt-5">
+
+        <div class="table-responsive">
+            
+        <div class="container py-3">
+                <div class="row">
+                <h2 class="text-center text-white">Reseñas </h2>
+            @foreach($resenas as $resena)
+      
+            <div class="card mt-4" style="width: 20rem;">
+                    
+                    <div class="card-body">
+                            
+                            <p class="card-title">Autor: {{ $resena['autor'] }}</p>
+                            <p class="card-title">Titulo:  {{ $resena['titulo'] }}</p>
+                            <p class="card-title">Calificacion: {{ $resena['calificacion'] }}</p>
+                            <p>Descripcion:<p class="card-text">  {{$resena['descripcion'] }}</p></p>
+                            <!--<p>Fecha de Creacion:<p class="card-text">  {{$resena['created_at'] }}</p></p>-->   
+                    </div>
+                    
+                    <br>
             </div>
-            <div class="col-8 p-10 m-10">
-                <div class="container bg-light center p-10 m-10">
-                    <h2 class="text-center">Titulo</h2>
-                    <div class="row text-center">
-                        <div class="col-3">
-                            <img  src="img/prueba/prueba.jpg" class="center" width="10%"> 
-                        </div>
-                        <div class="col-8">
-                        <p class="p-20">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat animi vitae maxime
-                        molestias temporibus similique, pariatur, praesentium ipsam, iste quae minima quo nesciunt excepturi
-                        tenetur quidem! Nobis dolor nostrum omnis!</p>
-                        </div>
+            <br>
+            @endforeach            
+            
+            
+                <div class="mt-4 delimitador">
+                        <h2 class="text-center p-3 mb-2 bg-primary text-white">Videojuegos más famosos </h2>
+                    <div class="contenedor">
+
+                        <iframe src="https://www.youtube.com/watch?v=a_1Ero_1-m8"></iframe>
+
+                    </div>
+                    
+
                 </div>
 
-            </div>
+
+     
+                </div>
         </div>
-        
-    </div>
+        </div>
+
+     </div>
 @endsection

@@ -20,17 +20,14 @@ use App\Http\Controllers\OfertaJuegoController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+use App\Http\Controllers\ReseñasController;
 
 Route::get('/welcome', function () {
     return view('welcome');
 });
 Route::get("/pi", [IntegrantesControllers::class, 'getText']);
 
-Route::get("/", function(){
-
-    //dd(auth()->user());
-    return view("vghome");
-});
+Route::get("/",[ReseñasController::class, 'main_vghome']);
 
 //Route::get("/test", [TituloController::class, 'index']);
 
@@ -39,7 +36,7 @@ Route::get("/", function(){
 
 Route::resource('titulo', TituloController::class);
 
-use App\Http\Controllers\ReseñasController;
+
 
 Route::resource('resenas', ReseñasController::class);
 

@@ -19,6 +19,19 @@ class ReseñasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function main_vghome()
+    {
+
+        $resenas = reseñas::getResenas_2();
+
+       
+
+        return view("vghome", ["resenas" => $resenas]);
+
+
+    }
+
     public function index()
     {
         //

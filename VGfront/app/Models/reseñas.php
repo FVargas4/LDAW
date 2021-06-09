@@ -19,6 +19,14 @@ class reseñas extends Model
         return $response -> json();
     }
 
+    public static function getResenas_2(){
+
+        $response = Http::get(env('API_URL').'resenas_3');
+
+      
+        return $response -> json();
+    }
+
 
     public static function getResenasid($id){
 

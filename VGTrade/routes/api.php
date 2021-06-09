@@ -51,7 +51,11 @@ Route::apiResource('titulo',TituloController::class);
 Route::apiResource('users',usersController::class);
 
 use App\Http\Controllers\ResenasController;
+use App\Http\Controllers\Resenas_main;
+
 Route::apiResource('resenas',ResenasController::class);
+
+Route::apiResource('resenas_3',Resenas_main::class);
 
 
 //Login de Sanctum
