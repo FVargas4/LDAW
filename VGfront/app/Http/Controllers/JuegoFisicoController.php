@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Request;
 use App\Models\JuegoFisico;
@@ -18,9 +18,13 @@ class JuegoFisicoController extends Controller
      */
     public function index()
     {
+        $user = auth()->user();
+        $email = $user->email;
+        
+        
         $juegoFisico = Http::get(env('API_URL').'JuegoFisico');
         $array['array'] = $juegoFisico->json();
-        return view("juegofisico.index",$array);
+        return view("juegofisico.index",$array)->with('email',$email);
     }
 
     /**
@@ -42,6 +46,9 @@ class JuegoFisicoController extends Controller
      */
     public function store(Request $request)
     {
+        $user = auth()->user();
+        $email = $user->email;
+        $id = $user->id;
         request()->validate([
             'titulo_id' => 'required',
             'condicion' => 'required',
@@ -49,9 +56,10 @@ class JuegoFisicoController extends Controller
         ]);
         $JuegoFisico = Http::post(env('API_URL').'JuegoFisico',[
             'titulo_id' => request('titulo_id'),
-            'user_id' => request('user_id'),
+            'user_id' => $id,
             'condicion1' => request('condicion'),
             'consola1' => request('consola'),
+            'email' => $email,
         ]);
 
         return redirect('juegofisico')->with('mensaje','Juego agregado con éxito');

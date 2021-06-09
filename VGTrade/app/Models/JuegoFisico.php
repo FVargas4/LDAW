@@ -9,7 +9,7 @@ class JuegoFisico extends Model
 {
     use HasFactory;
     protected $fillable =[
-        'user_id','titulo_id', 'condicion1', 'consola1', 'enOferta',
+        'user_id','titulo_id', 'condicion1', 'consola1', 'enOferta','email'
     ];
     
     public function user()

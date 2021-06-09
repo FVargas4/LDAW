@@ -37,6 +37,9 @@
                 </thead>
                 @foreach ($array as $juego)
                 <tbody>
+                  @if ($juego['email'] == $email)
+                  
+              @else
                   <tr>
                     <td>{{$juego['nombre']}}</td>
                     <td>{{$juego['consola1']}}</td>
@@ -48,6 +51,7 @@
                         </a>
                     </td>
                   </tr>
+                  @endif
                   @endforeach 
                 </tbody>
               </table>
