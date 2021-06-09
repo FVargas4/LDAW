@@ -24,6 +24,7 @@ class TituloController extends Controller
     {
         //
             Gate::authorize("viewAny", Titulo::class);
+
             $titulo = Titulo::getTitulo();
          
  

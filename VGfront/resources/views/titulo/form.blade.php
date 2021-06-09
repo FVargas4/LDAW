@@ -23,7 +23,7 @@
             <input type="text" class="form-control" placeholder="Xbox" name="consola" value="{{ isset($titulo->consola)?$titulo->consola:old('consola') }}" id="consola" required>
         </div>
     </div>
-
+    @can('create', App\Models\Titulo::class)
     <div class="form-field  ">
 
             <p >Selecciona el estado del titulo <span aria-hidden="true" class="required text-danger" >*</span></p>
@@ -37,7 +37,7 @@
                 
             </select>
 
-        
+        @endcan
          <div class="px-4 text-center">
             <input type="submit"  class="btn btn-success w-50 mt-0" value="Crear Título"> 
         </div>

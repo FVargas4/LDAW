@@ -65,9 +65,9 @@
                                     <p class="card-title">Titulo: {{ $titu['nombre'] }}</p>
                                     <p>Descripcion:<p class="card-text">  {{$titu['condicion'] }}</p></p>
                                     <p class="card-text">Consola:  {{$titu['consola'] }}</p>
-                                    @can('delete', App\Models\Titulo::class)
+                                    
                                     <p class="card-text">Aprobado</p>
-                                    @endcan
+                                  
                                     
                                      
                             </div>
@@ -79,7 +79,8 @@
                           @endif
                       <div class="container text-center">
                         <div class="float-sm-right">
-                        @can('update', App\Models\Titulo::class)
+                   
+                          @if($auth()->rol===admin)
                             <div  class="btn-group" role="group" aria-label="Vertical example">
                                 <a href="{{url('/titulo/'.$titu['id'].'/edit')}}" >
                                     <button type="button" class="btn btn-success m-1">
@@ -87,15 +88,19 @@
                                     </button>  
                                 </a>
                                 <br>
-                        @endcan
-                        @can('delete', App\Models\Titulo::class)
+                       
+                       
                                 <form action="{{ url('/titulo/'.$titu['id']) }}" method="post" >
                                     @csrf
                                     {{ method_field('DELETE')}}
                                   <button type="submit" value="delete" class="btn btn-danger m-1" id="btn-submit" onclick="return confirm('¿Estas seguro que quieres borrar?') ;"><i class="bi bi-trash"></i></button>
                                </form>
-                        @endcan  
-                            </div>   
+                    
+                            </div>  
+                          @else
+                                  <p>No tiene autorización</p>
+                          @endif
+                         
                         </div>                 
                       </div>
 

@@ -10,14 +10,7 @@ class TituloPolicy
 {
     use HandlesAuthorization;
 
-    public function before(users $user){
-        if($user->isAdmin()){
-            return true;
-        }
-        
-        return false;
-    }
-
+    
     /**
      * Determine whether the user can view any models.
      *
@@ -27,6 +20,11 @@ class TituloPolicy
     public function viewAny(users $user)
     {
         //
+        if($user->isUser() || ($user->isAdmin())){
+            return true;
+        }
+        
+        return false;
     }
 
     /**
@@ -39,6 +37,11 @@ class TituloPolicy
     public function view(users $user, Titulo $titulo)
     {
         //
+        if($user->isUser() || ($user->isAdmin())){
+            return true;
+        }
+        
+        return false;
     }
 
     /**
@@ -67,6 +70,11 @@ class TituloPolicy
     public function update(users $user, Titulo $titulo)
     {
         //
+        if ($user->isAdmin()){
+            return true;
+        }
+        
+        return false;
     }
 
     /**
@@ -79,6 +87,12 @@ class TituloPolicy
     public function delete(users $user, Titulo $titulo)
     {
         //
+        if ($user->isAdmin()){
+            return true;
+        }
+        
+        return false;
+
     }
 
     /**

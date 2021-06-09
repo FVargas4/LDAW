@@ -89,6 +89,8 @@ class users extends Authenticatable{
                         ->timeout(env("API_TIMEOUT"))
                         ->get(env("API_URL") ."user");
 
+
+
         //dd($response->body());
 
         if($response->successful()){
@@ -96,12 +98,15 @@ class users extends Authenticatable{
             $userData = $response->json();
 
             $user = new users;
-
+            //dd($user->rol);
             $user->email = $userData["email"];
             $user->name = $userData["name"];
             $user->rol = $userData["rol"];
+
+            //dd($user->rol);
             $user->privileges = $userData["privilegios"];
             $user->token = $token;
+
 
             return $user;
 
@@ -140,7 +145,7 @@ class users extends Authenticatable{
     }
 
     public function isUser(){
-        return $this->rol === 'user';
+        return $this->rol === 'usuario';
     }
 
     public function hasPrivilege($privilege){
