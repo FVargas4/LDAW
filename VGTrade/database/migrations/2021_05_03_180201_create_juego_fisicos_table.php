@@ -26,7 +26,7 @@ class CreateJuegoFisicosTable extends Migration
             $table->string('condicion1');
             $table->string('consola1');
             $table->boolean('enOferta')->default(false);
-            $table->string('email')->unique();
+            $table->string('email');
             $table->timestamps();
         });
     }

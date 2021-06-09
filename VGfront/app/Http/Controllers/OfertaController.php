@@ -18,11 +18,13 @@ class OfertaController extends Controller
      */
     public function index()
     {
+        $user = auth()->user();
+        $email = $user->email;
          //$oferta = Http::get(env('API_URL').'Oferta');
          $juego = Http::get(env('API_URL').'Juegos');
          $array['array'] = $juego->json();
         // return view("ofertas.index",$array);
-        return view("ofertas.buscar",$array);
+        return view("ofertas.buscar",$array)->with('email',$email);
     }
 
     /**
