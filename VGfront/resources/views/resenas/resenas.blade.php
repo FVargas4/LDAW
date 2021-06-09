@@ -69,7 +69,9 @@
                                                 <form action="{{ url('/resenas/'.$resena['id']) }}" method="post" >
                                                         @csrf
                                                         {{ method_field('DELETE')}}
+                                                        @can('viewAny', App\Models\users::class)
                                                         <button type="submit" value="delete" class="btn btn-danger m-1" id="btn-submit" onclick="return confirm('¿Estas seguro que quieres borrar?') ;"><i class="bi bi-trash"></i></button>
+                                                        @endcan
                                                 </form>
                                         
                                         </div>   
