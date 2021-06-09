@@ -24,7 +24,7 @@ class TituloPolicy
      * @param  \App\Models\User  $user
      * @return mixed
      */
-    public function viewAny(User $user)
+    public function viewAny(users $user)
     {
         //
     }
@@ -36,7 +36,7 @@ class TituloPolicy
      * @param  \App\Models\Titulo  $titulo
      * @return mixed
      */
-    public function view(User $user, Titulo $titulo)
+    public function view(users $user, Titulo $titulo)
     {
         //
     }
@@ -47,9 +47,14 @@ class TituloPolicy
      * @param  \App\Models\User  $user
      * @return mixed
      */
-    public function create(User $user)
+    public function create(users $user)
     {
         //
+        if($user->isUser() || ($user->isAdmin())){
+            return true;
+        }
+        
+        return false;
     }
 
     /**
@@ -59,7 +64,7 @@ class TituloPolicy
      * @param  \App\Models\Titulo  $titulo
      * @return mixed
      */
-    public function update(User $user, Titulo $titulo)
+    public function update(users $user, Titulo $titulo)
     {
         //
     }
@@ -71,7 +76,7 @@ class TituloPolicy
      * @param  \App\Models\Titulo  $titulo
      * @return mixed
      */
-    public function delete(User $user, Titulo $titulo)
+    public function delete(users $user, Titulo $titulo)
     {
         //
     }
@@ -83,7 +88,7 @@ class TituloPolicy
      * @param  \App\Models\Titulo  $titulo
      * @return mixed
      */
-    public function restore(User $user, Titulo $titulo)
+    public function restore(users $user, Titulo $titulo)
     {
         //
     }
@@ -95,7 +100,7 @@ class TituloPolicy
      * @param  \App\Models\Titulo  $titulo
      * @return mixed
      */
-    public function forceDelete(User $user, Titulo $titulo)
+    public function forceDelete(users $user, Titulo $titulo)
     {
         //
     }

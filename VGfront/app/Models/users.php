@@ -139,6 +139,10 @@ class users extends Authenticatable{
         return $this->rol === 'admin';
     }
 
+    public function isUser(){
+        return $this->rol === 'user';
+    }
+
     public function hasPrivilege($privilege){
         return in_array($privilege, $this->privileges);
     }
