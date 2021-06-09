@@ -18,7 +18,7 @@ class CreateTitulosTable extends Migration
             $table->string('nombre');
             $table->string('condicion');
             $table->string('consola');
-
+            $table->boolean("aprobado");
             $table->timestamps();
         });
     }

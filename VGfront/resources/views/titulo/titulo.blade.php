@@ -59,16 +59,24 @@
                @foreach($titulo as $titu)
                
                     <div class="card m-3" style="width: 18rem;">
-                        
+                          @if($titu['aprobado'] == '0') 
                             <div class="card-body">
-                                     
+                                  
                                     <p class="card-title">Titulo: {{ $titu['nombre'] }}</p>
                                     <p>Descripcion:<p class="card-text">  {{$titu['condicion'] }}</p></p>
                                     <p class="card-text">Consola:  {{$titu['consola'] }}</p>
+                                    @can('delete', App\Models\Titulo::class)
+                                    <p class="card-text">Aprobado</p>
+                                    @endcan
                                     
                                      
                             </div>
+                          
+                          @else
 
+                                <p class="text-center">Título no aprobado</p>
+
+                          @endif
                       <div class="container text-center">
                         <div class="float-sm-right">
                         @can('update', App\Models\Titulo::class)

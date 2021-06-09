@@ -25,6 +25,7 @@ class TituloController extends Controller
         //
             Gate::authorize("viewAny", Titulo::class);
             $titulo = Titulo::getTitulo();
+         
  
             return view("titulo.titulo", ["titulo" => $titulo]);
 
@@ -56,6 +57,7 @@ class TituloController extends Controller
             'nombre' => request('nombre'),
             'condicion' => request('condicion'),
             'consola' => request('consola'),
+            'aprobado' => request('aprobado'),
         ]);
 
 
@@ -115,6 +117,8 @@ class TituloController extends Controller
             'nombre' => request('nombre'),
             'condicion' => request('condicion'),
             'consola' => request('consola'),
+            'aprobado' => request('aprobado'),
+            
         ]);
 
         //dd($titulo);

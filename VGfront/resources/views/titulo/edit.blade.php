@@ -33,6 +33,19 @@
             </div> 
         </div>
 
+        <div class="form-field  ">
+
+            <p >Selecciona el estado del titulo <span aria-hidden="true" class="required text-danger" >*</span></p>
+            </div>
+
+            <select class="form-input" name="aprobado" id="aprobado" required >
+
+                <option value="">Selecciona </option>
+                <option value="1" {{ isset($titulo) && $titulo->aprobado==1 ? "selected":'' }}>Desaprobado</option>
+                <option value="0" {{ isset($titulo) && $titulo->aprobado==0 ? "selected":'' }} >Aprobado</option>
+                
+            </select>
+
        
             <div class="">
                 <div class="px-4 text-center">

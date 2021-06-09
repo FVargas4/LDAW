@@ -15,6 +15,7 @@ class Titulo{
         $response = Http::get(env('API_URL').'titulo');
 
         return $response -> json();
+        
     }
 
 

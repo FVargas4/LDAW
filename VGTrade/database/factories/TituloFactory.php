@@ -25,6 +25,7 @@ class TituloFactory extends Factory
             'nombre' => $this->faker->name(),
             'condicion' => $this->faker->text(),
             'consola' => $this->faker->name(),
+            'aprobado' => $this->faker->boolean(),
         ];
     }
 }

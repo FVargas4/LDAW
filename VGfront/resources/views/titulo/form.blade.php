@@ -24,9 +24,25 @@
         </div>
     </div>
 
+    <div class="form-field  ">
+
+            <p >Selecciona el estado del titulo <span aria-hidden="true" class="required text-danger" >*</span></p>
+            </div>
+
+            <select class="form-input" name="aprobado" id="aprobado" required >
+
+                <option value="">Selecciona </option>
+                <option value="1" {{ isset($titulo) && $titulo->aprobado==1 ? "selected":'' }}>Aprobado</option>
+                <option value="0" {{ isset($titulo) && $titulo->aprobado==0 ? "selected":'' }} >Desaprobado</option>
+                
+            </select>
+
+        
          <div class="px-4 text-center">
             <input type="submit"  class="btn btn-success w-50 mt-0" value="Crear Título"> 
         </div>
+
+    
 
     <div class="px-4 text-center">           
             <a href="{{url('/titulo')}}" class="btn bg-danger w-50 mt-4 text-white">Regresar</a>

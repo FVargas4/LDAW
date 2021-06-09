@@ -20,7 +20,7 @@ class TituloController extends Controller
     public function index()
     {
         //
-        return Titulo::getAllTitulos();
+        return Titulo::getConfirmacion();
     }
 
     /**
@@ -37,6 +37,7 @@ class TituloController extends Controller
             'nombre' => request('nombre'),
             'condicion' => request('condicion'),
             'consola' => request('consola'),
+            'aprobado' => request('aprobado'),
         ]);
     }
 
@@ -77,12 +78,15 @@ class TituloController extends Controller
             'nombre' => 'required',
             'condicion' => 'required',
             'consola' => 'required',
+            'aprobado' => 'required',
         ]);
 
         $success = $titulo->update([
             'nombre' => request('nombre'),
             'condicion' => request('condicion'),
             'consola' => request('consola'),
+            'aprobado' => request('aprobado'),
+            
         ]);
         return [
             'success' => $success
