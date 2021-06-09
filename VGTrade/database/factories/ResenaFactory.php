@@ -26,7 +26,8 @@ class ResenaFactory extends Factory
            // 'id_user' =>  $this->faker->unique(),
             'id_titulo' =>  \App\Models\Titulo::inRandomOrder()->first()->id,
             'calificacion' => $this->faker->numberBetween(1,10),
-            'descripcion' => $this->faker->text()
+            'descripcion' => $this->faker->text(),
+            'email' => $this->faker->email(),
         ];
     }
 }

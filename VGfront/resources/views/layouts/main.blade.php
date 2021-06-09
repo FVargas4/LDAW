@@ -75,6 +75,11 @@
                     <a class='nav-link' href="{{url('/calendario')}}">Calendario</a>
                 </li>
 
+                
+                <li class='nav-item px-2'>
+                    <a class='nav-link' href="{{url('/titulo/create')}}">Crear Titulos</a>
+                </li>
+               
 
                 <li class="nav-item px-2">
                     <a class="nav-link " href="{{url('/resenas')}}">Reseñas</a>

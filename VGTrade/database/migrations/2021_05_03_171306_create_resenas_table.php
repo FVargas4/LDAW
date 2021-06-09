@@ -19,6 +19,7 @@ class CreateResenasTable extends Migration
             $table->foreignId('id_titulo')->unsigned()->nullable();
             $table->integer('calificacion');
             $table->string('descripcion');
+            $table->string('email');
             $table->timestamps();
         });
     }

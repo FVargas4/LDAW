@@ -6,35 +6,7 @@
     <h3 class="text-center mb-3">Crear Reseña Nueva </h3>
 
     <div class="form-group">
-        <div class="mb-3">
-            
-                    <div class="form-group m-3">
-
-                        <label for="id_user">Usuario</label>
-                        <br>
-                            @if(empty($usuario))
-                                <select id="disabledSelect" class="custom-select">
-                                <option selected>No existen usuarios</option>
-                            @else
-                                    <select class="form-control selectpicker" name="id_user" id="id_user" data-live-search="true">
-
-                                @if ($modo == "Editar")
-                                
-                                    <option value="{{ isset($array['id_user'])?$array['id_user']:old('id_user') }}" selected>{{ isset($array['name'])?$array['name']:old('name') }}</option>
-                                @elseif ($modo == "Crear")
-                                    <option selected>Selecciona el usuario</option>
-                                @endif
-                            @endif
-                            @foreach($usuario as $usuario)
-                                <option id="id_user" name="id_user" data-tokens={{$usuario['name']}} value={{$usuario['id']}}>{{$usuario['name']}}</option>
-                            @endforeach
-                        </select>
-
-                    </div>
-                    @if(empty($usuario))
-                    </fieldset>
-                    @endif
-        </div>
+        
 
 
 
@@ -90,7 +62,7 @@
 
     
          <div class="px-4 text-center">
-            <input type="submit"  class="btn btn-success w-50 mt-0" value="Crear Título"> 
+            <input type="submit"  class="btn btn-success w-50 mt-0" value="Crear Reseña"> 
         </div>
 
     <div class="px-4 text-center">           

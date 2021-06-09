@@ -12,7 +12,7 @@ class Resena extends Model
 
     protected $fillable =[
 
-        'id_user','id_titulo','calificacion', 'descripcion', 'created_at'
+        'email','id_titulo','calificacion', 'descripcion'
     ];
 
     public $timestamps = false;
@@ -25,9 +25,9 @@ class Resena extends Model
 
     public static function getName(){
         $resenas = DB::table('resenas')
-                        ->select('resenas.id','users.name as autor','titulos.nombre as titulo','resenas.calificacion','resenas.descripcion', 'resenas.created_at')
+                        ->select('resenas.id','users.email','users.name as autor','titulos.nombre as titulo','resenas.calificacion','resenas.descripcion', 'resenas.created_at')
                         ->leftJoin('titulos','titulos.id',"=",'resenas.id_titulo')
-                        ->leftJoin('users','users.id',"=",'resenas.id_user')
+                        ->leftJoin('users','users.email',"=",'resenas.email')
                         ->get();
         return $resenas;
     }

@@ -30,7 +30,7 @@ class ResenasController extends Controller
         //
            
         $resena = Resena::create([
-            'id_user' => request('id_user'),
+            'email' => request('email'),
             'id_titulo' => request('id_titulo'),
             'calificacion' => request('calificacion'),
             'descripcion' => request('descripcion'),
@@ -68,7 +68,7 @@ class ResenasController extends Controller
         
         $resenas = Resena::find($id);
         request()->validate([
-            'id_user' => request('id_user'),
+            'email' => request('email'),
             'id_titulo' => request('id_titulo'),
             'calificacion' => request('calificacion'),
             'descripcion' => request('descripcion'),
@@ -78,7 +78,7 @@ class ResenasController extends Controller
         
 
         $success = $resenas->update([
-            'id_user' => request('id_user'),
+            'email' => request('email'),
             'id_titulo' => request('id_titulo'),
             'calificacion' => request('calificacion'),
             'descripcion' => request('descripcion'),

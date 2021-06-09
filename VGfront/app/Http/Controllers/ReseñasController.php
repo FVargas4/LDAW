@@ -12,6 +12,8 @@ use App\Models\users;
 
 use Illuminate\Support\Facades\Http;
 
+use Illuminate\Support\Facades\Auth;
+
 class ReseñasController extends Controller
 {
     /**
@@ -67,10 +69,13 @@ class ReseñasController extends Controller
     public function store(Request $request)
     {
         //
+        $user = auth()->user();
+        $email = $user->email;
+        $id = $user->id;
 
 
         request()->validate([
-            'id_user' => 'required',
+           
             'id_titulo' => 'required',
             'calificacion' => 'required',
             'descripcion' => 'required',
@@ -78,10 +83,11 @@ class ReseñasController extends Controller
 
         $resenas = Http::post(env('API_URL').'resenas',[
 
-            'id_user' => request('id_user'),
+            
             'id_titulo' => request('id_titulo'),
             'calificacion' => request('calificacion'),
             'descripcion' => request('descripcion'),
+            'email' => $email,
         ]);
 
         return redirect('resenas')->with('mensaje','Reseña agregada con éxito');
