@@ -90,6 +90,9 @@ class JuegoFisicoController extends Controller
         if(request('consola1') == null){
             $consola1 = $JuegoFisico->consola1;
         }
+        if(request('email') == null){
+            $email = $JuegoFisico->email;
+        }
 
         $success = $JuegoFisico->update([
             // 'titulo_id' => request('titulo_id'),
@@ -101,6 +104,7 @@ class JuegoFisicoController extends Controller
             'user_id' => $user_id,
             'condicion1' => $condicion1,
             'consola1' => $consola1,
+            'email' => $email,
 
             'enOferta' => request('enOferta'),
         ]);
