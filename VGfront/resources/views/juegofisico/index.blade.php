@@ -64,9 +64,9 @@
                   <a href="{{url('/juegofisico/'.$juego['id'])}}" class="btn btn-primary">
                     <i class="bi bi-eye"></i>
                   </a>                              
-                    <a href="{{url('/juegofisico/'.$juego['id'].'/edit')}}" class="btn btn-success">
+                    {{-- <a href="{{url('/juegofisico/'.$juego['id'].'/edit')}}" class="btn btn-success">
                       <i class="bi bi-pencil-square"></i>
-                    </a>
+                    </a> --}}
                     <form action="{{ url('/juegofisico/'.$juego['id'])}}" class="d-inline" method="post" >
                       @csrf
                       {{ method_field('DELETE')}}

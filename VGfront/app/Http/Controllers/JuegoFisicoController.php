@@ -107,13 +107,17 @@ class JuegoFisicoController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $user = auth()->user();
+        $email = $user->email;
+        $id = $user->id;
         
         $JuegoFisico = Http::put(env('API_URL').'JuegoFisico/'.$id,[
             'titulo_id' => request('titulo_id'),
             'user_id' => request('user_id'),
             'condicion1' => request('condicion'),
             'consola1' => request('consola'),
-            'enOferta' => request('enOferta')
+            'enOferta' => request('enOferta'),
+            'email' => $email,
         ]);
 
         return redirect('juegofisico')->with('mensaje','Cambios realizados con éxito');

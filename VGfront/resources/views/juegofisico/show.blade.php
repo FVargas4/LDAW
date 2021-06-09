@@ -41,13 +41,13 @@
           <a href="{{url('/juegofisico')}}"  class="btn btn-success "> <span class="material-icons-outlined">keyboard_backspace</span></a>  
         </div>
             
-       
+{{--        
               <form action="{{ url('/juegofisico/'.$juego['id'])}}" class="d-inline" method="post" >
                 @csrf
                 {{ method_field('PATCH')}}
                 <input type="hidden" class="form-control" value=1 name="enOferta"  id="enOferta">
               <button type="submit" value="delete" class="btn btn-danger" id="btn-submit" onclick="return confirm('¿Estas seguro que quieres dejar de ofertar este juego?') ;">Dejar de ofertar</button>
-              </form>
+              </form> --}}
 
 
     <div class="table-responsive">
