@@ -1,8 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Auth;
 
 use App\Models\JuegoFisico;
+use App\Models\User;
+
 use Illuminate\Http\Request;
 
 class JuegoFisicoController extends Controller
@@ -14,7 +17,10 @@ class JuegoFisicoController extends Controller
      */
     public function index()
     {
-        $array = JuegoFisico::join('titulos', 'titulo_id', '=', 'titulos.id')->select('juego_fisicos.*','nombre')->orderBy('id', 'desc')->get();
+        $array = JuegoFisico::join('titulos', 'titulo_id', '=', 'titulos.id')
+        ->select('juego_fisicos.*','nombre')
+        ->orderBy('juego_fisicos.id', 'desc')
+        ->get();
         return response()->json($array);
     }
 
@@ -27,11 +33,11 @@ class JuegoFisicoController extends Controller
     public function store(Request $request)
     {
         $JuegoFisico = JuegoFisico::create([
-            // 'titulo' => request('titulo'),
             'titulo_id' => request('titulo_id'),
             'user_id' => request('user_id'),
             'condicion1' => request('condicion1'),
             'consola1' => request('consola1'),
+            'email' => request('email'),
         ]);
 
     }
@@ -49,6 +55,7 @@ class JuegoFisicoController extends Controller
             ->where('juego_fisicos.id',$id)
             ->orderBy('id', 'desc')
             ->where('enOferta',0)
+            // ->where('juego_fisicos.id_user',$id)
             ->get();
 
         return response()->json($success);

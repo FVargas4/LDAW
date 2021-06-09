@@ -39,12 +39,16 @@
                         
             @endif
             @foreach($array as $juegofisico)
+            @if ($juegofisico['email'] != $email)
+                  
+            @else
             @if ($modo == "Editar")
                 <option id="id_juego_ofertado" name="id_juego_ofertado" data-tokens={{$juegofisico['nombre']}} value={{$juegofisico['id']}}>{{$juegofisico['nombre']}}</option>
 
             @else
                 <option id="id_juego_propuesto" name="id_juego_propuesto" data-tokens={{$juegofisico['nombre']}} value={{$juegofisico['id']}}>{{$juegofisico['nombre']}}</option>
 
+            @endif
             @endif
             @endforeach
         </select>

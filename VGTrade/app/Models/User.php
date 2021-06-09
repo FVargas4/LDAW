@@ -48,4 +48,9 @@ class User extends Authenticatable
         return $this->hasMany(JuegoFisico::class);
     }
 
+    public function getId()
+    {
+        return $this->id;
+    }
+
 }

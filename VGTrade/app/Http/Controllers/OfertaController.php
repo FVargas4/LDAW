@@ -18,10 +18,10 @@ class OfertaController extends Controller
             ->leftjoin('juego_fisicos as jf2', 'id_juego_ofertado', '=', 'jf2.id')
 
             ->leftjoin('titulos as t1', 't1.id', '=', 'jf1.titulo_id')
-            ->leftjoin('users as u1', 'u1.id', '=', 'jf1.user_id')
+            ->leftjoin('users as u1', 'u1.email', '=', 'jf1.email')
 
             ->leftjoin('titulos as t2', 't2.id', '=', 'jf2.titulo_id')
-            ->leftjoin('users as u2', 'u2.id', '=', 'jf2.user_id')
+            ->leftjoin('users as u2', 'u2.email', '=', 'jf2.email')
 
             ->select('ofertas.*','jf1.enOferta', 't1.nombre as TituloJuegoPropuesto','u1.name as NombreUsuarioProp','u1.telefono as telefonoPro','u1.email as emailPro','jf1.consola1 as ConsolaJuegoPropuesto','jf1.condicion1 as CondicionJuegoPropuesto',
             't2.nombre as TituloJuegoOfertado','u2.name as NombreUsuarioOfer','u2.telefono as telefonoOf','u2.email as emailOf','jf2.consola1 as ConsolaJuegoOfertado','jf2.condicion1 as CondicionJuegoOfertado',)
@@ -58,10 +58,10 @@ class OfertaController extends Controller
             ->leftjoin('juego_fisicos as jf2', 'id_juego_ofertado', '=', 'jf2.id')
 
             ->leftjoin('titulos as t1', 't1.id', '=', 'jf1.titulo_id')
-            ->leftjoin('users as u1', 'u1.id', '=', 'jf1.user_id')
+            ->leftjoin('users as u1', 'u1.email', '=', 'jf1.email')
 
             ->leftjoin('titulos as t2', 't2.id', '=', 'jf2.titulo_id')
-            ->leftjoin('users as u2', 'u2.id', '=', 'jf2.user_id')
+            ->leftjoin('users as u2', 'u2.email', '=', 'jf2.email')
 
             ->select('ofertas.*', 't1.nombre as TituloJuegoPropuesto','u1.name as NombreUsuarioProp','u1.telefono as telefonoPro','u1.email as emailPro','jf1.consola1 as ConsolaJuegoPropuesto','jf1.condicion1 as CondicionJuegoPropuesto',
             't2.nombre as TituloJuegoOfertado','u2.name as NombreUsuarioOfer','u2.telefono as telefonoOf','u2.email as emailOf','jf2.consola1 as ConsolaJuegoOfertado','jf2.condicion1 as CondicionJuegoOfertado',)

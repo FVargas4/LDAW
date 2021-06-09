@@ -83,12 +83,15 @@ class OfertaController extends Controller
      */
     public function edit($id)
     {
+        $user = auth()->user();
+        $email = $user->email;
+
         $juegofisico = Http::get(env('API_URL').'JuegoFisico');
         $oferta = Http::get(env('API_URL').'Oferta/'.$id);
         $array['array'] = $juegofisico->json();
         $array1['oferta'] = $oferta->json();
         //return view('ofertas.edit',$array)->with('id', $id);
-        return view('ofertas.edit')->with($array)->with($array1)->with('id', $id);
+        return view('ofertas.edit')->with($array)->with($array1)->with('id', $id)->with('email', $email);
     }
 
     /**
