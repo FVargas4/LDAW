@@ -13,11 +13,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-         \App\Models\User::factory(10)->create();
+         //\App\Models\User::factory(10)->create();
          \App\Models\Titulo::factory(10)->create();
-         \App\Models\JuegoFisico::factory(10)->create();
-         \App\Models\Oferta::factory(10)->create();
-         \App\Models\Resena::factory(10)->create();
+         //\App\Models\JuegoFisico::factory(10)->create();
+         //\App\Models\Oferta::factory(10)->create();
+        // \App\Models\Resena::factory(10)->create();
          
          $this->call([
             PrivilegioSeeder::class,

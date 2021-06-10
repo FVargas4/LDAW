@@ -56,16 +56,7 @@
             @endforeach            
             
             
-                <div class="mt-4 delimitador">
-                        <h2 class="text-center p-3 mb-2 bg-primary text-white">Videojuegos más famosos </h2>
-                    <div class="contenedor">
-
-                        <iframe src="https://www.youtube.com/watch?v=a_1Ero_1-m8"></iframe>
-
-                    </div>
-                    
-
-                </div>
+           
 
 
      

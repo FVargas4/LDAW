@@ -10,7 +10,16 @@ class TituloPolicy
 {
     use HandlesAuthorization;
 
-    public function before(users $user){
+  
+    /**
+     * Determine whether the user can view any models.
+     *
+     * @param  \App\Models\User  $user
+     * @return mixed
+     */
+    public function admin(users $user)
+    {
+        //
         if($user->isAdmin()){
             return true;
         }
@@ -18,15 +27,15 @@ class TituloPolicy
         return false;
     }
 
-    /**
-     * Determine whether the user can view any models.
-     *
-     * @param  \App\Models\User  $user
-     * @return mixed
-     */
+
     public function viewAny(users $user)
     {
         //
+        if($user->isUser() || ($user->isAdmin())){
+            return true;
+        }
+        
+        return false;
     }
 
     /**
@@ -39,6 +48,11 @@ class TituloPolicy
     public function view(users $user, Titulo $titulo)
     {
         //
+        if($user->isUser() || ($user->isAdmin())){
+            return true;
+        }
+        
+        return false;
     }
 
     /**
@@ -64,9 +78,18 @@ class TituloPolicy
      * @param  \App\Models\Titulo  $titulo
      * @return mixed
      */
-    public function update(users $user, Titulo $titulo)
+    public function update(users $user)
     {
         //
+        if ($user->isAdmin()){
+            return true;
+        }
+        
+        return false;
+
+       
+
+        
     }
 
     /**
@@ -76,9 +99,15 @@ class TituloPolicy
      * @param  \App\Models\Titulo  $titulo
      * @return mixed
      */
-    public function delete(users $user, Titulo $titulo)
+    public function delete(users $user)
     {
         //
+        if ($user->isAdmin()){
+            return true;
+        }
+        
+        return false;
+
     }
 
     /**
