@@ -54,7 +54,7 @@
 
       </div>
       <div class="table-responsive">
-        <div class="container">
+        <div class="container center">
            <div class="row">
                @foreach($titulo as $titu)
                

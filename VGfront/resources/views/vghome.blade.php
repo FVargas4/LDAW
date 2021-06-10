@@ -34,12 +34,12 @@
 
         <div class="table-responsive">
             
-        <div class="container py-3">
+        <div class="container center py-3">
                 <div class="row">
                 <h2 class="text-center text-white">Reseñas </h2>
             @foreach($resenas as $resena)
       
-            <div class="card mt-4" style="width: 20rem;">
+            <div class="card m-2" style="width: 20rem;">
                     
                     <div class="card-body">
                             

@@ -39,13 +39,13 @@
       </div>
 
       <div class="table-responsive">
-        <div class="container">
+        <div class="container center">
                 <div class="row">
                 
                 @foreach($resenas as $resena)
 
                 
-                        <div class="card mt-3" style="width: 18rem;">
+                        <div class="card m-2" style="width: 18rem;">
                                 
                                 <div class="card-body">
                                         
