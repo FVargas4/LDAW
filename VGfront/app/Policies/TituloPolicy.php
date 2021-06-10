@@ -78,10 +78,18 @@ class TituloPolicy
      * @param  \App\Models\Titulo  $titulo
      * @return mixed
      */
-    public function update(users $user, Titulo $titulo)
+    public function update(users $user)
     {
         //
+        if ($user->isAdmin()){
+            return true;
+        }
+        
+        return false;
+
        
+
+        
     }
 
     /**
@@ -91,7 +99,7 @@ class TituloPolicy
      * @param  \App\Models\Titulo  $titulo
      * @return mixed
      */
-    public function delete(users $user, Titulo $titulo)
+    public function delete(users $user)
     {
         //
         if ($user->isAdmin()){
