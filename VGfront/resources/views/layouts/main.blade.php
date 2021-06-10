@@ -53,7 +53,7 @@
                 {{-- <li class="nav-item px-2">
                     <a class="nav-link " href="{{url('/')}}">Home</a>
                 </li> --}}
-                @can('viewAny', App\Models\Titulo::class)
+                @can('admin', App\Models\Titulo::class)
                 <li class="nav-item px-2">
                     <a class="nav-link" href="{{url('/titulo')}}">Titulos</a>
                 </li>
@@ -75,10 +75,12 @@
                     <a class='nav-link' href="{{url('/calendario')}}">Calendario</a>
                 </li>
 
-                
+                @can('viewAny', App\Models\Titulo::class)
                 <li class='nav-item px-2'>
                     <a class='nav-link' href="{{url('/titulo/create')}}">Crear Titulos</a>
                 </li>
+                @endcan
+               
                
 
                 <li class="nav-item px-2">

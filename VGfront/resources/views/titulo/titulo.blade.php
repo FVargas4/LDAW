@@ -74,13 +74,13 @@
                           
                           @else
 
-                                <p class="text-center">Título no aprobado</p>
+                                <p class="text-center">Título no aprobado por administrador</p>
 
                           @endif
                       <div class="container text-center">
                         <div class="float-sm-right">
                    
-                          @if($auth()->rol===admin)
+                          @can('admin',App\Models\Titulo::class)
                             <div  class="btn-group" role="group" aria-label="Vertical example">
                                 <a href="{{url('/titulo/'.$titu['id'].'/edit')}}" >
                                     <button type="button" class="btn btn-success m-1">
@@ -97,9 +97,8 @@
                                </form>
                     
                             </div>  
-                          @else
-                                  <p>No tiene autorización</p>
-                          @endif
+                          @endcan
+                                  
                          
                         </div>                 
                       </div>

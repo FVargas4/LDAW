@@ -10,13 +10,24 @@ class TituloPolicy
 {
     use HandlesAuthorization;
 
-    
+  
     /**
      * Determine whether the user can view any models.
      *
      * @param  \App\Models\User  $user
      * @return mixed
      */
+    public function admin(users $user)
+    {
+        //
+        if($user->isAdmin()){
+            return true;
+        }
+        
+        return false;
+    }
+
+
     public function viewAny(users $user)
     {
         //
@@ -70,11 +81,7 @@ class TituloPolicy
     public function update(users $user, Titulo $titulo)
     {
         //
-        if ($user->isAdmin()){
-            return true;
-        }
-        
-        return false;
+       
     }
 
     /**

@@ -23,7 +23,7 @@
             <input type="text" class="form-control" placeholder="Xbox" name="consola" value="{{ isset($titulo->consola)?$titulo->consola:old('consola') }}" id="consola" required>
         </div>
     </div>
-    @can('create', App\Models\Titulo::class)
+    @can('admin', App\Models\Titulo::class)
     <div class="form-field  ">
 
             <p >Selecciona el estado del titulo <span aria-hidden="true" class="required text-danger" >*</span></p>
